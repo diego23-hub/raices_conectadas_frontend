@@ -47,20 +47,25 @@ function FormularioLogin({ alIniciarSesion }) {
 
   return (
     <form onSubmit={iniciarSesion}>
-      <input
-        type="email"
-        name="correo"
-        placeholder="Correo"
-        value={credenciales.correo}
-        onChange={manejarCambio}
-      />
-      <input
-        type="password"
-        name="contrasena"
-        placeholder="Contraseña"
-        value={credenciales.contrasena}
-        onChange={manejarCambio}
-      />
+      <div className="mb-3">
+        <input
+          type="email"
+          name="correo"
+          placeholder="Correo"
+          value={credenciales.correo}
+          onChange={manejarCambio}
+        />
+      </div>
+
+      <div className="mb-3">
+        <input
+          type="password"
+          name="contrasena"
+          placeholder="Contraseña"
+          value={credenciales.contrasena}
+          onChange={manejarCambio}
+        />
+      </div>
 
       <button type="submit">Ingresar</button>
 

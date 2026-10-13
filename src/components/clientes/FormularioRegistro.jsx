@@ -46,34 +46,45 @@ function FormularioRegistro({ alRegistrar }) {
 
   return (
     <form onSubmit={guardarCliente}>
-      <input
-        type="text"
-        name="nombres"
-        placeholder="Nombres"
-        value={cliente.nombres}
-        onChange={manejarCambio}
-      />
-      <input
-        type="text"
-        name="apellidos"
-        placeholder="Apellidos"
-        value={cliente.apellidos}
-        onChange={manejarCambio}
-      />
-      <input
-        type="email"
-        name="correo"
-        placeholder="Correo"
-        value={cliente.correo}
-        onChange={manejarCambio}
-      />
-      <input
-        type="password"
-        name="contrasena"
-        placeholder="Contraseña"
-        value={cliente.contrasena}
-        onChange={manejarCambio}
-      />
+      <div className="mb-3">
+        <input
+          type="text"
+          name="nombres"
+          placeholder="Nombres"
+          value={cliente.nombres}
+          onChange={manejarCambio}
+        />
+      </div>
+
+      <div className="mb-3">
+        <input
+          type="text"
+          name="apellidos"
+          placeholder="Apellidos"
+          value={cliente.apellidos}
+          onChange={manejarCambio}
+        />
+      </div>
+
+      <div className="mb-3">
+        <input
+          type="email"
+          name="correo"
+          placeholder="Correo"
+          value={cliente.correo}
+          onChange={manejarCambio}
+        />
+      </div>
+
+      <div className="mb-3">
+        <input
+          type="password"
+          name="contrasena"
+          placeholder="Contraseña"
+          value={cliente.contrasena}
+          onChange={manejarCambio}
+        />
+      </div>
 
       <button type="submit">Registrar</button>
 

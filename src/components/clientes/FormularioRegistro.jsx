@@ -5,7 +5,8 @@ const clienteInicial = {
   nombres: '',
   apellidos: '',
   correo: '',
-  contrasena: ''
+  contrasena: '',
+  rol:'cliente'
 };
 
 function FormularioRegistro({ alRegistrar }) {

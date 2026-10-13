@@ -21,7 +21,7 @@ const MENU = [
 ];
 
 const tieneAcceso = (acceso, usuario) => {
-  switch (acceso) {
+  switch (acceso) { 
     case 'todos':
       return true;
     case 'invitado':

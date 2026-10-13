@@ -44,7 +44,7 @@ const leerSesion = () => {
 
 function App() {
   const [vista, setVista] = useState('inicio');
-  const [usuario, setUsuario] = useState('leerSesion');
+  const [usuario, setUsuario] = useState(leerSesion);
 
   const alIniciarSesion = (datosUsuario) => {
     setUsuario(datosUsuario);
@@ -74,7 +74,7 @@ function App() {
             {opcionesVisibles.map((m) => (
               <li key={m.vista}>
                 <a
-                  href={⁠ #${m.vista} ⁠}
+                  href={`#${m.vista}`}
                   onClick={() => setVista(m.vista)}
                 >
                   {m.etiqueta}
@@ -101,7 +101,7 @@ function App() {
         {vista === 'inicio' && (
           <div>
             <h2>
-              Bienvenid@{usuario ? ⁠ , ${usuario.nombres} ⁠ : ''} a Raíces conectadas
+              Bienvenid@{usuario ? `, ${usuario.nombres}` : ''} a Raíces conectadas              
             </h2>
             <p>Descubre los bellos pueblos patrimoniales colombianos</p>
           </div>

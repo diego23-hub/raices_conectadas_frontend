@@ -13,7 +13,8 @@
       "apellidos": "Noreña",
       "correo": "norena@diego.com",
       "contrasena": "juandiego",
-      "id": "r3YH8Dt"
+      "id": "r3YH8Dt",
+      "rol":"cliente"
     },
     {
       "nombres": "diego",

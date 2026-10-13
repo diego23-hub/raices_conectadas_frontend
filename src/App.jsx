@@ -9,12 +9,12 @@ import ListaReservas from './components/reservas/ListaReservas';
 import ListaProveedores from './components/proveedores/ListaProveedores';
 import './App.css';
 
-const MENU  = [
+const MENU = [
   { vista: 'inicio', etiqueta: 'Inicio', acceso: 'todos' },
   { vista: 'destinos', etiqueta: 'Destinos', acceso: 'todos' },
   { vista: 'eventos', etiqueta: 'Eventos', acceso: 'todos' },
   { vista: 'paquetes', etiqueta: 'Paquetes', acceso: 'logueado' },
-  { vista: 'reservas', etiqueta: 'Reservas', acceso: 'logueado' },
+  { vista: 'reservas', etiqueta: 'Mis reservas', acceso: 'cliente' },
   { vista: 'proveedores', etiqueta: 'Proveedores', acceso: 'admin' },
   { vista: 'login', etiqueta: 'Inicio de sesión', acceso: 'invitado' },
   { vista: 'registro', etiqueta: 'Registro de usuarios', acceso: 'invitado' },
@@ -28,6 +28,8 @@ const tieneAcceso = (acceso, usuario) => {
       return !usuario;
     case 'logueado':
       return !!usuario;
+    case 'cliente':
+      return usuario?.rol === 'cliente';
     case 'admin':
       return usuario?.rol === 'admin';
     default:
@@ -46,20 +48,29 @@ const leerSesion = () => {
 function App() {
   const [vista, setVista] = useState('inicio');
   const [usuario, setUsuario] = useState(leerSesion);
+  const [paqueteElegido, setPaqueteElegido] = useState(null);
+
+  const esCliente = usuario?.rol === 'cliente';
 
   const alIniciarSesion = (datosUsuario) => {
     setUsuario(datosUsuario);
-    localStorage.setItem('usuario',JSON.stringify(datosUsuario));
+    localStorage.setItem('usuario', JSON.stringify(datosUsuario));
     setVista('inicio');
   };
 
   const cerrarSesion = () => {
     setUsuario(null);
+    setPaqueteElegido(null);
     localStorage.removeItem('usuario');
     setVista('inicio');
   };
 
-  const puedeVer = (nombreVista)=>{
+  const elegirPaquete = (paquete) => {
+    setPaqueteElegido(paquete);
+    setVista('reservar');
+  };
+
+  const puedeVer = (nombreVista) => {
     const opcion = MENU.find((m) => m.vista === nombreVista);
     return !!opcion && tieneAcceso(opcion.acceso, usuario);
   };
@@ -74,10 +85,7 @@ function App() {
           <ul className="nav-links">
             {opcionesVisibles.map((m) => (
               <li key={m.vista}>
-                <a
-                  href={`#${m.vista}`}
-                  onClick={() => setVista(m.vista)}
-                >
+                <a href={`#${m.vista}`} onClick={() => setVista(m.vista)}>
                   {m.etiqueta}
                 </a>
               </li>
@@ -102,7 +110,7 @@ function App() {
         {vista === 'inicio' && (
           <div>
             <h2>
-              Bienvenid@{usuario ? `, ${usuario.nombres}` : ''} a Raíces conectadas              
+              Bienvenid@{usuario ? `, ${usuario.nombres}` : ''} a Raíces conectadas
             </h2>
             <p>Descubre los bellos pueblos patrimoniales colombianos</p>
           </div>
@@ -118,9 +126,21 @@ function App() {
 
         {vista === 'eventos' && <ListaEventos />}
 
-        {vista === 'paquetes' && puedeVer('paquetes') && <ListaPaquetes />}
+        {vista === 'paquetes' && puedeVer('paquetes') && (
+          <ListaPaquetes alElegirPaquete={esCliente ? elegirPaquete : undefined} />
+        )}
 
-        {vista === 'reservas' && puedeVer('reservas') && <ListaReservas />}
+        {vista === 'reservar' && esCliente && paqueteElegido && (
+          <FormularioReserva
+            usuario={usuario}
+            paquete={paqueteElegido}
+            alReservar={() => setVista('reservas')}
+          />
+        )}
+
+        {vista === 'reservas' && puedeVer('reservas') && (
+          <ListaReservas usuario={usuario} />
+        )}
 
         {vista === 'proveedores' && puedeVer('proveedores') && <ListaProveedores />}
       </main>

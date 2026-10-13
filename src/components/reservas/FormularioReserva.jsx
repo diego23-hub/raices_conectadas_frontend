@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { crearReserva } from '../../services/reservaService';
 
-function FormularioReserva({ clienteActivo, paquete, alReservar }) {
+function FormularioReserva({usuario, paquete, alReservar }) {
   const [fecha, setFecha] = useState('');
   const [cantidadPersonas, setCantidadPersonas] = useState(1);
   const [mensaje, setMensaje] = useState('');
@@ -17,7 +17,7 @@ function FormularioReserva({ clienteActivo, paquete, alReservar }) {
     }
 
     const nuevaReserva = { 
-      idCliente: clienteActivo.id,
+      idCliente: usuario.id,
       idPaquete: paquete.id,
       fecha,
       cantidadPersonas: Number(cantidadPersonas),

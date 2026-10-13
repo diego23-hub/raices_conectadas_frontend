@@ -255,14 +255,6 @@
       "cantidadPersonas": 1,
       "estado": "confirmada",
       "id": 2
-    },
-    {
-      "idCliente": "yT1z0qH",
-      "idPaquete": 12,
-      "fecha": "2026-10-31",
-      "cantidadPersonas": 4,
-      "estado": "confirmada",
-      "id": 3
     }
   ],
   "proveedores": [],

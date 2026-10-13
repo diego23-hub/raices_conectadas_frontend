@@ -7,7 +7,7 @@ import FormularioReserva from './components/reservas/FormularioReserva';
 import ListaEventos from './components/eventos/ListaEventos';
 import ListaReservas from './components/reservas/ListaReservas';
 import ListaProveedores from './components/proveedores/ListaProveedores';
-import './App.css';
+import './index.css';
 
 const MENU = [
   { vista: 'inicio', etiqueta: 'Inicio', acceso: 'todos' },

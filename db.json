@@ -14,21 +14,31 @@
       "correo": "norena@diego.com",
       "contrasena": "juandiego",
       "id": "r3YH8Dt",
-      "rol":"cliente"
+      "rol": "cliente"
     },
     {
       "nombres": "diego",
       "apellidos": "noreña",
       "correo": "diego@mail.com",
       "contrasena": "diegodiego",
-      "id": "yT1z0qH"
+      "id": "yT1z0qH",
+      "rol": "cliente"
     },
     {
       "nombres": "santi",
       "apellidos": "arre",
       "correo": "santi@arre.com",
       "contrasena": "santiago",
-      "id": "SRX2HU6"
+      "id": "SRX2HU6",
+      "rol": "cliente"
+    },
+    {
+      "nombres": "pepe",
+      "apellidos": "pepe",
+      "correo": "pepe@pepe.com",
+      "contrasena": "pepe",
+      "rol": "cliente",
+      "id": "_hDUpLo"
     }
   ],
   "destinos": [
@@ -237,6 +247,22 @@
       "cantidadPersonas": 4,
       "estado": "confirmada",
       "id": 1
+    },
+    {
+      "idCliente": "r3YH8Dt",
+      "idPaquete": 1,
+      "fecha": "2026-10-13",
+      "cantidadPersonas": 1,
+      "estado": "confirmada",
+      "id": 2
+    },
+    {
+      "idCliente": "yT1z0qH",
+      "idPaquete": 12,
+      "fecha": "2026-10-31",
+      "cantidadPersonas": 4,
+      "estado": "confirmada",
+      "id": 3
     }
   ],
   "proveedores": [],

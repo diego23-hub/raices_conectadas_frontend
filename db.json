@@ -5,7 +5,8 @@
       "apellidos": "Arredondo",
       "correo": "santiago@gmail.com",
       "contrasena": "123",
-      "id": "EdzD3atYits"
+      "id": "EdzD3atYits",
+      "rol": "admin"
     },
     {
       "nombres": "Diego",

@@ -4,6 +4,7 @@ import ListaPaquetes from './components/paquetes/ListaPaquetes';
 import FormularioLogin from './components/clientes/FormularioLogin';
 import FormularioRegistro from './components/clientes/FormularioRegistro';
 import FormularioReserva from './components/reservas/FormularioReserva';
+import ListaEventos from './components/eventos/ListaEventos';
 import ListaReservas from './components/reservas/ListaReservas';
 import ListaProveedores from './components/proveedores/ListaProveedores';
 import './App.css';
@@ -115,26 +116,11 @@ function App() {
 
         {vista === 'destinos' && <ListaDestino />}
 
-        {vista === 'eventos' && (
-          <div>
-            <h2>Eventos</h2>
-            <p>Próximamente...</p>
-          </div>
-        )}
+        {vista === 'eventos' && <ListaEventos />}
 
-        {vista === 'paquetes' && puedeVer('paquetes') && (
-          <div>
-            <h2>Paquetes</h2>
-            <p>Próximamente...</p>
-          </div>
-        )}
+        {vista === 'paquetes' && puedeVer('paquetes') && <ListaPaquetes />}
 
-        {vista === 'reservas' && puedeVer('reservas') && (
-          <div>
-            <h2>Reservas</h2>
-            <p>Próximamente...</p>
-          </div>
-        )}
+        {vista === 'reservas' && puedeVer('reservas') && <ListaReservas />}
 
         {vista === 'proveedores' && puedeVer('proveedores') && <ListaProveedores />}
       </main>

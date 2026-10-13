@@ -8,95 +8,135 @@ import ListaReservas from './components/reservas/ListaReservas';
 import ListaProveedores from './components/proveedores/ListaProveedores';
 import './App.css';
 
+const MENU  = [
+  { vista: 'inicio', etiqueta: 'Inicio', acceso: 'todos' },
+  { vista: 'destinos', etiqueta: 'Destinos', acceso: 'todos' },
+  { vista: 'eventos', etiqueta: 'Eventos', acceso: 'todos' },
+  { vista: 'paquetes', etiqueta: 'Paquetes', acceso: 'logueado' },
+  { vista: 'reservas', etiqueta: 'Reservas', acceso: 'logueado' },
+  { vista: 'proveedores', etiqueta: 'Proveedores', acceso: 'admin' },
+  { vista: 'login', etiqueta: 'Inicio de sesión', acceso: 'invitado' },
+  { vista: 'registro', etiqueta: 'Registro de usuarios', acceso: 'invitado' },
+];
+
+const tieneAcceso = (acceso, usuario) => {
+  switch (acceso) {
+    case 'todos':
+      return true;
+    case 'invitado':
+      return !usuario;
+    case 'logueado':
+      return !!usuario;
+    case 'admin':
+      return usuario?.rol === 'admin';
+    default:
+      return false;
+  }
+};
+
+const leerSesion = () => {
+  try {
+    return JSON.parse(localStorage.getItem('usuario'));
+  } catch {
+    return null;
+  }
+};
+
 function App() {
   const [vista, setVista] = useState('inicio');
-  const [clienteActivo, setClienteActivo] = useState(null);
-  const [paqueteElegido, setPaqueteElegido] = useState(null); 
+  const [usuario, setUsuario] = useState('leerSesion');
 
-  const manejarInicioSesion = (cliente) => {
-    setClienteActivo(cliente);
+  const alIniciarSesion = (datosUsuario) => {
+    setUsuario(datosUsuario);
+    localStorage.setItem('usuario',JSON.stringify(datosUsuario));
     setVista('inicio');
   };
 
   const cerrarSesion = () => {
-    setClienteActivo(null);
+    setUsuario(null);
+    localStorage.removeItem('usuario');
     setVista('inicio');
   };
 
-  const iniciarReserva = (paquete) => {
-    if (!clienteActivo) {
-      setVista('login');
-      return;
-    }
-    setPaqueteElegido(paquete);
-    setVista('reservar');
+  const puedeVer = (nombreVista)=>{
+    const opcion = MENU.find((m) => m.vista === nombreVista);
+    return !!opcion && tieneAcceso(opcion.acceso, usuario);
   };
 
-  const terminarReserva = () => {
-    setPaqueteElegido(null);
-    setVista('reserva'); 
-  };
+  const opcionesVisibles = MENU.filter((m) => tieneAcceso(m.acceso, usuario));
 
   return (
     <>
       <section id="center">
-        <nav className='navbar'>
-          <div className='logo'>Raíces conectadas</div>
-          <ul className='nav-links'>
-            <li><a href='#inicio' onClick={() => setVista('inicio')}>Inicio</a></li>
+        <nav className="navbar">
+          <div className="logo">Raíces conectadas</div>
+          <ul className="nav-links">
+            {opcionesVisibles.map((m) => (
+              <li key={m.vista}>
+                <a
+                  href={⁠ #${m.vista} ⁠}
+                  onClick={() => setVista(m.vista)}
+                >
+                  {m.etiqueta}
+                </a>
+              </li>
+            ))}
 
-            {!clienteActivo && (
+            {usuario && (
               <>
-                <li><a href='#login' onClick={() => setVista('login')}>Inicio de sesión</a></li>
-                <li><a href='#registro' onClick={() => setVista('registro')}>Registro de usuarios</a></li>
+                <li className="usuario-activo">
+                  {usuario.nombres}
+                  {usuario.rol === 'admin' && ' (Administrador)'}
+                </li>
+                <li>
+                  <a href="#salir" onClick={cerrarSesion}>Cerrar sesión</a>
+                </li>
               </>
             )}
-
-            {clienteActivo && (
-              <>
-                <li><a href='#reserva' onClick={() => setVista('reserva')}>Mis reservas</a></li>
-                <li><a href='#' onClick={cerrarSesion}>Cerrar sesión ({clienteActivo.nombres})</a></li>
-              </>
-            )}
-
-            <li><a href='#destinos' onClick={() => setVista('destinos')}>Destinos</a></li>
-            <li><a href='#paquetes' onClick={() => setVista('paquetes')}>Paquetes</a></li>
-            <li><a href='#proveedores' onClick={() => setVista('proveedores')}>Proveedores</a></li>
           </ul>
         </nav>
       </section>
 
-      <main className='content'>
+      <main className="content">
         {vista === 'inicio' && (
           <div>
-            <h2>Bienvenid@ a Raíces conectadas</h2>
+            <h2>
+              Bienvenid@{usuario ? ⁠ , ${usuario.nombres} ⁠ : ''} a Raíces conectadas
+            </h2>
             <p>Descubre los bellos pueblos patrimoniales colombianos</p>
           </div>
         )}
 
-        {vista === 'registro' && <FormularioRegistro />}
+        {vista === 'registro' && puedeVer('registro') && <FormularioRegistro />}
 
-        {vista === 'login' && (
-          <FormularioLogin alIniciarSesion={manejarInicioSesion} />
+        {vista === 'login' && puedeVer('login') && (
+          <FormularioLogin alIniciarSesion={alIniciarSesion} />
         )}
 
         {vista === 'destinos' && <ListaDestino />}
 
-        {vista === 'paquetes' && <ListaPaquetes alReservar={iniciarReserva} />}
-
-        {vista === 'reservar' && paqueteElegido && (
-          <FormularioReserva
-            clienteActivo={clienteActivo}
-            paquete={paqueteElegido}
-            alReservar={terminarReserva}
-          />
+        {vista === 'eventos' && (
+          <div>
+            <h2>Eventos</h2>
+            <p>Próximamente...</p>
+          </div>
         )}
 
-        {vista === 'reserva' && clienteActivo && (
-          <ListaReservas clienteActivo={clienteActivo} />
+        {vista === 'paquetes' && puedeVer('paquetes') && (
+          <div>
+            <h2>Paquetes</h2>
+            <p>Próximamente...</p>
+          </div>
         )}
 
-        {vista === 'proveedores' && <ListaProveedores />}
+        {vista === 'reservas' && puedeVer('reservas') && (
+          <div>
+            <h2>Reservas</h2>
+            <p>Próximamente...</p>
+          </div>
+        )}
+
+        {vista === 'proveedores' && puedeVer('proveedores') && <ListaProveedores />}
       </main>
     </>
   );

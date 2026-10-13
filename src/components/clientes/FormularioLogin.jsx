@@ -35,7 +35,9 @@ function FormularioLogin({ alIniciarSesion }) {
 
       setMensaje(`Bienvenido, ${cliente.nombres}`);
 
-      // Le avisamos al componente padre (App.jsx) quién inició sesión
+      const usuario = { ...cliente };
+      delete usuario.contrasena;
+
       if (alIniciarSesion) alIniciarSesion(cliente);
     } catch (error) {
       console.error(error);

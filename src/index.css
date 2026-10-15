@@ -1,41 +1,95 @@
 /* =========================================================
    Raíces Conectadas — todos los estilos en un solo archivo
    Bootstrap se importa ANTES en main.jsx (aporta el reset base)
+
+   IMÁGENES (ver sección "ESPACIOS PARA IMÁGENES" al final):
+     public/img/logo.png            -> logo de la barra
+     public/img/hero.jpg            -> fondo de la portada (opcional)
+     public/img/destinos/1.jpg ...  -> foto de cada destino
+     public/img/paquetes/1.jpg ...  -> foto de cada paquete
    ========================================================= */
 
 /* ---------- Colores y tipografía de marca ---------- */
 :root {
   --raices-verde: #2f4f3e;
   --raices-verde-oscuro: #223a2d;
+  --raices-verde-claro: #5b8a6f;
   --raices-terracota: #c8793f;
+  --raices-terracota-oscuro: #a85f2b;
   --raices-dorado: #f2c48d;
   --raices-crema: #f3e3d3;
   --raices-marron: #8a4b1f;
+  --raices-borde: #e8dccb;
   --raices-fuente-titulo: Georgia, 'Times New Roman', serif;
+  --raices-sombra: 0 4px 16px rgba(34, 58, 45, 0.10);
+  --raices-sombra-fuerte: 0 16px 32px rgba(34, 58, 45, 0.20);
+
+  /* Fotos globales (si el archivo no existe se ve el degradado) */
+  --hero-foto: url(/img/hero.jpg);
+  --logo-foto: url(/img/logo.png);
+
+  /* Íconos que se ven mientras no haya foto */
+  --icono-destino: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22 fill=%22%23ffffff%22 fill-opacity=%220.85%22%3E%3Cpath d=%22M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6%22/%3E%3C/svg%3E");
+  --icono-paquete: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22 fill=%22%23ffffff%22 fill-opacity=%220.85%22%3E%3Cpath d=%22M5 13h6v-3h-1v.5a.5.5 0 0 1-1 0V10H5z%22/%3E%3Cpath d=%22M6 2v.341C3.67 3.165 2 5.388 2 8v1.191l-1.17.585A1.5 1.5 0 0 0 0 11.118V13.5A1.5 1.5 0 0 0 1.5 15h1c.456.607 1.182 1 2 1h7c.818 0 1.544-.393 2-1h1a1.5 1.5 0 0 0 1.5-1.5v-2.382a1.5 1.5 0 0 0-.83-1.342L14 9.191V8a6 6 0 0 0-4-5.659V2a2 2 0 1 0-4 0m2-1a1 1 0 0 1 1 1v.083a6 6 0 0 0-2 0V2a1 1 0 0 1 1-1m0 3a4 4 0 0 1 3.96 3.43.5.5 0 1 1-.99.14 3 3 0 0 0-5.94 0 .5.5 0 1 1-.99-.14A4 4 0 0 1 8 4M4.5 9h7a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-4a.5.5 0 0 1 .5-.5%22/%3E%3C/svg%3E");
+  --icono-logo: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22 fill=%22%232f4f3e%22 fill-opacity=%221%22%3E%3Cpath d=%22M8.416.223a.5.5 0 0 0-.832 0l-3 4.5A.5.5 0 0 0 5 5.5h.098L3.076 8.735A.5.5 0 0 0 3.5 9.5h.191l-1.638 3.276a.5.5 0 0 0 .447.724H7V16h2v-2.5h4.5a.5.5 0 0 0 .447-.724L12.31 9.5h.191a.5.5 0 0 0 .424-.765L10.902 5.5H11a.5.5 0 0 0 .416-.777z%22/%3E%3C/svg%3E");
 }
 
 body {
-  background-color: #f8f9fa;
+  background-color: #faf6f0;
+  color: #3b3530;
+}
+
+/* Foco visible para teclado */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--raices-dorado);
+  outline-offset: 2px;
 }
 
 /* ---------- Navbar ---------- */
+/* La barra queda pegada arriba al hacer scroll (#center es su contenedor en App.jsx) */
+#center {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid var(--raices-dorado);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
 .navbar {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 0.75rem 1.5rem;
-  padding: 0.9rem 2rem;
-  background-color: var(--raices-verde);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 0.75rem 2rem;
+  background: linear-gradient(90deg, var(--raices-verde-oscuro), var(--raices-verde));
 }
 
+/* Logo: círculo con tu imagen (public/img/logo.png) + nombre */
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   font-family: var(--raices-fuente-titulo);
-  font-size: 1.4rem;
+  font-size: 1.45rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   color: #ffffff;
+}
+
+.logo::before {
+  content: '';
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--raices-dorado);
+  background-color: #ffffff;
+  background-image: var(--logo-foto), var(--icono-logo);
+  background-size: 78%, 55%;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .nav-links {
@@ -52,7 +106,7 @@ body {
   position: relative;
   padding: 0.25rem 0;
   color: rgba(255, 255, 255, 0.85);
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -78,16 +132,21 @@ body {
   transform: scaleX(1);
 }
 
+/* Nombre del usuario como etiqueta */
 .usuario-activo {
+  padding: 0.3rem 0.85rem;
+  border-radius: 50rem;
+  background-color: rgba(255, 255, 255, 0.14);
   color: var(--raices-dorado);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.9rem;
 }
 
 /* "Cerrar sesión" como botón con borde */
 .nav-links a[href='#salir'] {
-  padding: 0.25rem 0.75rem;
+  padding: 0.3rem 0.9rem;
   border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 0.375rem;
+  border-radius: 50rem;
 }
 
 .nav-links a[href='#salir']::after {
@@ -95,36 +154,69 @@ body {
 }
 
 .nav-links a[href='#salir']:hover {
-  background-color: rgba(255, 255, 255, 0.12);
+  background-color: var(--raices-dorado);
+  border-color: var(--raices-dorado);
+  color: var(--raices-verde-oscuro);
 }
 
 /* ---------- Contenido principal (centrado) ---------- */
 .content {
-  max-width: 1100px;
+  max-width: 1140px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 2rem 1rem 3.5rem;
 }
 
-/* Pantalla de inicio: el único <div> sin clase dentro de .content */
+/* ---------- Portada: el único <div> sin clase dentro de .content ---------- */
 .content > div:not([class]) {
-  padding: 3rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  padding: 6rem 1.5rem 6.5rem;
   text-align: center;
-  background-color: #ffffff;
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  color: #ffffff;
+  border-radius: 1.25rem;
+  box-shadow: var(--raices-sombra-fuerte);
+  background-color: var(--raices-verde);
+  background-image:
+    linear-gradient(rgba(34, 58, 45, 0.45), rgba(34, 58, 45, 0.55)),
+    var(--hero-foto),
+    radial-gradient(circle at 15% 20%, rgba(242, 196, 141, 0.35), transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(200, 121, 63, 0.45), transparent 45%),
+    linear-gradient(135deg, var(--raices-verde-oscuro), var(--raices-verde));
+  background-size: cover;
+  background-position: center;
+}
+
+/* Etiqueta sobre el título */
+.content > div:not([class])::before {
+  content: 'Turismo patrimonial en Colombia';
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50rem;
+  background-color: rgba(255, 255, 255, 0.12);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .content > div:not([class]) h2 {
-  margin-bottom: 0.75rem;
+  max-width: 760px;
+  margin: 0 auto 1rem;
   font-family: var(--raices-fuente-titulo);
-  font-size: 2rem;
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
   font-weight: 700;
-  color: var(--raices-verde);
+  line-height: 1.15;
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 .content > div:not([class]) p {
-  font-size: 1.15rem;
-  color: #6c757d;
+  max-width: 560px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.92);
 }
 
 /* ---------- Títulos de las listas ---------- */
@@ -132,9 +224,10 @@ body {
 .lista-eventos h2,
 .lista-paquetes h2,
 .lista-reservas h2 {
-  margin-bottom: 2rem;
+  margin: 1.5rem 0 2.5rem;
   text-align: center;
   font-family: var(--raices-fuente-titulo);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
   font-weight: 700;
   color: var(--raices-verde);
 }
@@ -146,10 +239,11 @@ body {
 .lista-reservas h2::after {
   content: '';
   display: block;
-  width: 60px;
-  height: 3px;
-  margin: 0.75rem auto 0;
-  background-color: var(--raices-terracota);
+  width: 70px;
+  height: 4px;
+  margin: 0.85rem auto 0;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--raices-terracota), var(--raices-dorado));
 }
 
 /* ---------- Grillas de tarjetas ---------- */
@@ -157,37 +251,52 @@ body {
 .grid-eventos,
 .grid-paquetes {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.75rem;
 }
 
-/* En paquetes, cada tarjeta viene envuelta en un <div> */
+/* En paquetes, cada tarjeta viene envuelta en un <div> que hace de "tarjeta" completa */
 .grid-paquetes > div {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: var(--raices-sombra);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.grid-paquetes > div:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--raices-sombra-fuerte);
 }
 
 /* ---------- Tarjetas (destinos, eventos y paquetes) ---------- */
 .card-destino,
 .card-evento,
 .card-paquetes {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex: 1;
+  overflow: hidden;
   padding: 1.5rem;
   background-color: #ffffff;
-  border-top: 4px solid var(--raices-verde);
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 1rem;
+  box-shadow: var(--raices-sombra);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card-destino:hover,
-.card-evento:hover,
-.card-paquetes:hover {
+.card-evento:hover {
   transform: translateY(-6px);
-  box-shadow: 0 1rem 2rem rgba(47, 79, 62, 0.18);
+  box-shadow: var(--raices-sombra-fuerte);
+}
+
+/* Dentro de paquetes la que se mueve es la envoltura, no la tarjeta interna */
+.grid-paquetes .card-paquetes {
+  border-radius: 0;
+  box-shadow: none;
 }
 
 .card-destino h3,
@@ -196,7 +305,7 @@ body {
   margin-bottom: 0.5rem;
   font-family: var(--raices-fuente-titulo);
   font-size: 1.25rem;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--raices-verde);
 }
 
@@ -205,8 +314,44 @@ body {
 .card-paquetes p {
   flex-grow: 1;
   margin-bottom: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
   color: #6c757d;
 }
+
+/* ---------- ESPACIO PARA FOTO (destinos y paquetes) ----------
+   La foto llega por la variable --foto (se asigna al final del archivo).
+   Capas: foto -> ícono -> degradado de color. Si no hay foto, se ven las dos últimas. */
+.card-destino::before,
+.card-paquetes::before {
+  content: '';
+  display: block;
+  height: 200px;
+  margin: -1.5rem -1.5rem 1.25rem;
+  background-color: var(--c1, var(--raices-verde));
+  background-image: var(--foto, none), var(--icono), linear-gradient(135deg, var(--c1, var(--raices-verde)), var(--c2, var(--raices-verde-claro)));
+  background-size: cover, 56px, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: transform 0.5s ease;
+}
+
+.card-destino { --icono: var(--icono-destino); }
+.card-paquetes { --icono: var(--icono-paquete); }
+
+/* Zoom suave de la foto al pasar el mouse */
+.card-destino:hover::before,
+.grid-paquetes > div:hover .card-paquetes::before {
+  transform: scale(1.07);
+}
+
+/* Colores del degradado de reserva (rotan de a tres) */
+.grid-destinos > :nth-child(3n + 1),
+.grid-paquetes > :nth-child(3n + 1) { --c1: #2f4f3e; --c2: #5b8a6f; }
+.grid-destinos > :nth-child(3n + 2),
+.grid-paquetes > :nth-child(3n + 2) { --c1: #c8793f; --c2: #e3a468; }
+.grid-destinos > :nth-child(3n + 3),
+.grid-paquetes > :nth-child(3n + 3) { --c1: #8a4b1f; --c2: #c8793f; }
 
 /* Etiqueta de tipo */
 .tipo-destino,
@@ -219,32 +364,105 @@ body {
   background-color: var(--raices-crema);
   color: var(--raices-marron);
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.3px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
 }
+
+/* En destinos y paquetes la etiqueta flota sobre la foto */
+.tipo-destino,
+.tipo-paquetes {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+/* Eventos: sin foto, con barra de color arriba */
+.card-evento {
+  border-top: 5px solid var(--raices-terracota);
+}
+
+.grid-eventos > :nth-child(3n + 2) { border-top-color: var(--raices-verde); }
+.grid-eventos > :nth-child(3n + 3) { border-top-color: var(--raices-dorado); }
 
 .fechas-evento {
-  margin-top: 0.75rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--raices-borde);
   font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--raices-verde) !important;
 }
 
+.fechas-evento::before {
+  content: '\f1e8';
+  margin-right: 0.5rem;
+  font-family: 'bootstrap-icons';
+  font-weight: 400;
+  color: var(--raices-terracota);
+}
+
+/* Precio del paquete */
 .precio-paquetes {
   margin-top: 1rem;
-  font-size: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--raices-borde);
+  font-family: var(--raices-fuente-titulo);
+  font-size: 1.5rem;
   font-weight: 700;
-  color: var(--raices-verde);
+  color: var(--raices-terracota-oscuro);
+}
+
+.precio-paquetes::after {
+  content: ' COP';
+  font-family: system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #8a8279;
+}
+
+/* Botón "Reservar" que va debajo de cada paquete */
+.grid-paquetes > div > button {
+  margin: 0 1.5rem 1.5rem;
+  padding: 0.65rem 1rem;
+  border-radius: 50rem;
+  background-color: var(--raices-terracota);
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(200, 121, 63, 0.35);
+}
+
+.grid-paquetes > div > button:hover {
+  background-color: var(--raices-terracota-oscuro);
 }
 
 /* ---------- Formularios (login, registro, proveedor y reserva) ---------- */
 form {
   max-width: 440px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 2.25rem 2rem;
   background-color: #ffffff;
-  border-top: 4px solid var(--raices-verde);
-  border-radius: 0.75rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-top: 5px solid var(--raices-terracota);
+  border-radius: 1rem;
+  box-shadow: var(--raices-sombra);
 }
+
+/* Título automático según el formulario */
+form::before {
+  display: block;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: var(--raices-fuente-titulo);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--raices-verde);
+}
+
+form:has(input[name='contrasena']):not(:has(input[name='nombres']))::before { content: 'Inicia sesión'; }
+form:has(input[name='nombres'])::before { content: 'Crea tu cuenta'; }
+form:has(input[name='tipo_servicio'])::before { content: 'Registrar proveedor'; }
 
 .formulario-reserva {
   max-width: 520px;
@@ -264,18 +482,19 @@ form {
 input {
   display: block;
   width: 100%;
-  padding: 0.55rem 0.75rem;
+  padding: 0.65rem 0.85rem;
   font-size: 1rem;
   color: #212529;
-  background-color: #ffffff;
-  border: 1px solid #ced4da;
-  border-radius: 0.375rem;
+  background-color: #fffdf9;
+  border: 2px solid var(--raices-borde);
+  border-radius: 0.6rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 input:focus {
   outline: none;
   border-color: var(--raices-verde);
-  box-shadow: 0 0 0 0.2rem rgba(47, 79, 62, 0.2);
+  box-shadow: 0 0 0 0.2rem rgba(47, 79, 62, 0.18);
 }
 
 /* Inputs sueltos dentro del form (formulario de proveedor) */
@@ -286,8 +505,8 @@ form > input {
 label {
   display: block;
   margin-bottom: 1rem;
-  font-weight: 500;
-  color: #495057;
+  font-weight: 600;
+  color: var(--raices-verde);
 }
 
 label input {
@@ -297,33 +516,35 @@ label input {
 
 .precotizacion {
   margin: 1rem 0;
-  padding: 0.75rem;
+  padding: 0.9rem;
   text-align: center;
+  font-size: 1.15rem;
   background-color: var(--raices-crema);
-  border-radius: 0.375rem;
+  border-radius: 0.6rem;
   color: var(--raices-marron);
 }
 
 /* ---------- Botones ---------- */
 button {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.1rem;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: 0.6rem;
   background-color: var(--raices-verde);
   color: #ffffff;
-  font-weight: 500;
-  transition: background-color 0.2s ease;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 button:hover {
   background-color: var(--raices-verde-oscuro);
+  transform: translateY(-1px);
 }
 
 /* Botón de enviar: ancho completo */
 form button[type='submit'] {
   width: 100%;
   margin-top: 0.5rem;
-  padding: 0.65rem;
+  padding: 0.75rem;
 }
 
 /* ---------- Mensajes ---------- */
@@ -332,11 +553,17 @@ form button[type='submit'] {
   padding: 0.75rem 1rem;
   background-color: #e7f1ec;
   border-left: 4px solid var(--raices-verde);
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   color: var(--raices-verde);
+  font-weight: 600;
 }
 
 /* ---------- Mis reservas ---------- */
+.lista-reservas {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .lista-reservas ul {
   margin: 0;
   padding: 0;
@@ -349,22 +576,33 @@ form button[type='submit'] {
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.75rem;
-  padding: 1rem 1.25rem;
+  margin-bottom: 0.85rem;
+  padding: 1.1rem 1.4rem;
   background-color: #ffffff;
-  border: 1px solid #dee2e6;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  border-left: 5px solid var(--raices-verde);
+  border-radius: 0.75rem;
+  box-shadow: var(--raices-sombra);
+  color: #6c757d;
+}
+
+.lista-reservas li strong {
+  font-family: var(--raices-fuente-titulo);
+  font-size: 1.1rem;
+  color: var(--raices-verde);
 }
 
 .lista-reservas li button {
-  padding: 0.25rem 0.75rem;
-  background-color: #dc3545;
+  padding: 0.3rem 0.9rem;
+  border-radius: 50rem;
+  background-color: transparent;
+  border: 2px solid #dc3545;
+  color: #dc3545;
   font-size: 0.875rem;
 }
 
 .lista-reservas li button:hover {
-  background-color: #b02a37;
+  background-color: #dc3545;
+  color: #ffffff;
 }
 
 /* Texto "Aún no tienes reservas" */
@@ -378,10 +616,70 @@ form button[type='submit'] {
 @media (max-width: 576px) {
   .navbar {
     flex-direction: column;
+    padding: 0.75rem 1rem;
     text-align: center;
   }
 
   .nav-links {
     justify-content: center;
   }
+
+  .content {
+    padding: 1rem 0.75rem 2.5rem;
+  }
+
+  .content > div:not([class]) {
+    padding: 4rem 1rem 4.5rem;
+  }
+
+  form {
+    padding: 1.75rem 1.25rem;
+  }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* =========================================================
+   ESPACIOS PARA IMÁGENES
+   Guarda tus fotos en public/img/ con estos nombres (formato .jpg):
+     destinos/1.jpg, 2.jpg ...  en el MISMO orden en que salen los destinos
+     paquetes/1.jpg, 2.jpg ...  en el MISMO orden en que salen los paquetes
+   Sugerido: 800x500 px (proporción 16:10), menos de 300 KB cada una.
+   Si una foto no existe, esa tarjeta muestra el degradado con ícono.
+   ========================================================= */
+
+/* Destinos */
+.grid-destinos > :nth-child(1)  { --foto: url(/img/destinos/1.jpg); }
+.grid-destinos > :nth-child(2)  { --foto: url(/img/destinos/2.jpg); }
+.grid-destinos > :nth-child(3)  { --foto: url(/img/destinos/3.jpg); }
+.grid-destinos > :nth-child(4)  { --foto: url(/img/destinos/4.jpg); }
+.grid-destinos > :nth-child(5)  { --foto: url(/img/destinos/5.jpg); }
+.grid-destinos > :nth-child(6)  { --foto: url(/img/destinos/6.jpg); }
+.grid-destinos > :nth-child(7)  { --foto: url(/img/destinos/7.jpg); }
+.grid-destinos > :nth-child(8)  { --foto: url(/img/destinos/8.jpg); }
+
+/* Paquetes (hay 17 en tu base de datos; dejo 20) */
+.grid-paquetes > :nth-child(1)  { --foto: url(/img/paquetes/1.jpg); }
+.grid-paquetes > :nth-child(2)  { --foto: url(/img/paquetes/2.jpg); }
+.grid-paquetes > :nth-child(3)  { --foto: url(/img/paquetes/3.jpg); }
+.grid-paquetes > :nth-child(4)  { --foto: url(/img/paquetes/4.jpg); }
+.grid-paquetes > :nth-child(5)  { --foto: url(/img/paquetes/5.jpg); }
+.grid-paquetes > :nth-child(6)  { --foto: url(/img/paquetes/6.jpg); }
+.grid-paquetes > :nth-child(7)  { --foto: url(/img/paquetes/7.jpg); }
+.grid-paquetes > :nth-child(8)  { --foto: url(/img/paquetes/8.jpg); }
+.grid-paquetes > :nth-child(9)  { --foto: url(/img/paquetes/9.jpg); }
+.grid-paquetes > :nth-child(10) { --foto: url(/img/paquetes/10.jpg); }
+.grid-paquetes > :nth-child(11) { --foto: url(/img/paquetes/11.jpg); }
+.grid-paquetes > :nth-child(12) { --foto: url(/img/paquetes/12.jpg); }
+.grid-paquetes > :nth-child(13) { --foto: url(/img/paquetes/13.jpg); }
+.grid-paquetes > :nth-child(14) { --foto: url(/img/paquetes/14.jpg); }
+.grid-paquetes > :nth-child(15) { --foto: url(/img/paquetes/15.jpg); }
+.grid-paquetes > :nth-child(16) { --foto: url(/img/paquetes/16.jpg); }
+.grid-paquetes > :nth-child(17) { --foto: url(/img/paquetes/17.jpg); }
+.grid-paquetes > :nth-child(18) { --foto: url(/img/paquetes/18.jpg); }
+.grid-paquetes > :nth-child(19) { --foto: url(/img/paquetes/19.jpg); }
+.grid-paquetes > :nth-child(20) { --foto: url(/img/paquetes/20.jpg); }

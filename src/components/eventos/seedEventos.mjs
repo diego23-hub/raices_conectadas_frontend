@@ -5,7 +5,7 @@ const eventosIniciales = [
   {
     id: 1,
     idDestino: 1,
-    nombre: "Festival del Viento y el Parapente",
+    nombre: "Festival del Viento y el Parapente en Floridablanca, Santander",
     tipoEvento: "DEPORTIVO",
     descripcion: "Festival que reúne a los mejores pilotos de parapente nacionales e internacionales aprovechando los vientos de la zona.",
     fechaInicio: "2026-03-15",
@@ -23,7 +23,7 @@ const eventosIniciales = [
   {
     id: 6,
     idDestino: 3,
-    nombre: "Festival Nacional del Viento y las Cometas",
+    nombre: "Festival Nacional del Viento y las Cometas de Villa de Leyva, Boyacá",
     tipoEvento: "RECREATIVO",
     descripcion: "Cientos de cometas de todas las formas y colores llenan el cielo de la gran plaza principal aprovechando los vientos de agosto.",
     fechaInicio: "2026-08-15",

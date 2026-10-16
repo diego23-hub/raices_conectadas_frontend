@@ -15,7 +15,7 @@ const MENU = [
   { vista: 'eventos', etiqueta: 'Eventos', acceso: 'todos' },
   { vista: 'paquetes', etiqueta: 'Paquetes', acceso: 'logueado' },
   { vista: 'reservas', etiqueta: 'Mis reservas', acceso: 'cliente' },
-  { vista: 'proveedores', etiqueta: 'Proveedores', acceso: 'admin' },
+  { vista: 'proveedores', etiqueta: 'Proveedores', acceso: 'todos' },
   { vista: 'login', etiqueta: 'Inicio de sesión', acceso: 'invitado' },
   { vista: 'registro', etiqueta: 'Registro de usuarios', acceso: 'invitado' },
 ];
@@ -122,12 +122,13 @@ function App() {
           <FormularioLogin alIniciarSesion={alIniciarSesion} />
         )}
 
-        {vista === 'destinos' && <ListaDestino />}
+        {vista === 'destinos' && <ListaDestino usuario={usuario} />}
 
-        {vista === 'eventos' && <ListaEventos />}
+        {vista === 'eventos' && <ListaEventos usuario={usuario} />}
 
         {vista === 'paquetes' && puedeVer('paquetes') && (
-          <ListaPaquetes alElegirPaquete={esCliente ? elegirPaquete : undefined} />
+          <ListaPaquetes usuario={usuario} 
+          alElegirPaquete={esCliente ? elegirPaquete : undefined}/>
         )}
 
         {vista === 'reservar' && esCliente && paqueteElegido && (
@@ -142,7 +143,7 @@ function App() {
           <ListaReservas usuario={usuario} />
         )}
 
-        {vista === 'proveedores' && puedeVer('proveedores') && <ListaProveedores />}
+        {vista === 'proveedores' && <ListaProveedores usuario={usuario} />}
       </main>
     </>
   );

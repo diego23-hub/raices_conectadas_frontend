@@ -39,6 +39,14 @@
       "contrasena": "pepe",
       "rol": "cliente",
       "id": "_hDUpLo"
+    },
+    {
+      "nombres": "santiago",
+      "apellidos": "A",
+      "correo": "san@gmail.co",
+      "contrasena": "123",
+      "rol": "cliente",
+      "id": "EWBpBQD"
     }
   ],
   "destinos": [
@@ -81,10 +89,11 @@
   ],
   "paquetes": [
     {
-      "id": 1,
       "nombre": "Aguadas, Caldas",
       "precio": 950000,
-      "descripcion": "Cuna del pasillo colombiano y tierra de la cultura cafetera, famosa por la calidez de su gente y la tejeduría artesanal del icónico sombrero aguadeño. Vive una experiencia de 3 días y 2 noches entre fincas cafeteras, talleres interactivos con maestras artesanas y catas de café premium."
+      "descripcion": "Cuna del pasillo colombiano y tierra de la cultura cafetera, famosa por la calidez de su gente y la tejeduría artesanal del icónico sombrero aguadeño. Vive una experiencia de 3 días y 2 noches entre fincas cafeteras, talleres interactivos con maestras artesanas y catas de café premium.",
+      "limitePersonas": 15,
+      "id": 1
     },
     {
       "id": 2,
@@ -251,12 +260,32 @@
     {
       "idCliente": "r3YH8Dt",
       "idPaquete": 1,
-      "fecha": "2026-10-13",
+      "fechaInicio": "2026-10-16",
+      "fechaFinal": "2026-10-16",
       "cantidadPersonas": 1,
       "estado": "confirmada",
       "id": 2
+    },
+    {
+      "idCliente": "EWBpBQD",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-16",
+      "fechaFinal": "2026-11-16",
+      "cantidadPersonas": 2,
+      "estado": "confirmada",
+      "id": 3
     }
   ],
-  "proveedores": [],
+  "proveedores": [
+    {
+      "nombre": "DANN CARLTON",
+      "tipo": "Hotel",
+      "lugar": "SANTA FE DE ANTIOQUIA",
+      "telefono": "3000123",
+      "correo": "dann@santafe.com",
+      "descripcion": "Una experiencia inolvidable y única. ¡No te la pierdas!",
+      "id": 1
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

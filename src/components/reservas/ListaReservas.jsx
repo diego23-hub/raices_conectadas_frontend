@@ -4,7 +4,7 @@ import { obtenerPaquetes } from "../../services/paqueteService";
 
 function ListaReservas ({usuario}) {
     const [reservas, setReservas] = useState ([]);
-    const [paquetes, setPaquete ] = useState ([]);
+    const [paquetes, setPaquetes ] = useState ([]);
     const [mensaje, setMensaje] = useState ('');
 
     const cargaDatos = async ()=>{
@@ -14,7 +14,7 @@ function ListaReservas ({usuario}) {
                 obtenerPaquetes()
             ]); 
             setReservas (datosReservas);
-            setPaquete (datosPaquetes);
+            setPaquetes (datosPaquetes);
         } catch (error) {
             console.error(error);
             setMensaje ('Error consultando reserva')
@@ -45,16 +45,26 @@ function ListaReservas ({usuario}) {
 
             {reservas.length ===0 && <p> Aún no tienes reservas</p>}
             <ul>
-                {reservas.map((reserva) => (
-<li key={reserva.id}>
-            <strong>{nombrePaquete(reserva.idPaquete)}</strong> — {reserva.fecha} —{' '}
-            {reserva.cantidadPersonas} persona(s)
-            <button onClick={() => cancelarReserva(reserva.id)}>Cancelar</button>
+        {reservas.map((reserva) => (
+          <li key={reserva.id}>
+            <strong>{nombrePaquete(reserva.idPaquete)}</strong> — {' '}
+            
+            {reserva.fechaInicio && reserva.fechaFinal ? (
+              <span>Del {reserva.fechaInicio} al {reserva.fechaFinal}</span>
+            ) : (
+              <span>Fecha: {reserva.fecha}</span>
+            )} — {' '}
+            
+            <span>{reserva.cantidadPersonas} persona(s)</span>
+            
+            <button onClick={() => cancelarReserva(reserva.id)}>
+              Cancelar
+            </button>
           </li>
-                ))}
-            </ul>
-        </div>
-    )
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default ListaReservas

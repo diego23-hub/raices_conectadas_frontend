@@ -1,6 +1,6 @@
-// src/components/eventos/CardEvento.jsx
 
-function CardEvento({ evento }) {
+function CardEvento({ evento, usuario, alEditar, alEliminar }) {
+  const esAdmin = usuario?.rol === 'admin';
   return (
     <div className="card-evento">
       <h3>{evento.nombre}</h3>
@@ -9,6 +9,20 @@ function CardEvento({ evento }) {
       <p className="fechas-evento">
         {evento.fechaInicio} - {evento.fechaFin}
       </p>
+
+    {esAdmin && ( 
+      <div className="acciones-admin" style={{marginTop: '10px'}}>
+        <button onClick={()=> alEditar(evento)}>Editar</button>
+        <button 
+            onClick={() => alEliminar(evento.id)} 
+            style={{ marginLeft: '8px', backgroundColor: '#d9534f', color: '#fff' }}>
+          Eliminar
+      </button>
+      </div>
+
+    )
+    }
+
     </div>
   );
 }

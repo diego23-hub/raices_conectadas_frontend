@@ -3,23 +3,35 @@ import { useState } from 'react';
 import { crearReserva } from '../../services/reservaService';
 
 function FormularioReserva({usuario, paquete, alReservar }) {
-  const [fecha, setFecha] = useState('');
+  const [fechaInicio, setFechaInicio] = useState('');
+  const [fechaFinal, setFechaFinal] = useState('');
   const [cantidadPersonas, setCantidadPersonas] = useState(1);
   const [mensaje, setMensaje] = useState('');
+
+  const limiteMaximo = paquete.limitePersonas || 10;
 
   const totalEstimado = paquete.precio * cantidadPersonas; 
   const guardarReserva = async (evento) => {
     evento.preventDefault();
 
-    if (!fecha || cantidadPersonas < 1) {
-      setMensaje('Completa la fecha y la cantidad de personas');
+    if (!fechaInicio || !fechaFinal || cantidadPersonas < 1) {
+      setMensaje ('completa las fechas y la cantidad de personas');
       return;
+    }
+
+    if (fechaInicio < fechaFinal){
+      setMensaje ('La fecha de fin no puede ser anterior a la de inicio');
+    }
+
+    if (cantidadPersonas > limiteMaximo ) {
+      setMensaje(`La cantidad maxíma permitidas es de ${limiteMaximo} personas`)
+
     }
 
     const nuevaReserva = { 
       idCliente: usuario.id,
       idPaquete: paquete.id,
-      fecha,
+      fechaInicio, fechaFinal,
       cantidadPersonas: Number(cantidadPersonas),
       estado: 'confirmada'
     };
@@ -27,7 +39,8 @@ function FormularioReserva({usuario, paquete, alReservar }) {
     try {
       await crearReserva(nuevaReserva);
       setMensaje('¡Reserva creada con éxito!');
-      setFecha('');
+      setFechaInicio('');
+      setFechaFinal('');
       setCantidadPersonas(1);
 
       if (alReservar) alReservar(); 
@@ -44,20 +57,32 @@ function FormularioReserva({usuario, paquete, alReservar }) {
         precio por persona: ${paquete.precio.toLocaleString('es-CO')}
       </p>
 
+
       <label>
-        Fecha del viaje
+        Fecha de inicio
         <input
           type="date"
-          value={fecha}
-          onChange={(e) => setFecha(e.target.value)}
+          value={fechaInicio}
+          onChange={(e) => setFechaInicio(e.target.value)}
         />
       </label>
 
       <label>
-        Cantidad de personas
+        Fecha de fin
+        <input
+          type="date"
+          value={fechaFinal}
+          min={fechaInicio} // Opcional: evita visualmente seleccionar antes de la fecha de inicio
+          onChange={(e) => setFechaFinal(e.target.value)}
+        />
+      </label>
+
+      <label>
+        Cantidad de personas (Máx. {limiteMaximo})
         <input
           type="number"
           min="1"
+          max={limiteMaximo}
           value={cantidadPersonas}
           onChange={(e) => setCantidadPersonas(e.target.value)}
         />

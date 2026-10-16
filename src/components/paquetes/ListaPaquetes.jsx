@@ -1,10 +1,19 @@
 import { useEffect, useState } from 'react';
 import CardPaquetes from './CardPaquete';
-import { obtenerPaquetes } from '../../services/paqueteService';
+import { 
+  obtenerPaquetes, 
+  crearPaquete, 
+  actualizarPaquete, 
+  eliminarPaquete 
+} from '../../services/paqueteService';
 
-function ListaPaquetes({ alElegirPaquete }) {
+function ListaPaquetes({ usuario, alElegirPaquete }) {
   const [paquetes, setPaquetes] = useState([]);
   const [mensaje, setMensaje] = useState('');
+
+  // Estados para controlar el formulario de administración (Crear / Editar)
+  const [modoFormulario, setModoFormulario] = useState(false);
+  const [paqueteActual, setPaqueteActual] = useState(null);
 
   const consultarPaquetes = async () => {
     try {
@@ -20,18 +29,128 @@ function ListaPaquetes({ alElegirPaquete }) {
     consultarPaquetes();
   }, []);
 
+  // ELIMINAR PAQUETE
+  const manejarEliminar = async (id) => {
+    if (!window.confirm("¿Estás seguro de que deseas eliminar este paquete?")) return;
+    try {
+      await eliminarPaquete(id);
+      setMensaje('Paquete eliminado con éxito');
+      consultarPaquetes();
+    } catch (error) {
+      console.error(error);
+      setMensaje('Error eliminando el paquete');
+    }
+  };
+
+  // ABRIR FORMULARIO PARA CREAR
+  const abrirCrear = () => {
+    setPaqueteActual(null);
+    setModoFormulario(true);
+  };
+
+  // ABRIR FORMULARIO PARA EDITAR
+  const abrirEditar = (paquete) => {
+    setPaqueteActual(paquete);
+    setModoFormulario(true);
+  };
+
+  // GUARDAR (CREAR O EDITAR)
+  const guardarPaqueteSubmit = async (e) => {
+    e.preventDefault();
+
+    const objetoPaquete = {
+      nombre: e.target.nombre.value,
+      precio: Number(e.target.precio.value),
+      descripcion: e.target.descripcion.value,
+      limitePersonas: Number(e.target.limitePersonas.value || 10),
+    };
+
+    try {
+      if (paqueteActual) {
+        await actualizarPaquete(paqueteActual.id, objetoPaquete);
+        setMensaje('Paquete actualizado con éxito');
+      } else {
+        await crearPaquete(objetoPaquete);
+        setMensaje('Paquete creado con éxito');
+      }
+      setModoFormulario(false);
+      consultarPaquetes();
+    } catch (error) {
+      console.error(error);
+      setMensaje('Error al guardar el paquete');
+    }
+  };
+
+  const esAdmin = usuario?.rol === 'admin';
+
   return (
     <div className="lista-paquetes">
-      <h2>Paquetes Turisticos</h2>
+      <h2>Paquetes Turísticos</h2>
 
       {mensaje && <p className="mensaje">{mensaje}</p>}
 
+      {/* Botón de crear visible solo para Administrador */}
+      {esAdmin && !modoFormulario && (
+        <button onClick={abrirCrear} style={{ marginBottom: '20px' }}>
+          + Nuevo Paquete
+        </button>
+      )}
+
+      {/* Formulario de administración (Crear / Editar) */}
+      {modoFormulario && (
+        <form onSubmit={guardarPaqueteSubmit} className="form-admin-paquete" style={{ marginBottom: '20px', padding: '15px', border: '1px solid #ccc' }}>
+          <h3>{paqueteActual ? 'Editar Paquete' : 'Crear Paquete'}</h3>
+          
+          <div>
+            <label>Nombre del paquete: </label>
+            <input type="text" name="nombre" defaultValue={paqueteActual?.nombre || ''} required />
+          </div>
+
+          <div>
+            <label>Precio: </label>
+            <input type="number" name="precio" defaultValue={paqueteActual?.precio || ''} required />
+          </div>
+
+          <div>
+            <label>Límite de personas: </label>
+            <input type="number" name="limitePersonas" defaultValue={paqueteActual?.limitePersonas || 10} min="1" required />
+          </div>
+
+          <div>
+            <label>Descripción: </label>
+            <textarea name="descripcion" defaultValue={paqueteActual?.descripcion || ''} required />
+          </div>
+
+          <button type="submit">Guardar</button>
+          <button type="button" onClick={() => setModoFormulario(false)} style={{ marginLeft: '10px' }}>
+            Cancelar
+          </button>
+        </form>
+      )}
+
       <div className="grid-paquetes">
         {paquetes.map((paquete) => (
-          <div key={paquete.id}>
+          <div key={paquete.id} className="card-contenedor" style={{ border: '1px solid #eee', padding: '15px', marginBottom: '15px' }}>
             <CardPaquetes paquete={paquete} />
+
+            {/* Botón para reservar (visible para clientes) */}
             {alElegirPaquete && (
-              <button onClick={() => alElegirPaquete(paquete)}>Reservar</button>
+              <button onClick={() => alElegirPaquete(paquete)} style={{ marginTop: '10px' }}>
+                Reservar
+              </button>
+            )}
+
+            {/* Botones de administración (Editar / Eliminar - visibles solo para admin) */}
+            {esAdmin && (
+              <div className="acciones-admin" style={{ marginTop: '10px' }}>
+                <button onClick={() => abrirEditar(paquete)}>Editar</button>
+                <button 
+                  onClick={() => manejarEliminar(paquete.id)} 
+                  style={{ marginLeft: '8px', backgroundColor: '#d9534f', color: '#fff' }}
+                >
+                  Eliminar
+                </button>
+              </div>
             )}
           </div>
         ))}

@@ -1,4 +1,7 @@
-function CardPaquetes ({paquete,alReservar}){
+function CardPaquetes ({paquete,alReservar, usuario, alEditar, alEliminar }){
+    const esAdmin = usuario?.rol === 'admin'
+
+
     const precioFormateado = paquete.precio.toLocaleString('es-CO');
     return (
         <div className="card-paquetes">
@@ -9,9 +12,21 @@ function CardPaquetes ({paquete,alReservar}){
             {alReservar && (
         <button onClick={() => alReservar (paquete)}>Reservar</button>
         )}
+        
+      {/* Botones de administración visibles solo si es admin */}
+      {esAdmin && (
+        <div className="acciones-admin" style={{ marginTop: '10px' }}>
+          <button onClick={() => alEditar(paquete)}>Editar</button>
+          <button 
+            onClick={() => alEliminar(paquete.id)} 
+            style={{ marginLeft: '8px', backgroundColor: '#d9534f', color: '#fff' }}
+          >
+            Eliminar
+          </button>
         </div>
-    );
+      )}
+    </div>
+  );
 }
-
 
 export default CardPaquetes;

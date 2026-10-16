@@ -98,14 +98,14 @@ function ListaProveedores({ usuario }) {
 
       {mensaje && <p className="mensaje">{mensaje}</p>}
 
-      {/* Botón de crear (Solo Admin) */}
+    
       {esAdmin && !modoFormulario && (
         <button onClick={abrirCrear} style={{ marginBottom: '20px', padding: '8px 12px', cursor: 'pointer' }}>
           + Nuevo Proveedor
         </button>
       )}
 
-      {/* Formulario de Administración */}
+      
       {modoFormulario && (
         <form onSubmit={guardarProveedorSubmit} className="form-admin-proveedor" style={{ marginBottom: '20px', padding: '20px', border: '1px solid #ccc', borderRadius: '8px', background: '#f9f9f9' }}>
           <h3>{proveedorActual ? 'Editar Proveedor' : 'Registrar Nuevo Proveedor'}</h3>
@@ -152,7 +152,7 @@ function ListaProveedores({ usuario }) {
         </form>
       )}
 
-      {/* Filtros rápidos para el cliente */}
+    
       <div className="filtros-proveedores" style={{ marginBottom: '20px', display: 'flex', gap: '10px' }}>
         <strong>Filtrar por:</strong>
         <button onClick={() => setFiltroTipo('todos')} style={{ background: filtroTipo === 'todos' ? '#2c5e3b' : '#eee', color: filtroTipo === 'todos' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Todos</button>
@@ -161,7 +161,7 @@ function ListaProveedores({ usuario }) {
         <button onClick={() => setFiltroTipo('Guía')} style={{ background: filtroTipo === 'Guía' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Guía' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Guías</button>
       </div>
 
-      {/* Listado en cuadrícula */}
+    
       <div className="grid-proveedores" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
         {proveedoresFiltrados.length === 0 ? (
           <p>No hay proveedores registrados en esta categoría.</p>

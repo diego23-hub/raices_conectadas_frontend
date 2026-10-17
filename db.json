@@ -58,6 +58,28 @@
       "contrasena": "1111",
       "rol": "viajero",
       "id": "VCkpBuE"
+    },
+    {
+      "tipoDoc": "CC",
+      "numDoc": "1234",
+      "nombres": "santi",
+      "apellidos": "ospina",
+      "telefono": "3201233",
+      "correo": "santi@gmail.co",
+      "contrasena": "123",
+      "rol": "viajero",
+      "id": "HazUoz3"
+    },
+    {
+      "tipoDoc": "CC",
+      "numDoc": "1041",
+      "nombres": "SANTIAGO",
+      "apellidos": "CALLE",
+      "telefono": "320",
+      "correo": "santiago@correo.co",
+      "contrasena": "222",
+      "rol": "viajero",
+      "id": "YN3W_1f"
     }
   ],
   "destinos": [

@@ -307,6 +307,78 @@
       "cantidadPersonas": 2,
       "estado": "confirmada",
       "id": 3
+    },
+    {
+      "idViajero": "YN3W_1f",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-16",
+      "fechaFinal": "2026-10-18",
+      "cantidadPersonas": 4,
+      "subtotal": 3135000,
+      "iva": 595650,
+      "total": 3730650,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 1,
+        "ninos": 1,
+        "bebes": 1
+      },
+      "estado": "confirmada",
+      "id": 4
+    },
+    {
+      "idViajero": "YN3W_1f",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-09",
+      "fechaFinal": "2026-10-11",
+      "cantidadPersonas": 3,
+      "subtotal": 2375000,
+      "iva": 451250,
+      "total": 2826250,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 1,
+        "ninos": 0,
+        "bebes": 1
+      },
+      "estado": "confirmada",
+      "id": 5
+    },
+    {
+      "idViajero": "YN3W_1f",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-16",
+      "fechaFinal": "2026-10-19",
+      "cantidadPersonas": 4,
+      "subtotal": 2660000,
+      "iva": 505400,
+      "total": 3165400,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 1,
+        "bebes": 2
+      },
+      "estado": "confirmada",
+      "id": 6
+    },
+    {
+      "idViajero": "YN3W_1f",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-17",
+      "fechaFinal": "2026-10-23",
+      "cantidadPersonas": 3,
+      "subtotal": 1900000,
+      "iva": 361000,
+      "total": 2261000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 2
+      },
+      "estado": "confirmada",
+      "id": 7
     }
   ],
   "proveedores": [

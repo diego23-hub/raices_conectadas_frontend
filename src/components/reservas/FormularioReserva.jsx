@@ -13,7 +13,21 @@ function FormularioReserva({usuario, paquete, alReservar }) {
   const limiteMaximo = paquete.limitePersonas || 10;
   const cantidadTotal = Number(adultos) + Number(ninos) + Number(bebes) + Number(jovenes);
 
-  const totalEstimado = paquete.precio * cantidadTotal; 
+  const esNacional = usuario?.tipoDocumento === 'CC' || usuario?.tipoDocumento === 'TI';
+
+  const precioBase = paquete?.precio || 0;
+  
+  const subtotalAdultos = Number(adultos) * precioBase;
+  const subtotalJovenes = Number(jovenes) * precioBase; 
+  const subtotalNinos = Number(ninos) * (precioBase * 0.8); 
+  const subtotalBebes = Number(bebes) *(precioBase * 0.5); 
+
+  const subtotal = subtotalAdultos + subtotalJovenes + subtotalNinos + subtotalBebes;
+
+  const porcentajeIva = esNacional ? 0.19 : 0;
+  const valorIva = subtotal * porcentajeIva;
+  const totalEstimado = subtotal + valorIva;  
+
   const guardarReserva = async (evento) => {
     evento.preventDefault();
     setMensaje('');
@@ -23,7 +37,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
       return;
     }
 
-    if (fechaInicio < fechaFinal){
+    if (fechaFinal < fechaInicio){
       setMensaje ('La fecha de fin no puede ser anterior a la de inicio');
       return;
     }
@@ -33,7 +47,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
       return;
     }
 
-    if (cantidadPersonas > limiteMaximo ) {
+    if (cantidadTotal > limiteMaximo ) {
       setMensaje(`La cantidad maxíma permitidas es de ${limiteMaximo} personas`)
 
     }
@@ -43,7 +57,14 @@ function FormularioReserva({usuario, paquete, alReservar }) {
       idPaquete: paquete.id,
       fechaInicio, fechaFinal,
       cantidadPersonas: cantidadTotal,
-      detalleEdades: {adultos: Number(adultos), ninos: Number(ninos)},
+      subtotal,
+      iva: valorIva,
+      total: totalEstimado,
+      detalleEdades: {
+        adultos: Number(adultos), 
+        jovenes: Number(jovenes),
+        ninos: Number(ninos),
+        bebes: Number(bebes)},
       estado: 'confirmada'
     };
 
@@ -141,15 +162,19 @@ function FormularioReserva({usuario, paquete, alReservar }) {
         </div>
       </div>
 
-      <div className="precotizacion">
+<div className="precotizacion" style={{ marginTop: '1rem', borderTop: '1px solid #ccc', paddingTop: '0.5rem' }}>
+        <p>Subtotal: ${subtotal.toLocaleString('es-CO')}</p>
+        <p>
+          IVA (19%): ${valorIva.toLocaleString('es-CO')}{' '}
+          {!esNacional && <small style={{ color: 'green' }}>(Exento por ser extranjero/pasaporte)</small>}
+        </p>
         <strong>Total estimado: ${totalEstimado.toLocaleString('es-CO')}</strong>
       </div>
 
-      <button type="submit">Confirmar reserva</button>
+      <button type="submit" style={{ marginTop: '1rem' }}>Confirmar reserva</button>
 
       {mensaje && <p className="mensaje">{mensaje}</p>}
     </form>
   );
 }
-
 export default FormularioReserva;

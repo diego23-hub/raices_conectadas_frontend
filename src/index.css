@@ -653,12 +653,12 @@ form button[type='submit'] {
    ========================================================= */
 
 /* Destinos */
-.grid-destinos > :nth-child(1)  { --foto: url(/img/destinos/1.jpg); }
-.grid-destinos > :nth-child(2)  { --foto: url(/img/destinos/2.jpg); }
-.grid-destinos > :nth-child(3)  { --foto: url(/img/destinos/3.jpg); }
-.grid-destinos > :nth-child(4)  { --foto: url(/img/destinos/4.jpg); }
-.grid-destinos > :nth-child(5)  { --foto: url(/img/destinos/5.jpg); }
-.grid-destinos > :nth-child(6)  { --foto: url(/img/destinos/6.jpg); }
+.grid-destinos > :nth-child(1)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/1a/9a/2d/77/the-best-view-in-medellin.jpg"); }
+.grid-destinos > :nth-child(2)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/05/57/7b/5a/santa-fe-de-antioquia.jpg"); }
+.grid-destinos > :nth-child(3)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/01/18/67/84/boyaca.jpg"); }
+.grid-destinos > :nth-child(4)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/c6/18/59/capilla-de-santa-barbara.jpg"); }
+.grid-destinos > :nth-child(5)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/99/1a/28/getlstd-property-photo.jpg"); }
+.grid-destinos > :nth-child(6)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/11/4e/3d/c3/jerico.jpg"); }
 .grid-destinos > :nth-child(7)  { --foto: url(/img/destinos/7.jpg); }
 .grid-destinos > :nth-child(8)  { --foto: url(/img/destinos/8.jpg); }
 

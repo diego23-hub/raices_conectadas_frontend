@@ -85,9 +85,9 @@ function FormularioRegistro({ alRegistrar }) {
           required
         >
           <option value=''>Seleccione su tipo de documento</option>
-          <option value='Cédula de ciudadanía'>Cédula de ciudadanía</option>
-          <option value='Tarjeta de identidad'>Tarjeta de identidad</option>
-          <option value='Cédula de extranjería'>Cédula de extranjería</option>
+          <option value='CC'>Cédula de ciudadanía</option>
+          <option value='TI'>Tarjeta de identidad</option>
+          <option value='CE'>Cédula de extranjería</option>
           <option value='Pasaporte'>Pasaporte</option>
         </select>
       </div>

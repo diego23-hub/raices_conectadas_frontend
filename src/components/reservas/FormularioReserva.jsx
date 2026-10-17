@@ -13,7 +13,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
   const limiteMaximo = paquete.limitePersonas || 10;
   const cantidadTotal = Number(adultos) + Number(ninos) + Number(bebes) + Number(jovenes);
 
-  const esNacional = usuario?.tipoDocumento === 'CC' || usuario?.tipoDocumento === 'TI';
+  const esNacional = usuario?.tipoDoc === 'CC' || usuario?.tipoDoc === 'TI';
 
   const precioBase = paquete?.precio || 0;
   
@@ -32,7 +32,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
     evento.preventDefault();
     setMensaje('');
 
-    if (!fechaInicio || !fechaFinal || cantidadPersonas < 1) {
+    if (!fechaInicio || !fechaFinal || cantidadTotal< 1) {
       setMensaje ('completa las fechas y la cantidad de personas');
       return;
     }

@@ -63,37 +63,37 @@
   "destinos": [
     {
       "id": 1,
-      "nombre": "SAN FÉLIX, BELLO, ANTIOQUIA",
+      "nombre": "San Félix, Bello, Antioquia",
       "tipo": "PATRIMONIAL",
       "descripcion": "Un destino popular para el parapente con vistas panorámicas increíbles del Valle de Aburrá."
     },
     {
       "id": 2,
-      "nombre": "SANTA FE DE ANTIOQUIA, ANTIOQUIA",
+      "nombre": "Santa Fe de Antioquia, Antioquia",
       "tipo": "PATRIMONIAL",
       "descripcion": "Ciudad colonial conocida por su arquitectura de la época republicana, calles empedradas y el famoso Puente de Occidente."
     },
     {
       "id": 3,
-      "nombre": "VILLA DE LEYVA, BOYACÁ",
+      "nombre": "Villa de Leyva, Boyacá",
       "tipo": "PATRIMONIAL",
       "descripcion": "Famoso por su inmensa plaza principal empedrada, edificios coloniales bien preservados y su cercanía a yacimientos fósiles."
     },
     {
       "id": 4,
-      "nombre": "BARICHARA, SANTANDER",
+      "nombre": "Barichara, Santander",
       "tipo": "PATRIMONIAL",
       "descripcion": "Considerado uno de los pueblos más lindos de Colombia, destaca por sus construcciones en piedra labrada y sus talleres artesanales."
     },
     {
       "id": 5,
-      "nombre": "MOMPOX, MOMPÓS, BOLÍVAR ",
+      "nombre": "Mompox, Mompós, Bolívar",
       "tipo": "PATRIMONIAL",
       "descripcion": "Isla fluvial rodeada por el río Magdalena, joya arquitectónica colonial y cuna de la filigrana en oro y plata."
     },
     {
       "id": 6,
-      "nombre": "JERICÓ, ANTIOQUIA",
+      "nombre": "Jericó, Antioquia",
       "tipo": "PATRIMONIAL",
       "descripcion": "Pueblo de arraigo religioso y cafetero, famoso por la fabricación del carriel antioqueño y el santuario de la Madre Laura."
     }

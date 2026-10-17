@@ -307,6 +307,24 @@
       "cantidadPersonas": 2,
       "estado": "confirmada",
       "id": 3
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 2,
+      "fechaInicio": "2026-10-17",
+      "fechaFinal": "2026-10-30",
+      "cantidadPersonas": 1,
+      "subtotal": 1200000,
+      "iva": 0,
+      "total": 1200000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "confirmada",
+      "id": 4
     }
   ],
   "proveedores": [

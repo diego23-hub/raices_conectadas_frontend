@@ -5,14 +5,18 @@ import { crearReserva } from '../../services/reservaService';
 function FormularioReserva({usuario, paquete, alReservar }) {
   const [fechaInicio, setFechaInicio] = useState('');
   const [fechaFinal, setFechaFinal] = useState('');
-  const [cantidadPersonas, setCantidadPersonas] = useState(1);
+  const [adultos, setAdultos] = useState(1);
+  const [ninos, setNinos] = useState(0);  
+  const [bebes, setBebes] = useState(0);  
+  const [jovenes, setJovenes] = useState(0);  
   const [mensaje, setMensaje] = useState('');
-
   const limiteMaximo = paquete.limitePersonas || 10;
+  const cantidadTotal = Number(adultos) + Number(ninos) + Number(bebes) + Number(jovenes);
 
-  const totalEstimado = paquete.precio * cantidadPersonas; 
+  const totalEstimado = paquete.precio * cantidadTotal; 
   const guardarReserva = async (evento) => {
     evento.preventDefault();
+    setMensaje('');
 
     if (!fechaInicio || !fechaFinal || cantidadPersonas < 1) {
       setMensaje ('completa las fechas y la cantidad de personas');
@@ -21,6 +25,12 @@ function FormularioReserva({usuario, paquete, alReservar }) {
 
     if (fechaInicio < fechaFinal){
       setMensaje ('La fecha de fin no puede ser anterior a la de inicio');
+      return;
+    }
+
+    if (cantidadTotal < 1) {
+      setMensaje('Debe haber al menos 1 persona viajando');
+      return;
     }
 
     if (cantidadPersonas > limiteMaximo ) {
@@ -29,10 +39,11 @@ function FormularioReserva({usuario, paquete, alReservar }) {
     }
 
     const nuevaReserva = { 
-      idCliente: usuario.id,
+      idViajero: usuario.id,
       idPaquete: paquete.id,
       fechaInicio, fechaFinal,
-      cantidadPersonas: Number(cantidadPersonas),
+      cantidadPersonas: cantidadTotal,
+      detalleEdades: {adultos: Number(adultos), ninos: Number(ninos)},
       estado: 'confirmada'
     };
 
@@ -41,7 +52,10 @@ function FormularioReserva({usuario, paquete, alReservar }) {
       setMensaje('¡Reserva creada con éxito!');
       setFechaInicio('');
       setFechaFinal('');
-      setCantidadPersonas(1);
+      setAdultos(1);
+      setNinos(0);
+      setBebes(0);
+      setJovenes(0);
 
       if (alReservar) alReservar(); 
     } catch (error) {
@@ -77,16 +91,55 @@ function FormularioReserva({usuario, paquete, alReservar }) {
         />
       </label>
 
-      <label>
-        Cantidad de personas (Máx. {limiteMaximo})
-        <input
-          type="number"
-          min="1"
-          max={limiteMaximo}
-          value={cantidadPersonas}
-          onChange={(e) => setCantidadPersonas(e.target.value)}
-        />
-      </label>
+      <div className='mb-3'>
+        <label className='form-label'>Cantidad de personas por edad (Máx. {limiteMaximo})</label>
+        
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '1rem' }}>
+          <div>
+            <label style={{ fontSize: '0.85rem' }}>Adultos (16+ años)</label>
+            <input
+              type="number"
+              min="0"
+              max={limiteMaximo}
+              value={adultos}
+              onChange={(e) => setAdultos(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label style={{ fontSize: '0.85rem' }}>Jóvenes (12-15 años)</label>
+            <input
+              type="number"
+              min="0"
+              max={limiteMaximo}
+              value={jovenes}
+              onChange={(e) => setJovenes(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label style={{ fontSize: '0.85rem' }}>Niños (2-11 años)</label>
+            <input
+              type="number"
+              min="0"
+              max={limiteMaximo}
+              value={ninos}
+              onChange={(e) => setNinos(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label style={{ fontSize: '0.85rem' }}>Bebés (&lt; 2 años)</label>
+            <input
+              type="number"
+              min="0"
+              max={limiteMaximo}
+              value={bebes}
+              onChange={(e) => setBebes(e.target.value)}
+            />
+          </div>
+        </div>
+      </div>
 
       <div className="precotizacion">
         <strong>Total estimado: ${totalEstimado.toLocaleString('es-CO')}</strong>

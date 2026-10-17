@@ -479,7 +479,7 @@ form:has(input[name='tipo_servicio'])::before { content: 'Registrar proveedor'; 
   color: #6c757d;
 }
 
-input {
+input, select {
   display: block;
   width: 100%;
   padding: 0.65rem 0.85rem;
@@ -491,7 +491,7 @@ input {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input:focus {
+input:focus, select:focus {
   outline: none;
   border-color: var(--raices-verde);
   box-shadow: 0 0 0 0.2rem rgba(47, 79, 62, 0.18);

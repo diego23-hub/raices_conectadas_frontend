@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { buscarClientePorCorreo } from '../../services/clienteService';
+import { buscarViajeroPorCorreo } from '../../services/viajeroService';
 
 const credencialesIniciales = {
   correo: '',
@@ -21,24 +21,24 @@ function FormularioLogin({ alIniciarSesion }) {
     evento.preventDefault();
 
     try {
-      const cliente = await buscarClientePorCorreo(credenciales.correo);
+      const viajero = await buscarViajeroPorCorreo(credenciales.correo);
 
-      if (!cliente) {
+      if (!viajero) {
         setMensaje('El correo no está registrado');
         return;
       }
 
-      if (cliente.contrasena !== credenciales.contrasena) {
+      if (viajero.contrasena !== credenciales.contrasena) {
         setMensaje('Contraseña incorrecta');
         return;
       }
 
-      setMensaje(`Bienvenido, ${cliente.nombres}`);
+      setMensaje(`Bienvenido, ${viajero.nombres}`);
 
-      const usuario = { ...cliente };
+      const usuario = { ...viajero };
       delete usuario.contrasena;
 
-      if (alIniciarSesion) alIniciarSesion(cliente);
+      if (alIniciarSesion) alIniciarSesion(viajero);
     } catch (error) {
       console.error(error);
       setMensaje('Error iniciando sesión');

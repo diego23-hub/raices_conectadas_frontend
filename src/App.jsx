@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import ListaDestino from './components/destinos/ListaDestinos';
 import ListaPaquetes from './components/paquetes/ListaPaquetes';
-import FormularioLogin from './components/clientes/FormularioLogin';
-import FormularioRegistro from './components/clientes/FormularioRegistro';
+import FormularioLogin from './components/viajeros/FormularioLogin';
+import FormularioRegistro from './components/viajeros/FormularioRegistro';
 import FormularioReserva from './components/reservas/FormularioReserva';
 import ListaEventos from './components/eventos/ListaEventos';
 import ListaReservas from './components/reservas/ListaReservas';
@@ -14,7 +14,7 @@ const MENU = [
   { vista: 'destinos', etiqueta: 'Destinos', acceso: 'todos' },
   { vista: 'eventos', etiqueta: 'Eventos', acceso: 'todos' },
   { vista: 'paquetes', etiqueta: 'Paquetes', acceso: 'logueado' },
-  { vista: 'reservas', etiqueta: 'Mis reservas', acceso: 'cliente' },
+  { vista: 'reservas', etiqueta: 'Mis reservas', acceso: 'viajero' },
   { vista: 'proveedores', etiqueta: 'Proveedores', acceso: 'todos' },
   { vista: 'login', etiqueta: 'Inicio de sesión', acceso: 'invitado' },
   { vista: 'registro', etiqueta: 'Registro de usuarios', acceso: 'invitado' },
@@ -28,8 +28,8 @@ const tieneAcceso = (acceso, usuario) => {
       return !usuario;
     case 'logueado':
       return !!usuario;
-    case 'cliente':
-      return usuario?.rol === 'cliente';
+    case 'viajero':
+      return usuario?.rol === 'viajero';
     case 'admin':
       return usuario?.rol === 'admin';
     default:
@@ -50,7 +50,7 @@ function App() {
   const [usuario, setUsuario] = useState(leerSesion);
   const [paqueteElegido, setPaqueteElegido] = useState(null);
 
-  const esCliente = usuario?.rol === 'cliente';
+  const esCliente = usuario?.rol === 'viajero';
 
   const alIniciarSesion = (datosUsuario) => {
     setUsuario(datosUsuario);

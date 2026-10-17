@@ -50,7 +50,7 @@ const eventosIniciales = [
   {
     id: 9,
     idDestino: 4,
-    nombre: "Festiver (Festival de Cine Verde)",
+    nombre: "Festiver (Festival de Cine Verde). Barichara, Santander",
     tipoEvento: "AMBIENTAL",
     descripcion: "Festival dedicado al cine verde y ambiental, buscando concientizar a través de producciones audiovisuales.",
     fechaInicio: "2026-09-17",

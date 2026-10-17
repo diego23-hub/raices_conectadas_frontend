@@ -1,5 +1,5 @@
 {
-  "clientes": [
+  "viajeros": [
     {
       "nombres": "Santiago",
       "apellidos": "Arredondo",
@@ -14,7 +14,7 @@
       "correo": "norena@diego.com",
       "contrasena": "juandiego",
       "id": "r3YH8Dt",
-      "rol": "cliente"
+      "rol": "vaijero"
     },
     {
       "nombres": "diego",
@@ -22,7 +22,7 @@
       "correo": "diego@mail.com",
       "contrasena": "diegodiego",
       "id": "yT1z0qH",
-      "rol": "cliente"
+      "rol": "viajero"
     },
     {
       "nombres": "santi",
@@ -30,14 +30,14 @@
       "correo": "santi@arre.com",
       "contrasena": "santiago",
       "id": "SRX2HU6",
-      "rol": "cliente"
+      "rol": "viajero"
     },
     {
       "nombres": "pepe",
       "apellidos": "pepe",
       "correo": "pepe@pepe.com",
       "contrasena": "pepe",
-      "rol": "cliente",
+      "rol": "viajero",
       "id": "_hDUpLo"
     },
     {
@@ -45,8 +45,19 @@
       "apellidos": "A",
       "correo": "san@gmail.co",
       "contrasena": "123",
-      "rol": "cliente",
+      "rol": "viajero",
       "id": "EWBpBQD"
+    },
+    {
+      "tipoDoc": "Pasaporte",
+      "numDoc": "1145124081",
+      "nombres": "Juan",
+      "apellidos": "Gil",
+      "telefono": "3011477114",
+      "correo": "diegodiego@norena.com",
+      "contrasena": "1111",
+      "rol": "viajero",
+      "id": "VCkpBuE"
     }
   ],
   "destinos": [

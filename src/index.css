@@ -818,3 +818,121 @@ form button[type='submit'] {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* ---------- Estilos de la Vista de Inicio ---------- */
+.hero-portada {
+  text-align: center;
+  margin-bottom: 3.5rem;
+  padding: 5rem 1.5rem;
+  border-radius: 1.25rem;
+  background: linear-gradient(rgba(34, 58, 45, 0.85), rgba(34, 58, 45, 0.9)), var(--hero-foto, none);
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  box-shadow: 0 16px 32px rgba(34, 58, 45, 0.20);
+}
+
+.badge-portada {
+  display: inline-block;
+  margin-bottom: 1.25rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 50rem;
+  background-color: rgba(255, 255, 255, 0.12);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero-portada h2 {
+  font-family: var(--raices-fuente-titulo);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  color: #fff;
+}
+
+.hero-portada p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-botones {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.btn-explorar {
+  padding: 0.75rem 1.75rem;
+  background-color: var(--raices-dorado); /* Usamos el dorado de marca */
+  color: var(--raices-verde-oscuro);     /* Texto oscuro para contraste perfecto */
+  border: none;
+  border-radius: 50rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(242, 196, 141, 0.3);
+  transition: all 0.2s ease;
+}
+
+.btn-explorar:hover {
+  background-color: #e5b378; /* Un dorado un poco más oscuro al pasar el mouse */
+  transform: translateY(-2px);
+}
+
+.btn-paquetes {
+  padding: 0.75rem 1.75rem;
+  background-color: rgba(255, 255, 255, 0.1); /* Efecto translúcido elegante */
+  color: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.7); /* Borde blanco sutil */
+  border-radius: 50rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-paquetes:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Grilla de características inferiores */
+.grid-caracteristicas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.card-caracteristica {
+  background: #ffffff;
+  padding: 2.25rem 1.75rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(34, 58, 45, 0.08);
+  text-align: left;
+}
+
+.card-caracteristica h3 {
+  color: var(--raices-verde);
+  font-family: var(--raices-fuente-titulo);
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-caracteristica p {
+  color: #6c757d;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.card-verde { border-top: 4px solid var(--raices-verde); }
+.card-terracota { border-top: 4px solid var(--raices-terracota); }
+.card-dorado { border-top: 4px solid var(--raices-dorado); }

@@ -50,6 +50,7 @@ function App() {
   const [usuario, setUsuario] = useState(leerSesion);
   const [paqueteElegido, setPaqueteElegido] = useState(null);
   const [destinoElegido, setDestinoElegido] = useState(null);
+  
   const elegirDestinoDetalle = (destino) => {
     setDestinoElegido(destino);
     setVista('detalle-destino'); 
@@ -114,48 +115,44 @@ function App() {
 
       <main className="content">
         {vista === 'inicio' && (
-          <div>
-            {/* Portada principal que ya tienes */}
-            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <div className="contenedor-inicio">
+            {/* Portada principal */}
+            <div className="hero-portada">
+              <span className="badge-portada">
+                Turismo patrimonial en Colombia
+              </span>
               <h2>
-                Bienvenid@{usuario ? `, ${usuario.nombres}` : ''} a Raíces conectadas
+                Bienvenidos a Raíces conectadas
               </h2>
-              <p style={{ fontSize: '1.2rem', color: '#6c757d', marginTop: '0.5rem' }}>
-                Descubre y vive los bellos pueblos patrimoniales colombianos de una manera única.
+              <p>
+                Descubre y vive los bellos pueblos patrimoniales colombianos de una manera única y auténtica.
               </p>
 
-              {/* Botones de acceso rápido */}
-              <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center', gap: '15px' }}>
-                <button 
-                  onClick={() => setVista('destinos')}
-                  style={{ padding: '0.75rem 1.5rem', backgroundColor: '#2f4f3e', color: '#fff', border: 'none', borderRadius: '50rem', fontWeight: 'bold', cursor: 'pointer' }}
-                >
+              <div className="hero-botones">
+                <button className="btn-explorar" onClick={() => setVista('destinos')}>
                   Explorar Destinos
                 </button>
-                <button 
-                  onClick={() => setVista('paquetes')}
-                  style={{ padding: '0.75rem 1.5rem', backgroundColor: '#c8793f', color: '#fff', border: 'none', borderRadius: '50rem', fontWeight: 'bold', cursor: 'pointer' }}
-                >
+                <button className="btn-paquetes" onClick={() => setVista('paquetes')}>
                   Ver Paquetes Turísticos
                 </button>
               </div>
             </div>
 
-            {/* Sección inferior informativa para rellenar el espacio vacío */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '3rem', textAlign: 'center' }}>
-              <div style={{ background: '#fff', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 16px rgba(34, 58, 45, 0.08)' }}>
-                <h3 style={{ color: '#2f4f3e', fontFamily: 'Georgia, serif', marginBottom: '0.75rem' }}>Turismo Auténtico</h3>
-                <p style={{ color: '#6c757d', fontSize: '0.95rem' }}>Conéctate con la historia, la arquitectura colonial y la cultura de los rincones más mágicos de Colombia.</p>
+            {/* Sección inferior de características (Fuera del cuadro verde) */}
+            <div className="grid-caracteristicas">
+              <div className="card-caracteristica card-verde">
+                <h3>Turismo Auténtico</h3>
+                <p>Conéctate con la historia, la arquitectura colonial y la cultura de los rincones más mágicos de Colombia.</p>
               </div>
 
-              <div style={{ background: '#fff', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 16px rgba(34, 58, 45, 0.08)' }}>
-                <h3 style={{ color: '#2f4f3e', fontFamily: 'Georgia, serif', marginBottom: '0.75rem' }}>Reserva Fácil</h3>
-                <p style={{ color: '#6c757d', fontSize: '0.95rem' }}>Elige tus fechas, personaliza el viaje según las edades de tus acompañantes y asegura tu cupo al instante.</p>
+              <div className="card-caracteristica card-terracota">
+                <h3>Reserva Fácil</h3>
+                <p>Elige tus fechas, personaliza el viaje según las edades de tus acompañantes y asegura tu cupo al instante.</p>
               </div>
 
-              <div style={{ background: '#fff', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 16px rgba(34, 58, 45, 0.08)' }}>
-                <h3 style={{ color: '#2f4f3e', fontFamily: 'Georgia, serif', marginBottom: '0.75rem' }}>Proveedores Locales</h3>
-                <p style={{ color: '#6c757d', fontSize: '0.95rem' }}>Apoyamos el desarrollo regional conectando alojamientos y guías locales directamente con los viajeros.</p>
+              <div className="card-caracteristica card-dorado">
+                <h3>Proveedores Locales</h3>
+                <p>Apoyamos el desarrollo regional conectando alojamientos y guías locales directamente con los viajeros.</p>
               </div>
             </div>
           </div>
@@ -168,7 +165,7 @@ function App() {
         )}
 
         {vista === 'destinos' && (
-        <ListaDestino 
+          <ListaDestino 
             usuario={usuario} 
             alSeleccionarDestino={elegirDestinoDetalle} 
           />

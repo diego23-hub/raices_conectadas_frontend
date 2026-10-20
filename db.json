@@ -1,54 +1,6 @@
 {
   "viajeros": [
     {
-      "nombres": "Santiago",
-      "apellidos": "Arredondo",
-      "correo": "santiago@gmail.com",
-      "contrasena": "123",
-      "id": "EdzD3atYits",
-      "rol": "admin"
-    },
-    {
-      "nombres": "Diego",
-      "apellidos": "Noreña",
-      "correo": "norena@diego.com",
-      "contrasena": "juandiego",
-      "id": "r3YH8Dt",
-      "rol": "vaijero"
-    },
-    {
-      "nombres": "diego",
-      "apellidos": "noreña",
-      "correo": "diego@mail.com",
-      "contrasena": "diegodiego",
-      "id": "yT1z0qH",
-      "rol": "viajero"
-    },
-    {
-      "nombres": "santi",
-      "apellidos": "arre",
-      "correo": "santi@arre.com",
-      "contrasena": "santiago",
-      "id": "SRX2HU6",
-      "rol": "viajero"
-    },
-    {
-      "nombres": "pepe",
-      "apellidos": "pepe",
-      "correo": "pepe@pepe.com",
-      "contrasena": "pepe",
-      "rol": "viajero",
-      "id": "_hDUpLo"
-    },
-    {
-      "nombres": "santiago",
-      "apellidos": "A",
-      "correo": "san@gmail.co",
-      "contrasena": "123",
-      "rol": "viajero",
-      "id": "EWBpBQD"
-    },
-    {
       "tipoDoc": "Pasaporte",
       "numDoc": "1145124081",
       "nombres": "Juan",

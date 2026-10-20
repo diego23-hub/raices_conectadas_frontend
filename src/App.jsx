@@ -66,6 +66,7 @@ function App() {
   const cerrarSesion = () => {
     setUsuario(null);
     setPaqueteElegido(null);
+    setDestinoElegido(null);
     localStorage.removeItem('usuario');
     setVista('inicio');
   };
@@ -114,10 +115,49 @@ function App() {
       <main className="content">
         {vista === 'inicio' && (
           <div>
-            <h2>
-              Bienvenid@{usuario ? `, ${usuario.nombres}` : ''} a Raíces conectadas
-            </h2>
-            <p>Descubre los bellos pueblos patrimoniales colombianos</p>
+            {/* Portada principal que ya tienes */}
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <h2>
+                Bienvenid@{usuario ? `, ${usuario.nombres}` : ''} a Raíces conectadas
+              </h2>
+              <p style={{ fontSize: '1.2rem', color: '#6c757d', marginTop: '0.5rem' }}>
+                Descubre y vive los bellos pueblos patrimoniales colombianos de una manera única.
+              </p>
+
+              {/* Botones de acceso rápido */}
+              <div style={{ marginTop: '1.5rem', display: 'flex', justifyContent: 'center', gap: '15px' }}>
+                <button 
+                  onClick={() => setVista('destinos')}
+                  style={{ padding: '0.75rem 1.5rem', backgroundColor: '#2f4f3e', color: '#fff', border: 'none', borderRadius: '50rem', fontWeight: 'bold', cursor: 'pointer' }}
+                >
+                  Explorar Destinos
+                </button>
+                <button 
+                  onClick={() => setVista('paquetes')}
+                  style={{ padding: '0.75rem 1.5rem', backgroundColor: '#c8793f', color: '#fff', border: 'none', borderRadius: '50rem', fontWeight: 'bold', cursor: 'pointer' }}
+                >
+                  Ver Paquetes Turísticos
+                </button>
+              </div>
+            </div>
+
+            {/* Sección inferior informativa para rellenar el espacio vacío */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginTop: '3rem', textAlign: 'center' }}>
+              <div style={{ background: '#fff', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 16px rgba(34, 58, 45, 0.08)' }}>
+                <h3 style={{ color: '#2f4f3e', fontFamily: 'Georgia, serif', marginBottom: '0.75rem' }}>Turismo Auténtico</h3>
+                <p style={{ color: '#6c757d', fontSize: '0.95rem' }}>Conéctate con la historia, la arquitectura colonial y la cultura de los rincones más mágicos de Colombia.</p>
+              </div>
+
+              <div style={{ background: '#fff', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 16px rgba(34, 58, 45, 0.08)' }}>
+                <h3 style={{ color: '#2f4f3e', fontFamily: 'Georgia, serif', marginBottom: '0.75rem' }}>Reserva Fácil</h3>
+                <p style={{ color: '#6c757d', fontSize: '0.95rem' }}>Elige tus fechas, personaliza el viaje según las edades de tus acompañantes y asegura tu cupo al instante.</p>
+              </div>
+
+              <div style={{ background: '#fff', padding: '2rem', borderRadius: '1rem', boxShadow: '0 4px 16px rgba(34, 58, 45, 0.08)' }}>
+                <h3 style={{ color: '#2f4f3e', fontFamily: 'Georgia, serif', marginBottom: '0.75rem' }}>Proveedores Locales</h3>
+                <p style={{ color: '#6c757d', fontSize: '0.95rem' }}>Apoyamos el desarrollo regional conectando alojamientos y guías locales directamente con los viajeros.</p>
+              </div>
+            </div>
           </div>
         )}
 

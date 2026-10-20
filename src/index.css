@@ -672,10 +672,7 @@ form button[type='submit'] {
 .grid-paquetes > :nth-child(17) { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/2b/68/f4/b9/vive-la-experiencia-en.jpg"); }
 /*.grid-paquetes > :nth-child(18) { --foto: url(/img/paquetes/18.jpg); }
 .grid-paquetes > :nth-child(19) { --foto: url(/img/paquetes/19.jpg); }
-<<<<<<< HEAD
-.grid-paquetes > :nth-child(20) { --foto: url(/img/paquetes/20.jpg); } */
-=======
-.grid-paquetes > :nth-child(20) { --foto: url(/img/paquetes/20.jpg); }
+.grid-paquetes > :nth-child(20) { --foto: url(/img/paquetes/20.jpg); }*/
 
 /* Contenedor principal de la tarjeta para usar Flexbox y mantener orden */
 .card-paquetes {
@@ -821,4 +818,3 @@ form button[type='submit'] {
   from { opacity: 0; transform: translateY(-4px); }
   to { opacity: 1; transform: translateY(0); }
 }
->>>>>>> 8472d3494f473bd10e1167b15e6f7b188054a0ef

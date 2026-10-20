@@ -476,6 +476,30 @@
         "fecha": "2026-10-20T22:00:32.620Z",
         "monto": 950000
       }
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 2,
+      "fechaInicio": "2026-10-29",
+      "fechaFinal": "2026-10-31",
+      "cantidadPersonas": 1,
+      "subtotal": 1200000,
+      "iva": 0,
+      "total": 1200000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pagada",
+      "id": 13,
+      "pago": {
+        "metodo": "nequi",
+        "referencia": "SIM-1792533827013",
+        "fecha": "2026-10-20T22:03:47.014Z",
+        "monto": 1200000
+      }
     }
   ],
   "proveedores": [

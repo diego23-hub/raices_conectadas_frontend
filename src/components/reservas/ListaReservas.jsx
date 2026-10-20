@@ -55,7 +55,7 @@ function ListaReservas ({usuario}) {
               <span>Fecha: {reserva.fecha}</span>
             )} — {' '}
             
-            <span>{reserva.cantidadPersonas} persona(s)</span>
+            <span>{reserva.cantidadTotal} persona(s)</span>
             
             <button onClick={() => cancelarReserva(reserva.id)}>
               Cancelar

@@ -63,6 +63,9 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
       precio: Number(e.target.precio.value),
       descripcion: e.target.descripcion.value,
       limitePersonas: Number(e.target.limitePersonas.value || 10),
+      duracion: e.target.duracion.value,
+      incluye: e.target.incluye.value,
+      itinerario: e.target.itinerario.value,
     };
 
     try {
@@ -96,7 +99,7 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
         </button>
       )}
 
-      {/* Formulario de administración (Crear / Editar) */}
+      {/* --- AQUÍ ESTÁ EL FORMULARIO DE ADMINISTRACIÓN CON LOS NUEVOS CAMPOS --- */}
       {modoFormulario && (
         <form onSubmit={guardarPaqueteSubmit} className="form-admin-paquete" style={{ marginBottom: '20px', padding: '15px', border: '1px solid #ccc' }}>
           <h3>{paqueteActual ? 'Editar Paquete' : 'Crear Paquete'}</h3>
@@ -117,6 +120,21 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
           </div>
 
           <div>
+            <label>Duración (ej. 3 días y 2 noches): </label>
+            <input type="text" name="duracion" defaultValue={paqueteActual?.duracion || ''} required />
+          </div>
+
+          <div>
+            <label>¿Qué incluye?: </label>
+            <textarea name="incluye" defaultValue={paqueteActual?.incluye || ''} required />
+          </div>
+
+          <div>
+            <label>Itinerario: </label>
+            <textarea name="itinerario" defaultValue={paqueteActual?.itinerario || ''} required />
+          </div>
+
+          <div>
             <label>Descripción: </label>
             <textarea name="descripcion" defaultValue={paqueteActual?.descripcion || ''} required />
           </div>
@@ -128,30 +146,17 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
         </form>
       )}
 
+      {/* LISTADO DE TARJETAS */}
       <div className="grid-paquetes">
         {paquetes.map((paquete) => (
           <div key={paquete.id} className="card-contenedor" style={{ border: '1px solid #eee', padding: '15px', marginBottom: '15px' }}>
-            <CardPaquetes paquete={paquete} />
-
-            {/* Botón para reservar (visible para clientes) */}
-            {alElegirPaquete && (
-              <button onClick={() => alElegirPaquete(paquete)} style={{ marginTop: '10px' }}>
-                Reservar
-              </button>
-            )}
-
-            {/* Botones de administración (Editar / Eliminar - visibles solo para admin) */}
-            {esAdmin && (
-              <div className="acciones-admin" style={{ marginTop: '10px' }}>
-                <button onClick={() => abrirEditar(paquete)}>Editar</button>
-                <button 
-                  onClick={() => manejarEliminar(paquete.id)} 
-                  style={{ marginLeft: '8px', backgroundColor: '#d9534f', color: '#fff' }}
-                >
-                  Eliminar
-                </button>
-              </div>
-            )}
+            <CardPaquetes 
+              paquete={paquete} 
+              usuario={usuario}
+              alReservar={alElegirPaquete}
+              alEditar={abrirEditar}
+              alEliminar={manejarEliminar}
+            />
           </div>
         ))}
       </div>

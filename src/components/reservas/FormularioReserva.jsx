@@ -66,7 +66,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
         jovenes: Number(jovenes),
         ninos: Number(ninos),
         bebes: Number(bebes)},
-      estado: 'confirmada'
+      estado: 'pendiente'
     };
 
     try {

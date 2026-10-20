@@ -428,6 +428,30 @@
       },
       "estado": "confirmada",
       "id": 11
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-21",
+      "fechaFinal": "2026-10-21",
+      "cantidadPersonas": 1,
+      "subtotal": 950000,
+      "iva": 0,
+      "total": 950000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pagada",
+      "id": 12,
+      "pago": {
+        "metodo": "tarjeta",
+        "referencia": "SIM-1792533632620",
+        "fecha": "2026-10-20T22:00:32.620Z",
+        "monto": 950000
+      }
     }
   ],
   "proveedores": [

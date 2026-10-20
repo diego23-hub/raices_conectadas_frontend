@@ -41,5 +41,18 @@ export const eliminarReserva = async (id) => {
         throw new Error ('Error cancelando la reserva')
     }
     return true;
+};
+export const actualizarReserva = async (id, cambios) => {
+    const respuesta = await fetch(`${URL_API}/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cambios)
+    });
+
+    if (!respuesta.ok) {
+        throw new Error('Error actualizando la reserva');
+    }
+
+    return await respuesta.json();
 }
 

@@ -49,8 +49,9 @@ function FormularioReserva({usuario, paquete, alReservar }) {
 
     if (cantidadTotal > limiteMaximo ) {
       setMensaje(`La cantidad maxíma permitidas es de ${limiteMaximo} personas`)
-
+      return;
     }
+
 
     const nuevaReserva = { 
       idViajero: usuario.id,

@@ -328,14 +328,14 @@
       "id": 3
     },
     {
-      "idViajero": "VCkpBuE",
-      "idPaquete": 2,
-      "fechaInicio": "2026-10-17",
-      "fechaFinal": "2026-10-30",
-      "cantidadPersonas": 1,
-      "subtotal": 1200000,
-      "iva": 0,
-      "total": 1200000,
+      "idViajero": "YN3W_1f",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-16",
+      "fechaFinal": "2026-10-18",
+      "cantidadPersonas": 4,
+      "subtotal": 3135000,
+      "iva": 595650,
+      "total": 3730650,
       "detalleEdades": {
         "adultos": 1,
         "jovenes": 0,
@@ -348,44 +348,8 @@
     {
       "idViajero": "VCkpBuE",
       "idPaquete": 1,
-      "fechaInicio": "2026-10-21",
-      "fechaFinal": "2026-10-29",
-      "cantidadPersonas": 2,
-      "subtotal": 1900000,
-      "iva": 0,
-      "total": 1900000,
-      "detalleEdades": {
-        "adultos": 2,
-        "jovenes": 0,
-        "ninos": 0,
-        "bebes": 0
-      },
-      "estado": "confirmada",
-      "id": 5
-    },
-    {
-      "idViajero": "VCkpBuE",
-      "idPaquete": 1,
       "fechaInicio": "2026-10-20",
       "fechaFinal": "2026-10-22",
-      "cantidadPersonas": 1,
-      "subtotal": 950000,
-      "iva": 0,
-      "total": 950000,
-      "detalleEdades": {
-        "adultos": 1,
-        "jovenes": 0,
-        "ninos": 0,
-        "bebes": 0
-      },
-      "estado": "confirmada",
-      "id": 6
-    },
-    {
-      "idViajero": "VCkpBuE",
-      "idPaquete": 1,
-      "fechaInicio": "2026-10-21",
-      "fechaFinal": "2026-10-31",
       "cantidadPersonas": 2,
       "subtotal": 1900000,
       "iva": 0,
@@ -397,7 +361,25 @@
         "bebes": 0
       },
       "estado": "confirmada",
-      "id": 7
+      "id": 10
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-14",
+      "fechaFinal": "2026-10-14",
+      "cantidadPersonas": 2,
+      "subtotal": 1900000,
+      "iva": 0,
+      "total": 1900000,
+      "detalleEdades": {
+        "adultos": 2,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "confirmada",
+      "id": 11
     }
   ],
   "proveedores": [

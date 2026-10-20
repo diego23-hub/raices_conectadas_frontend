@@ -376,6 +376,16 @@
       "id": 3
     },
     {
+<<<<<<< HEAD
+      "idViajero": "VCkpBuE",
+      "idPaquete": 2,
+      "fechaInicio": "2026-10-17",
+      "fechaFinal": "2026-10-30",
+      "cantidadPersonas": 1,
+      "subtotal": 1200000,
+      "iva": 0,
+      "total": 1200000,
+=======
       "idViajero": "YN3W_1f",
       "idPaquete": 1,
       "fechaInicio": "2026-10-16",
@@ -438,14 +448,22 @@
       "subtotal": 1900000,
       "iva": 361000,
       "total": 2261000,
+>>>>>>> c48f1769c7c51df3621bdba8740282663561da6b
       "detalleEdades": {
         "adultos": 1,
         "jovenes": 0,
         "ninos": 0,
+<<<<<<< HEAD
+        "bebes": 0
+      },
+      "estado": "confirmada",
+      "id": 4
+=======
         "bebes": 2
       },
       "estado": "confirmada",
       "id": 7
+>>>>>>> c48f1769c7c51df3621bdba8740282663561da6b
     }
   ],
   "proveedores": [

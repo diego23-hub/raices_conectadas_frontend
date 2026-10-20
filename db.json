@@ -37,39 +37,111 @@
   "destinos": [
     {
       "id": 1,
-      "nombre": "San Félix, Bello, Antioquia",
-      "tipo": "PATRIMONIAL",
-      "descripcion": "Un destino popular para el parapente con vistas panorámicas increíbles del Valle de Aburrá."
+      "nombre": "Aguadas, Caldas",
+      "tipo": "Inmaterial",
+      "descripcion": "Cuna del pasillo colombiano y tierra de la tejeduría artesanal del icónico sombrero aguadeño."
     },
     {
       "id": 2,
-      "nombre": "Santa Fe de Antioquia, Antioquia",
-      "tipo": "PATRIMONIAL",
-      "descripcion": "Ciudad colonial conocida por su arquitectura de la época republicana, calles empedradas y el famoso Puente de Occidente."
+      "nombre": "Barichara, Santander",
+      "tipo": "Arquitectónico",
+      "descripcion": "Considerado uno de los pueblos más lindos de Colombia, destaca por sus construcciones en piedra labrada y calles empedradas."
     },
     {
       "id": 3,
-      "nombre": "Villa de Leyva, Boyacá",
-      "tipo": "PATRIMONIAL",
-      "descripcion": "Famoso por su inmensa plaza principal empedrada, edificios coloniales bien preservados y su cercanía a yacimientos fósiles."
+      "nombre": "Ciénaga, Magdalena",
+      "tipo": "Arquitectónico",
+      "descripcion": "Capital del realismo mágico, impregnada de historia bananera, arquitectura caribeña y leyendas folclóricas."
     },
     {
       "id": 4,
-      "nombre": "Barichara, Santander",
-      "tipo": "PATRIMONIAL",
-      "descripcion": "Considerado uno de los pueblos más lindos de Colombia, destaca por sus construcciones en piedra labrada y sus talleres artesanales."
+      "nombre": "Guadalajara de Buga, Valle del Cauca",
+      "tipo": "Gastronómico",
+      "descripcion": "Hogar de la Basílica del Señor de los Milagros y reconocida por su tradicional ruta de dulces típicos y haciendas."
     },
     {
       "id": 5,
-      "nombre": "Mompox, Mompós, Bolívar",
-      "tipo": "PATRIMONIAL",
-      "descripcion": "Isla fluvial rodeada por el río Magdalena, joya arquitectónica colonial y cuna de la filigrana en oro y plata."
+      "nombre": "Guaduas, Cundinamarca",
+      "tipo": "Arquitectónico",
+      "descripcion": "Parte fundamental de la Ruta Mutis y lugar de nacimiento de Policarpa Salavarrieta, con casas coloniales de teja de barro."
     },
     {
       "id": 6,
+      "nombre": "Honda, Tolima",
+      "tipo": "Gastronómico",
+      "descripcion": "Ciudad de los puentes y antiguo puerto fluvial a orillas del río Magdalena, famosa por su plato típico el viudo de capaz."
+    },
+    {
+      "id": 7,
+      "nombre": "Jardín, Antioquia",
+      "tipo": "Arquitectónico",
+      "descripcion": "Tesoro del suroeste antioqueño que conserva intacta la arquitectura de la colonización paisa con balcones coloridos."
+    },
+    {
+      "id": 8,
       "nombre": "Jericó, Antioquia",
-      "tipo": "PATRIMONIAL",
-      "descripcion": "Pueblo de arraigo religioso y cafetero, famoso por la fabricación del carriel antioqueño y el santuario de la Madre Laura."
+      "tipo": "Inmaterial",
+      "descripcion": "Pueblo de arraigo religioso y cafetero, cuna de la Madre Laura y famoso por la fabricación artesanal del carriel antioqueño."
+    },
+    {
+      "id": 9,
+      "nombre": "Monguí, Boyacá",
+      "tipo": "Inmaterial",
+      "descripcion": "Famoso por sus calles de piedra, arquitectura franciscana y la reconocida fabricación artesanal de balones de fútbol cosidos a mano."
+    },
+    {
+      "id": 10,
+      "nombre": "Playa de Belén, Norte de Santander",
+      "tipo": "Arquitectónico",
+      "descripcion": "Oasis de paz con fachadas blancas y zócalos rojizos, puerta de entrada al Parque Nacional Natural Los Estoraques."
+    },
+    {
+      "id": 11,
+      "nombre": "Pore, Casanare",
+      "tipo": "Arquitectónico",
+      "descripcion": "Único Pueblo Patrimonio de los Llanos Orientales, célebre por sus ruinas jesuitas y su gran valor en la campaña libertadora."
+    },
+    {
+      "id": 12,
+      "nombre": "Salamina, Caldas",
+      "tipo": "Arquitectónico",
+      "descripcion": "Ciudad Luz de Caldas, destacada por su arquitectura de colonización antioqueña y sus sobresalientes trabajos de madera tallada."
+    },
+    {
+      "id": 13,
+      "nombre": "San Juan Girón, Santander",
+      "tipo": "Arquitectónico",
+      "descripcion": "Monumento nacional caracterizado por calles empedradas, paredes blancas y puentes de calicanto de época colonial."
+    },
+    {
+      "id": 14,
+      "nombre": "Santa Cruz de Mompox, Bolívar",
+      "tipo": "Inmaterial",
+      "descripcion": "Isla fluvial sobre el río Magdalena, joya arquitectónica y cuna de la sofisticada técnica de orfebrería en filigrana."
+    },
+    {
+      "id": 15,
+      "nombre": "Santa Cruz de Lorica, Córdoba",
+      "tipo": "Gastronómico",
+      "descripcion": "Ciudad señorial que mezcla arquitectura republicana y caribeña con una exquisita tradición culinaria de fusión árabe."
+    },
+    {
+      "id": 16,
+      "nombre": "Santa Fe de Antioquia, Antioquia",
+      "tipo": "Arquitectónico",
+      "descripcion": "Antigua capital departamental de clima cálido, conocida por su arquitectura colonial, calles de piedra y el Puente de Occidente."
+    },
+    {
+      "id": 17,
+      "nombre": "El Socorro, Santander",
+      "tipo": "Arquitectónico",
+      "descripcion": "Cuna de la Revolución de los Comuneros y de la Independencia de Colombia, repleta de monumentos históricos e iglesias."
+    },
+    {
+      "id": 18,
+      "nombre": "Villa de Leyva, Boyacá",
+      "tipo": "Arquitectónico",
+      "descripcion": "Famoso por su inmensa plaza principal empedrada, edificios coloniales bien preservados y su cercanía a yacimientos fósiles."
     }
   ],
   "paquetes": [

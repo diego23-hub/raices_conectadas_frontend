@@ -672,4 +672,153 @@ form button[type='submit'] {
 .grid-paquetes > :nth-child(17) { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/2b/68/f4/b9/vive-la-experiencia-en.jpg"); }
 /*.grid-paquetes > :nth-child(18) { --foto: url(/img/paquetes/18.jpg); }
 .grid-paquetes > :nth-child(19) { --foto: url(/img/paquetes/19.jpg); }
+<<<<<<< HEAD
 .grid-paquetes > :nth-child(20) { --foto: url(/img/paquetes/20.jpg); } */
+=======
+.grid-paquetes > :nth-child(20) { --foto: url(/img/paquetes/20.jpg); }
+
+/* Contenedor principal de la tarjeta para usar Flexbox y mantener orden */
+.card-paquetes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+  height: 100%; /* Para que todas las tarjetas en la cuadrícula tengan simetría si usas grid */
+}
+
+.card-content {
+  padding: 20px;
+  flex-grow: 1;
+}
+
+.card-paquetes h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-size: 1.25rem;
+}
+
+.descripcion-corta {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* Estilo limpio para el botón Ver más */
+.btn-ver-mas {
+  background: none;
+  border: none;
+  color: #2e7d32; /* Tono verde acorde al sitio */
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-ver-mas:hover {
+  text-decoration: underline;
+}
+
+/* Caja de información desplegable elegante */
+.info-adicional {
+  background-color: #f4f6f8;
+  border-left: 3px solid #2e7d32;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  margin-bottom: 15px;
+  animation: fadeIn 0.25s ease-in-out;
+}
+
+.info-adicional p {
+  margin: 6px 0;
+  color: #333;
+  line-height: 1.4;
+}
+
+.info-adicional strong {
+  color: #1b5e20;
+}
+
+/* Pie de tarjeta (Precio y Botones fijos abajo) */
+.card-footer {
+  padding: 15px 20px;
+  background-color: #fafbfc;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.precio-container {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.precio-paquetes {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #b85d19; /* Tono terracota elegante para el precio */
+}
+
+.moneda {
+  font-size: 0.75rem;
+  color: #7f8c8d;
+  font-weight: 600;
+}
+
+/* Acciones de administración */
+.acciones-admin {
+  display: flex;
+  gap: 8px;
+}
+
+.acciones-admin button, 
+.card-footer button {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: opacity 0.2s;
+}
+
+.acciones-admin button:hover, 
+.card-footer button:hover {
+  opacity: 0.9;
+}
+
+.btn-editar {
+  background-color: #2e7d32;
+  color: white;
+  flex: 1;
+}
+
+.btn-eliminar {
+  background-color: #d9534f;
+  color: white;
+  flex: 1;
+}
+
+.btn-reservar {
+  background-color: #2e7d32;
+  color: white;
+  width: 100%;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+>>>>>>> 8472d3494f473bd10e1167b15e6f7b188054a0ef

@@ -9,8 +9,8 @@ export const obtenerReserva = async () => {
     return await respuesta.json();
 };
 
-export const obtenerReservaPorCliente = async (idCliente) => {
-    const respuesta = await fetch (`${URL_API}?idCliente=${idCliente}`);
+export const obtenerReservaPorCliente = async (idViajero) => {
+    const respuesta = await fetch (`${URL_API}?idViajero=${idViajero}`);
 
     if (!respuesta.ok){
         throw new Error ('Error consultando las reservas del cliente');
@@ -22,7 +22,7 @@ export const obtenerReservaPorCliente = async (idCliente) => {
 export const crearReserva = async (reserva) => {
     const respuesta = await fetch (URL_API, {
         method: 'POST',
-        headers: {'content-Type': 'application/json'},
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(reserva)
     });
 

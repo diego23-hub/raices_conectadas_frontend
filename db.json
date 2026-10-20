@@ -376,6 +376,7 @@
       "id": 3
     },
     {
+<<<<<<< Updated upstream
       "idViajero": "YN3W_1f",
       "idPaquete": 1,
       "fechaInicio": "2026-10-16",
@@ -384,64 +385,80 @@
       "subtotal": 3135000,
       "iva": 595650,
       "total": 3730650,
+=======
+      "idViajero": "VCkpBuE",
+      "idPaquete": 2,
+      "fechaInicio": "2026-10-17",
+      "fechaFinal": "2026-10-30",
+      "cantidadPersonas": 1,
+      "subtotal": 1200000,
+      "iva": 0,
+      "total": 1200000,
+>>>>>>> Stashed changes
       "detalleEdades": {
         "adultos": 1,
-        "jovenes": 1,
-        "ninos": 1,
-        "bebes": 1
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
       },
       "estado": "confirmada",
       "id": 4
     },
     {
-      "idViajero": "YN3W_1f",
+      "idViajero": "VCkpBuE",
       "idPaquete": 1,
-      "fechaInicio": "2026-10-09",
-      "fechaFinal": "2026-10-11",
-      "cantidadPersonas": 3,
-      "subtotal": 2375000,
-      "iva": 451250,
-      "total": 2826250,
+      "fechaInicio": "2026-10-21",
+      "fechaFinal": "2026-10-29",
+      "cantidadPersonas": 2,
+      "subtotal": 1900000,
+      "iva": 0,
+      "total": 1900000,
       "detalleEdades": {
-        "adultos": 1,
-        "jovenes": 1,
+        "adultos": 2,
+        "jovenes": 0,
         "ninos": 0,
-        "bebes": 1
+        "bebes": 0
       },
       "estado": "confirmada",
       "id": 5
     },
     {
-      "idViajero": "YN3W_1f",
+      "idViajero": "VCkpBuE",
       "idPaquete": 1,
-      "fechaInicio": "2026-10-16",
-      "fechaFinal": "2026-10-19",
-      "cantidadPersonas": 4,
-      "subtotal": 2660000,
-      "iva": 505400,
-      "total": 3165400,
+      "fechaInicio": "2026-10-20",
+      "fechaFinal": "2026-10-22",
+      "cantidadPersonas": 1,
+      "subtotal": 950000,
+      "iva": 0,
+      "total": 950000,
       "detalleEdades": {
         "adultos": 1,
         "jovenes": 0,
-        "ninos": 1,
-        "bebes": 2
+        "ninos": 0,
+        "bebes": 0
       },
       "estado": "confirmada",
       "id": 6
     },
     {
-      "idViajero": "YN3W_1f",
+      "idViajero": "VCkpBuE",
       "idPaquete": 1,
-      "fechaInicio": "2026-10-17",
-      "fechaFinal": "2026-10-23",
-      "cantidadPersonas": 3,
+      "fechaInicio": "2026-10-21",
+      "fechaFinal": "2026-10-31",
+      "cantidadPersonas": 2,
       "subtotal": 1900000,
+<<<<<<< Updated upstream
       "iva": 361000,
       "total": 2261000,
+=======
+      "iva": 0,
+      "total": 1900000,
+>>>>>>> Stashed changes
       "detalleEdades": {
-        "adultos": 1,
+        "adultos": 2,
         "jovenes": 0,
         "ninos": 0,
+<<<<<<< Updated upstream
         "bebes": 2
       },
       "estado": "confirmada",
@@ -464,154 +481,159 @@
       },
       "estado": "confirmada",
       "id": 8
+=======
+        "bebes": 0
+      },
+      "estado": "confirmada",
+      "id": 7
+>>>>>>> Stashed changes
     }
   ],
   "proveedores": [
-  {
-    "id": 1,
-    "nombre": "DANN CARLTON",
-    "tipo": "Hotel",
-    "lugar": "Santa Fe de Antioquia",
-    "telefono": "3000123",
-    "correo": "dann@santafe.com",
-    "descripcion": "Una experiencia inolvidable y única. ¡No te la pierdas!"
-  },
-  {
-    "id": 2,
-    "nombre": "Hostería El Colonial",
-    "tipo": "Hotel",
-    "lugar": "Barichara, Santander",
-    "telefono": "3104567890",
-    "correo": "reservas@elcolonial.com",
-    "descripcion": "Disfruta de la arquitectura colonial con todas las comodidades modernas y una vista excepcional."
-  },
-  {
-    "id": 3,
-    "nombre": "Transportes Paisa Express",
-    "tipo": "Transporte",
-    "lugar": "Medellín - Jardín",
-    "telefono": "3119876543",
-    "correo": "info@paisaexpress.com",
-    "descripcion": "Transporte seguro y cómodo en camperos y vans turísticas hacia el suroeste antioqueño."
-  },
-  {
-    "id": 4,
-    "nombre": "Guías Locales Mompox Aventura",
-    "tipo": "Guía",
-    "lugar": "Santa Cruz de Mompox, Bolívar",
-    "telefono": "3201234567",
-    "correo": "contacto@mompoxaventura.co",
-    "descripcion": "Expertos en historia local, recorrido de filigrana y paseos fluviales por el río Magdalena."
-  },
-  {
-    "id": 5,
-    "nombre": "Hotel Boutique La Candelaria",
-    "tipo": "Hotel",
-    "lugar": "Jericó, Antioquia",
-    "telefono": "3127894561",
-    "correo": "contacto@lacandelaria.com",
-    "descripcion": "Un refugio de paz en medio de las montañas con atención personalizada y café artesanal."
-  },
-  {
-    "id": 6,
-    "nombre": "Jeeps Willys Tradition",
-    "tipo": "Transporte",
-    "lugar": "Salamina, Caldas",
-    "telefono": "3145678912",
-    "correo": "willystradicion@gmail.com",
-    "descripcion": "Recorridos tradicionales en el icónico Jeep Willys hacia el Valle de la Samaria."
-  },
-  {
-    "id": 7,
-    "nombre": "Senderos del Páramo Guías",
-    "tipo": "Guía",
-    "lugar": "Monguí, Boyacá",
-    "telefono": "3156781234",
-    "correo": "guias@paramoceta.com",
-    "descripcion": "Acompañamiento profesional y seguro para trekking en el impresionante Páramo de Ocetá."
-  },
-  {
-    "id": 8,
-    "nombre": "Transportes del Caribe",
-    "tipo": "Transporte",
-    "lugar": "Ciénaga, Magdalena",
-    "telefono": "3167892345",
-    "correo": "logistica@caribetrans.com",
-    "descripcion": "Lanchas y transporte terrestre especializado para los recorridos de la Ciénaga Grande."
-  },
-  
-  {
-    "id": 9,
-    "nombre": "Hacienda El Paraíso Guaduas",
-    "tipo": "Hotel",
-    "lugar": "Guaduas, Cundinamarca",
-    "telefono": "3178901234",
-    "correo": "reservas@hotelguaduas.com",
-    "descripcion": "Alojamiento histórico colonial rodeado de naturaleza e historia de la Ruta Mutis."
-  },
-  {
-    "id": 10,
-    "nombre": "Expediciones Santander Aventura",
-    "tipo": "Guía",
-    "lugar": "Barichara, Santander",
-    "telefono": "3189012345",
-    "correo": "contacto@santanderaventura.co",
-    "descripcion": "Guías expertos en senderismo por caminos reales y patrimonio histórico de Santander."
-  },
-  {
-    "id": 11,
-    "nombre": "Transportes y Excursiones Tolima",
-    "tipo": "Transporte",
-    "lugar": "Honda, Tolima",
-    "telefono": "3190123456",
-    "correo": "info@transportestolima.com",
-    "descripcion": "Flota de vehículos cómodos para traslados y tours por la ciudad de los puentes."
-  },
-  {
-    "id": 12,
-    "nombre": "Hotel Boutique Mompox Colonial",
-    "tipo": "Hotel",
-    "lugar": "Santa Cruz de Mompox, Bolívar",
-    "telefono": "3201122334",
-    "correo": "info@mompoxcolonial.com",
-    "descripcion": "Vive la magia del río Magdalena en una casona colonial restaurada con todo el confort."
-  },
-  {
-    "id": 13,
-    "nombre": "Guías del Páramo Monguí",
-    "tipo": "Guía",
-    "lugar": "Monguí, Boyacá",
-    "telefono": "3212233445",
-    "correo": "paramomongui@gmail.com",
-    "descripcion": "Acompañamiento especializado para descubrir la belleza y leyendas del Páramo de Ocetá."
-  },
-  {
-    "id": 14,
-    "nombre": "Jeeps Cafeteros Salamina",
-    "tipo": "Transporte",
-    "lugar": "Salamina, Caldas",
-    "telefono": "3223344556",
-    "correo": "willyssalamina@gmail.com",
-    "descripcion": "Tradicional servicio de transporte en Willys hacia el Valle de la Samaria y fincas cafeteras."
-  },
-  {
-    "id": 15,
-    "nombre": "Hotel Campestre Los Estoraques",
-    "tipo": "Hotel",
-    "lugar": "Playa de Belén, Norte de Santander",
-    "telefono": "3234455667",
-    "correo": "reservas@losestoraques.com",
-    "descripcion": "Descanso y tranquilidad cerca de las formaciones rocosas únicas del parque natural."
-  },
-  {
-    "id": 16,
-    "nombre": "Guías Patrimoniales Aguadas",
-    "tipo": "Guía",
-    "lugar": "Aguadas, Caldas",
-    "telefono": "3245566778",
-    "correo": "aguadaspatrimonio@colombia.co",
-    "descripcion": "Recorridos guiados por los talleres de tejido del sombrero aguadeño y la zona cafetera."
-  }
-],
+    {
+      "id": 1,
+      "nombre": "DANN CARLTON",
+      "tipo": "Hotel",
+      "lugar": "Santa Fe de Antioquia",
+      "telefono": "3000123",
+      "correo": "dann@santafe.com",
+      "descripcion": "Una experiencia inolvidable y única. ¡No te la pierdas!"
+    },
+    {
+      "id": 2,
+      "nombre": "Hostería El Colonial",
+      "tipo": "Hotel",
+      "lugar": "Barichara, Santander",
+      "telefono": "3104567890",
+      "correo": "reservas@elcolonial.com",
+      "descripcion": "Disfruta de la arquitectura colonial con todas las comodidades modernas y una vista excepcional."
+    },
+    {
+      "id": 3,
+      "nombre": "Transportes Paisa Express",
+      "tipo": "Transporte",
+      "lugar": "Medellín - Jardín",
+      "telefono": "3119876543",
+      "correo": "info@paisaexpress.com",
+      "descripcion": "Transporte seguro y cómodo en camperos y vans turísticas hacia el suroeste antioqueño."
+    },
+    {
+      "id": 4,
+      "nombre": "Guías Locales Mompox Aventura",
+      "tipo": "Guía",
+      "lugar": "Santa Cruz de Mompox, Bolívar",
+      "telefono": "3201234567",
+      "correo": "contacto@mompoxaventura.co",
+      "descripcion": "Expertos en historia local, recorrido de filigrana y paseos fluviales por el río Magdalena."
+    },
+    {
+      "id": 5,
+      "nombre": "Hotel Boutique La Candelaria",
+      "tipo": "Hotel",
+      "lugar": "Jericó, Antioquia",
+      "telefono": "3127894561",
+      "correo": "contacto@lacandelaria.com",
+      "descripcion": "Un refugio de paz en medio de las montañas con atención personalizada y café artesanal."
+    },
+    {
+      "id": 6,
+      "nombre": "Jeeps Willys Tradition",
+      "tipo": "Transporte",
+      "lugar": "Salamina, Caldas",
+      "telefono": "3145678912",
+      "correo": "willystradicion@gmail.com",
+      "descripcion": "Recorridos tradicionales en el icónico Jeep Willys hacia el Valle de la Samaria."
+    },
+    {
+      "id": 7,
+      "nombre": "Senderos del Páramo Guías",
+      "tipo": "Guía",
+      "lugar": "Monguí, Boyacá",
+      "telefono": "3156781234",
+      "correo": "guias@paramoceta.com",
+      "descripcion": "Acompañamiento profesional y seguro para trekking en el impresionante Páramo de Ocetá."
+    },
+    {
+      "id": 8,
+      "nombre": "Transportes del Caribe",
+      "tipo": "Transporte",
+      "lugar": "Ciénaga, Magdalena",
+      "telefono": "3167892345",
+      "correo": "logistica@caribetrans.com",
+      "descripcion": "Lanchas y transporte terrestre especializado para los recorridos de la Ciénaga Grande."
+    },
+    {
+      "id": 9,
+      "nombre": "Hacienda El Paraíso Guaduas",
+      "tipo": "Hotel",
+      "lugar": "Guaduas, Cundinamarca",
+      "telefono": "3178901234",
+      "correo": "reservas@hotelguaduas.com",
+      "descripcion": "Alojamiento histórico colonial rodeado de naturaleza e historia de la Ruta Mutis."
+    },
+    {
+      "id": 10,
+      "nombre": "Expediciones Santander Aventura",
+      "tipo": "Guía",
+      "lugar": "Barichara, Santander",
+      "telefono": "3189012345",
+      "correo": "contacto@santanderaventura.co",
+      "descripcion": "Guías expertos en senderismo por caminos reales y patrimonio histórico de Santander."
+    },
+    {
+      "id": 11,
+      "nombre": "Transportes y Excursiones Tolima",
+      "tipo": "Transporte",
+      "lugar": "Honda, Tolima",
+      "telefono": "3190123456",
+      "correo": "info@transportestolima.com",
+      "descripcion": "Flota de vehículos cómodos para traslados y tours por la ciudad de los puentes."
+    },
+    {
+      "id": 12,
+      "nombre": "Hotel Boutique Mompox Colonial",
+      "tipo": "Hotel",
+      "lugar": "Santa Cruz de Mompox, Bolívar",
+      "telefono": "3201122334",
+      "correo": "info@mompoxcolonial.com",
+      "descripcion": "Vive la magia del río Magdalena en una casona colonial restaurada con todo el confort."
+    },
+    {
+      "id": 13,
+      "nombre": "Guías del Páramo Monguí",
+      "tipo": "Guía",
+      "lugar": "Monguí, Boyacá",
+      "telefono": "3212233445",
+      "correo": "paramomongui@gmail.com",
+      "descripcion": "Acompañamiento especializado para descubrir la belleza y leyendas del Páramo de Ocetá."
+    },
+    {
+      "id": 14,
+      "nombre": "Jeeps Cafeteros Salamina",
+      "tipo": "Transporte",
+      "lugar": "Salamina, Caldas",
+      "telefono": "3223344556",
+      "correo": "willyssalamina@gmail.com",
+      "descripcion": "Tradicional servicio de transporte en Willys hacia el Valle de la Samaria y fincas cafeteras."
+    },
+    {
+      "id": 15,
+      "nombre": "Hotel Campestre Los Estoraques",
+      "tipo": "Hotel",
+      "lugar": "Playa de Belén, Norte de Santander",
+      "telefono": "3234455667",
+      "correo": "reservas@losestoraques.com",
+      "descripcion": "Descanso y tranquilidad cerca de las formaciones rocosas únicas del parque natural."
+    },
+    {
+      "id": 16,
+      "nombre": "Guías Patrimoniales Aguadas",
+      "tipo": "Guía",
+      "lugar": "Aguadas, Caldas",
+      "telefono": "3245566778",
+      "correo": "aguadaspatrimonio@colombia.co",
+      "descripcion": "Recorridos guiados por los talleres de tejido del sombrero aguadeño y la zona cafetera."
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

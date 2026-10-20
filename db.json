@@ -394,56 +394,10 @@
         "adultos": 2,
         "jovenes": 0,
         "ninos": 0,
-<<<<<<< Updated upstream
-        "bebes": 2
-      },
-      "estado": "confirmada",
-      "id": 7
-    },
-    {
-      "idViajero": "VCkpBuE",
-      "idPaquete": 2,
-      "fechaInicio": "2026-10-21",
-      "fechaFinal": "2026-10-30",
-      "cantidadPersonas": 1,
-      "subtotal": 1200000,
-      "iva": 0,
-      "total": 1200000,
-      "detalleEdades": {
-        "adultos": 1,
-        "jovenes": 0,
-        "ninos": 0,
-        "bebes": 0
-      },
-      "estado": "confirmada",
-      "id": 8
-<<<<<<< HEAD
-    },
-    {
-      "idViajero": "yT1z0qH",
-      "idPaquete": 2,
-      "fechaInicio": "2026-10-31",
-      "fechaFinal": "2026-11-19",
-      "cantidadPersonas": 1,
-      "subtotal": 1200000,
-      "iva": 0,
-      "total": 1200000,
-      "detalleEdades": {
-        "adultos": 1,
-        "jovenes": 0,
-        "ninos": 0,
-        "bebes": 0
-      },
-      "estado": "confirmada",
-      "id": 9
-=======
-=======
         "bebes": 0
       },
       "estado": "confirmada",
       "id": 7
->>>>>>> Stashed changes
->>>>>>> bf928102c063dabad70ba257454df0033132d2ef
     }
   ],
   "proveedores": [

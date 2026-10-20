@@ -49,6 +49,11 @@ function App() {
   const [vista, setVista] = useState('inicio');
   const [usuario, setUsuario] = useState(leerSesion);
   const [paqueteElegido, setPaqueteElegido] = useState(null);
+  const [destinoElegido, setDestinoElegido] = useState(null);
+  const elegirDestinoDetalle = (destino) => {
+    setDestinoElegido(destino);
+    setVista('detalle-destino'); 
+  };
 
   const esCliente = usuario?.rol === 'viajero';
 
@@ -122,7 +127,32 @@ function App() {
           <FormularioLogin alIniciarSesion={alIniciarSesion} />
         )}
 
-        {vista === 'destinos' && <ListaDestino usuario={usuario} />}
+        {vista === 'destinos' && (
+        <ListaDestino 
+            usuario={usuario} 
+            alSeleccionarDestino={elegirDestinoDetalle} 
+          />
+        )}
+
+        {vista === 'detalle-destino' && destinoElegido && (
+          <div className="detalle-destino-view">
+            <button 
+              onClick={() => setVista('destinos')} 
+              style={{ marginBottom: '20px', backgroundColor: '#6c757d', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer' }}
+            >
+              ← Volver a destinos
+            </button>
+
+            <h2>{destinoElegido.nombre}</h2>
+            <span className="tipo-destino" style={{ display: 'inline-block', position: 'static', marginBottom: '15px' }}>
+              {destinoElegido.tipo}
+            </span>
+            
+            <p style={{ fontSize: '1.1rem', lineHeight: '1.6', color: '#3b3530' }}>
+              {destinoElegido.descripcion}
+            </p>
+          </div>
+        )}
 
         {vista === 'eventos' && <ListaEventos usuario={usuario} />}
 

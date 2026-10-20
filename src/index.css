@@ -643,15 +643,6 @@ form button[type='submit'] {
   }
 }
 
-/* =========================================================
-   ESPACIOS PARA IMÁGENES
-   Guarda tus fotos en public/img/ con estos nombres (formato .jpg):
-     destinos/1.jpg, 2.jpg ...  en el MISMO orden en que salen los destinos
-     paquetes/1.jpg, 2.jpg ...  en el MISMO orden en que salen los paquetes
-   Sugerido: 800x500 px (proporción 16:10), menos de 300 KB cada una.
-   Si una foto no existe, esa tarjeta muestra el degradado con ícono.
-   ========================================================= */
-
 /* Destinos */
 .grid-destinos > :nth-child(1)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/1a/9a/2d/77/the-best-view-in-medellin.jpg"); }
 .grid-destinos > :nth-child(2)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/05/57/7b/5a/santa-fe-de-antioquia.jpg"); }
@@ -659,10 +650,9 @@ form button[type='submit'] {
 .grid-destinos > :nth-child(4)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/c6/18/59/capilla-de-santa-barbara.jpg"); }
 .grid-destinos > :nth-child(5)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/99/1a/28/getlstd-property-photo.jpg"); }
 .grid-destinos > :nth-child(6)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/11/4e/3d/c3/jerico.jpg"); }
-.grid-destinos > :nth-child(7)  { --foto: url(/img/destinos/7.jpg); }
-.grid-destinos > :nth-child(8)  { --foto: url(/img/destinos/8.jpg); }
+/*.grid-destinos > :nth-child(7)  { --foto: url(/img/destinos/7.jpg); }
+.grid-destinos > :nth-child(8)  { --foto: url(/img/destinos/8.jpg); } */
 
-/* Paquetes (hay 17 en tu base de datos; dejo 20) */
 .grid-paquetes > :nth-child(1)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/05/17/4f/0c/aguadas.jpg"); }
 .grid-paquetes > :nth-child(2)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/c6/18/59/capilla-de-santa-barbara.jpg"); }
 .grid-paquetes > :nth-child(3)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/1b/7f/55/e1/caption.jpg"); }
@@ -680,6 +670,6 @@ form button[type='submit'] {
 .grid-paquetes > :nth-child(15) { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/2b/26/7b/96/caption.jpg"); }
 .grid-paquetes > :nth-child(16) { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/c3/a2/24/getlstd-property-photo.jpg"); }
 .grid-paquetes > :nth-child(17) { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/2b/68/f4/b9/vive-la-experiencia-en.jpg"); }
-.grid-paquetes > :nth-child(18) { --foto: url(/img/paquetes/18.jpg); }
+/*.grid-paquetes > :nth-child(18) { --foto: url(/img/paquetes/18.jpg); }
 .grid-paquetes > :nth-child(19) { --foto: url(/img/paquetes/19.jpg); }
-.grid-paquetes > :nth-child(20) { --foto: url(/img/paquetes/20.jpg); }
+.grid-paquetes > :nth-child(20) { --foto: url(/img/paquetes/20.jpg); } */

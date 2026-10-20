@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import CardDestino from './CardDestino'; 
 import { obtenerDestinos, eliminarDestino, crearDestino, actualizarDestino } from '../../services/destinoService';
 
-function ListaDestino({ usuario }) {
+function ListaDestino({ usuario, alSeleccionarDestino }) {
   console.log("Objeto usuario recibido:", usuario); // <-- Mira esto en la consola (F12)
     const [destinos, setDestinos] = useState([]);
     const [mensaje, setMensaje] = useState("");
@@ -119,6 +119,8 @@ function ListaDestino({ usuario }) {
                         usuario={usuario}
                         alEditar={abrirEditar}
                         alEliminar={manejarEliminar}
+
+                        alVerDetalle={alSeleccionarDestino}
                     />
                 ))}
             </div>

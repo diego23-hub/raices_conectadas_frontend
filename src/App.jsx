@@ -159,7 +159,9 @@ function App() {
           </div>
         )}
 
-        {vista === 'registro' && puedeVer('registro') && <FormularioRegistro />}
+        {vista === 'registro' && puedeVer('registro') && (
+           <FormularioRegistro alRegistrar={() => setVista('login')}/>
+        )}
 
         {vista === 'login' && puedeVer('login') && (
           <FormularioLogin alIniciarSesion={alIniciarSesion} />

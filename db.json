@@ -32,6 +32,17 @@
       "contrasena": "222",
       "rol": "viajero",
       "id": "YN3W_1f"
+    },
+    {
+      "tipoDoc": "CC",
+      "numDoc": "11",
+      "nombres": "juan",
+      "apellidos": "juan",
+      "telefono": "301",
+      "correo": "juan@mail.com",
+      "contrasena": "1111",
+      "rol": "admin",
+      "id": "L8U4oj_"
     }
   ],
   "destinos": [
@@ -321,7 +332,7 @@
       "id": 1,
       "idDestino": 1,
       "nombre": "Festival del Viento y el Parapente en Floridablanca, Santander",
-      "tipoEvento": "DEPORTIVO",
+      "tipoEvento": "Deportivo",
       "descripcion": "Festival que reúne a los mejores pilotos de parapente nacionales e internacionales aprovechando los vientos de la zona.",
       "fechaInicio": "2026-03-15",
       "fechaFin": "2026-03-19"
@@ -330,7 +341,7 @@
       "id": 5,
       "idDestino": 2,
       "nombre": "Festival de Cine de Santa Fe de Antioquia",
-      "tipoEvento": "CULTURAL",
+      "tipoEvento": "Cultural",
       "descripcion": "El festival de cine independiente más antiguo de la región, con proyecciones al aire libre en plazas coloniales.",
       "fechaInicio": "2026-12-04",
       "fechaFin": "2026-12-08"
@@ -339,7 +350,7 @@
       "id": 6,
       "idDestino": 3,
       "nombre": "Festival Nacional del Viento y las Cometas de Villa de Leyva, Boyacá",
-      "tipoEvento": "RECREATIVO",
+      "tipoEvento": "Recreativo",
       "descripcion": "Cientos de cometas de todas las formas y colores llenan el cielo de la gran plaza principal aprovechando los vientos de agosto.",
       "fechaInicio": "2026-08-15",
       "fechaFin": "2026-08-17"
@@ -348,7 +359,7 @@
       "id": 7,
       "idDestino": 5,
       "nombre": "Mompox Jazz Festival",
-      "tipoEvento": "CULTURAL",
+      "tipoEvento": "Cultural",
       "descripcion": "Encuentro musical de talla mundial a orillas del río Magdalena, fusionando jazz tradicional con ritmos caribeños.",
       "fechaInicio": "2026-10-15",
       "fechaFin": "2026-10-18"
@@ -357,7 +368,7 @@
       "id": 8,
       "idDestino": 6,
       "nombre": "Hay Festival Jericó",
-      "tipoEvento": "CULTURAL",
+      "tipoEvento": "Cultural",
       "descripcion": "Celebración cultural que reúne literatura, música, cine y artes con intelectuales nacionales e internacionales.",
       "fechaInicio": "2026-01-23",
       "fechaFin": "2026-01-25"
@@ -366,7 +377,7 @@
       "id": 9,
       "idDestino": 4,
       "nombre": "Festiver (Festival de Cine Verde). Barichara, Santander",
-      "tipoEvento": "AMBIENTAL",
+      "tipoEvento": "Ambiental",
       "descripcion": "Festival dedicado al cine verde y ambiental, buscando concientizar a través de producciones audiovisuales.",
       "fechaInicio": "2026-09-17",
       "fechaFin": "2026-09-20"
@@ -499,6 +510,30 @@
         "referencia": "SIM-1792533827013",
         "fecha": "2026-10-20T22:03:47.014Z",
         "monto": 1200000
+      }
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 3,
+      "fechaInicio": "2026-10-21",
+      "fechaFinal": "2026-10-24",
+      "cantidadPersonas": 1,
+      "subtotal": 1100000,
+      "iva": 0,
+      "total": 1100000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pagada",
+      "id": 14,
+      "pago": {
+        "metodo": "nequi",
+        "referencia": "SIM-1792537899512",
+        "fecha": "2026-10-20T23:11:39.512Z",
+        "monto": 1100000
       }
     }
   ],

@@ -3,13 +3,14 @@ import CardDestino from './CardDestino';
 import { obtenerDestinos, eliminarDestino, crearDestino, actualizarDestino } from '../../services/destinoService';
 
 function ListaDestino({ usuario, alSeleccionarDestino }) {
-  console.log("Objeto usuario recibido:", usuario); // <-- Mira esto en la consola (F12)
+  console.log("Objeto usuario recibido:", usuario); 
     const [destinos, setDestinos] = useState([]);
     const [mensaje, setMensaje] = useState("");
     
-    // Estados para controlar el formulario de creación/edición
-    const [modoFormulario, setModoFormulario] = useState(false); // true si está abierto
-    const [destinoActual, setDestinoActual] = useState(null); // null = creando, objeto = editando
+    // Estados
+    const [modoFormulario, setModoFormulario] = useState(false); 
+    const [destinoActual, setDestinoActual] = useState(null); 
+    const [filtroTipo, setFiltroTipo] = useState('todos');
 
     const consultarDestino = async () => {
         try {
@@ -25,7 +26,6 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
         consultarDestino();
     }, []);
 
-    // ELIMINAR
     const manejarEliminar = async (id) => {
         if (!window.confirm("¿Estás seguro de eliminar este destino?")) return;
         try {
@@ -38,19 +38,16 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
         }
     };
 
-    // ABRIR FORMULARIO PARA CREAR
     const abrirCrear = () => {
         setDestinoActual(null);
         setModoFormulario(true);
     };
 
-    // ABRIR FORMULARIO PARA EDITAR
     const abrirEditar = (destino) => {
         setDestinoActual(destino);
         setModoFormulario(true);
     };
 
-    // GUARDAR (CREAR O EDITAR)
     const guardarDestinoSubmit = async (e) => {
         e.preventDefault();
         const nombre = e.target.nombre.value;
@@ -61,11 +58,9 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
 
         try {
             if (destinoActual) {
-                // Actualizar
                 await actualizarDestino(destinoActual.id, objetoDestino);
                 setMensaje('Destino actualizado con éxito');
             } else {
-                // Crear
                 await crearDestino(objetoDestino);
                 setMensaje('Destino creado con éxito');
             }
@@ -77,20 +72,26 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
         }
     };
 
+    // =========================================================================
+    // 1. AQUÍ DEBE IR LA LÓGICA DE FILTRADO (Antes del return)
+    // =========================================================================
+    const destinosFiltrados = destinos.filter((destino) => {
+        if (filtroTipo === 'todos') return true;
+        return destino.tipo?.toLowerCase().includes(filtroTipo.toLowerCase());
+    });
+
     return (
         <div className="lista-destinos">
             <h2>Destinos disponibles</h2>
 
             {mensaje && <p className="mensaje">{mensaje}</p>}
 
-            {/* Botón de crear visible solo para administradores */}
             {usuario?.rol === 'admin' && !modoFormulario && (
                 <button onClick={abrirCrear} style={{ marginBottom: '20px' }}>
                     + Nuevo Destino
                 </button>
             )}
 
-            {/* Formulario flotante o desplegable para Crear / Editar */}
             {modoFormulario && (
                 <form onSubmit={guardarDestinoSubmit} className="form-admin-destino" style={{ marginBottom: '20px', padding: '15px', border: '1px solid #ccc' }}>
                     <h3>{destinoActual ? 'Editar Destino' : 'Crear Destino'}</h3>
@@ -111,18 +112,35 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
                 </form>
             )}
 
-            <div className="grid-destinos">
-                {destinos.map((destino) => (
-                    <CardDestino
-                        key={destino.id}
-                        destino={destino}
-                        usuario={usuario}
-                        alEditar={abrirEditar}
-                        alEliminar={manejarEliminar}
+            <div className="filtros-destinos" style={{ marginBottom: '20px', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+                <strong>Filtrar por:</strong>
+                <button onClick={() => setFiltroTipo('todos')} style={{ background: filtroTipo === 'todos' ? '#2c5e3b' : '#eee', color: filtroTipo === 'todos' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Todos</button>
+                <button onClick={() => setFiltroTipo('Inmaterial')} style={{ background: filtroTipo === 'Inmaterial' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Inmaterial' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Inmaterial</button>
+                <button onClick={() => setFiltroTipo('Arquitectónico')} style={{ background: filtroTipo === 'Arquitectónico' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Arquitectónico' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Arquitectónico</button>
+                <button onClick={() => setFiltroTipo('Gastronómico')} style={{ background: filtroTipo === 'Gastronómico' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Gastronómico' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Gastronómico</button>
+            </div>
 
-                        alVerDetalle={alSeleccionarDestino}
-                    />
-                ))}
+
+            <div className="grid-destinos">
+                {/* =========================================================================
+                    2. AQUÍ DEBES MAPEAR 'destinosFiltrados' (Ya no 'destinos')
+                   ======================================================================== */}
+                {destinosFiltrados.length > 0 ? (
+                    destinosFiltrados.map((destino) => (
+                        <CardDestino
+                            key={destino.id}
+                            destino={destino}
+                            usuario={usuario}
+                            alEditar={abrirEditar}
+                            alEliminar={manejarEliminar}
+                            alVerDetalle={alSeleccionarDestino}
+                        />
+                    ))
+                ) : (
+                    <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
+                        No hay destinos disponibles para esta categoría.
+                    </p>
+                )}
             </div>
         </div>
     );

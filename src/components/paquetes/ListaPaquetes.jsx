@@ -86,6 +86,11 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
 
   const esAdmin = usuario?.rol === 'admin';
 
+  const eventosFiltrados = eventos.filter((evento) => {
+        if (filtroTipo === 'todos') return true;
+        return evento.tipo?.toLowerCase().includes(filtroTipo.toLowerCase());
+    });
+
   return (
     <div className="lista-paquetes">
       <h2>Paquetes Turísticos</h2>

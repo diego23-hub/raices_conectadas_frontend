@@ -1,20 +1,19 @@
-// src/components/eventos/ListaEventos.jsx
-
 import { useEffect, useState } from 'react';
 import CardEvento from './CardEventos';
 import { 
-obtenerEventos,
-crearEvento,
-actualizarEvento,
-eliminarEvento
- } from '../../services/eventoService';
+  obtenerEventos,
+  crearEvento,
+  actualizarEvento,
+  eliminarEvento
+} from '../../services/eventoService';
 
-function ListaEventos({usuario}) {
+function ListaEventos({ usuario }) {
   const [eventos, setEventos] = useState([]);
   const [mensaje, setMensaje] = useState('');
 
   const [modoFormulario, setModoFormulario] = useState(false);
   const [eventoActual, setEventoActual] = useState(null);
+  const [filtroTipo, setFiltroTipo] = useState('todos');
 
   const consultarEventos = async () => {
     try {
@@ -30,7 +29,7 @@ function ListaEventos({usuario}) {
     consultarEventos();
   }, []);
 
-// ELIMINAR EVENTO
+  // ELIMINAR EVENTO
   const manejarEliminar = async (id) => {
     if (!window.confirm("¿Estás seguro de que deseas eliminar este evento?")) return;
     try {
@@ -83,6 +82,16 @@ function ListaEventos({usuario}) {
     }
   };
 
+  // ---> 1. LÓGICA DE FILTRADO (Quitando tildes y mayúsculas para mayor seguridad) <---
+  const normalizar = (texto) => {
+    return texto?.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() || "";
+  };
+
+  const eventosFiltrados = eventos.filter((evento) => {
+    if (filtroTipo === 'todos') return true;
+    return normalizar(evento.tipoEvento).includes(normalizar(filtroTipo));
+  });
+
   return (
     <div className="lista-eventos">
       <h2>Eventos disponibles</h2>
@@ -133,16 +142,32 @@ function ListaEventos({usuario}) {
         </form>
       )}
 
+      <div className="filtros-eventos" style={{ marginBottom: '20px', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+        <strong>Filtrar por:</strong>
+        <button onClick={() => setFiltroTipo('todos')} style={{ background: filtroTipo === 'todos' ? '#2c5e3b' : '#eee', color: filtroTipo === 'todos' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Todos</button>
+        <button onClick={() => setFiltroTipo('Deportivo')} style={{ background: filtroTipo === 'Deportivo' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Deportivo' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Deportivo</button>
+        <button onClick={() => setFiltroTipo('Recreativo')} style={{ background: filtroTipo === 'Recreativo' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Recreativo' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Recreativo</button>
+        <button onClick={() => setFiltroTipo('Cultural')} style={{ background: filtroTipo === 'Cultural' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Cultural' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Cultural</button>
+        <button onClick={() => setFiltroTipo('Ambiental')} style={{ background: filtroTipo === 'Ambiental' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Ambiental' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Ambiental</button>
+      </div>
+
       <div className="grid-eventos">
-        {eventos.map((evento) => (
-          <CardEvento
-            key={evento.id}
-            evento={evento}
-            usuario={usuario}
-            alEditar={abrirEditar}
-            alEliminar={manejarEliminar}
-          />
-        ))}
+        {/* ---> 2. MAPEAMOS 'eventosFiltrados' EN LUGAR DE 'eventos' <--- */}
+        {eventosFiltrados.length > 0 ? (
+          eventosFiltrados.map((evento) => (
+            <CardEvento
+              key={evento.id}
+              evento={evento}
+              usuario={usuario}
+              alEditar={abrirEditar}
+              alEliminar={manejarEliminar}
+            />
+          ))
+        ) : (
+          <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
+            No hay eventos disponibles para esta categoría.
+          </p>
+        )}
       </div>
     </div>
   );

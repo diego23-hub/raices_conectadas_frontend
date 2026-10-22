@@ -331,56 +331,326 @@
     {
       "id": 1,
       "idDestino": 1,
-      "nombre": "Festival del Viento y el Parapente en Floridablanca, Santander",
-      "tipoEvento": "Deportivo",
-      "descripcion": "Festival que reúne a los mejores pilotos de parapente nacionales e internacionales aprovechando los vientos de la zona.",
-      "fechaInicio": "2026-03-15",
-      "fechaFin": "2026-03-19"
-    },
-    {
-      "id": 5,
-      "idDestino": 2,
-      "nombre": "Festival de Cine de Santa Fe de Antioquia",
+      "nombre": "Festival Nacional del Pasillo Colombiano - Aguadas",
       "tipoEvento": "Cultural",
-      "descripcion": "El festival de cine independiente más antiguo de la región, con proyecciones al aire libre en plazas coloniales.",
-      "fechaInicio": "2026-12-04",
-      "fechaFin": "2026-12-08"
-    },
-    {
-      "id": 6,
-      "idDestino": 3,
-      "nombre": "Festival Nacional del Viento y las Cometas de Villa de Leyva, Boyacá",
-      "tipoEvento": "Recreativo",
-      "descripcion": "Cientos de cometas de todas las formas y colores llenan el cielo de la gran plaza principal aprovechando los vientos de agosto.",
-      "fechaInicio": "2026-08-15",
+      "descripcion": "Encuentro de músicos, compositores y bailarines de pasillo que rinde homenaje a las tradiciones autóctonas e inmateriales de la región.",
+      "fechaInicio": "2026-08-14",
       "fechaFin": "2026-08-17"
     },
     {
-      "id": 7,
-      "idDestino": 5,
-      "nombre": "Mompox Jazz Festival",
+      "id": 2,
+      "idDestino": 2,
+      "nombre": "Festiver (Festival de Cine Verde) - Barichara",
+      "tipoEvento": "Ambiental",
+      "descripcion": "Festival dedicado al cine ambiental que busca concientizar sobre el cuidado de la naturaleza mediante proyecciones, talleres y actividades sostenibles.",
+      "fechaInicio": "2026-09-17",
+      "fechaFin": "2026-09-20"
+    },
+    {
+      "id": 3,
+      "idDestino": 3,
+      "nombre": "Festival Nacional del Caimán Cienaguero - Ciénaga",
       "tipoEvento": "Cultural",
-      "descripcion": "Encuentro musical de talla mundial a orillas del río Magdalena, fusionando jazz tradicional con ritmos caribeños.",
-      "fechaInicio": "2026-10-15",
-      "fechaFin": "2026-10-18"
+      "descripcion": "Celebración folclórica icónica con danzas, disfraces, música caribeña y comparsas inspiradas en la leyenda del caimán.",
+      "fechaInicio": "2026-01-17",
+      "fechaFin": "2026-01-20"
+    },
+    {
+      "id": 4,
+      "idDestino": 4,
+      "nombre": "Fiesta Patronal del Señor de los Milagros - Guadalajara de Buga",
+      "tipoEvento": "Religioso",
+      "descripcion": "Peregrinación y festividad religiosa de gran tradición que reúne a miles de devotos en torno a la emblemática Basílica.",
+      "fechaInicio": "2026-09-05",
+      "fechaFin": "2026-09-14"
+    },
+    {
+      "id": 5,
+      "idDestino": 5,
+      "nombre": "Fiestas de la Policarpa y el Patriotismo - Guaduas",
+      "tipoEvento": "Histórico",
+      "descripcion": "Conmemoración histórica y cultural con desfiles, actos patrióticos y representaciones de la época colonial e independencia.",
+      "fechaInicio": "2026-01-24",
+      "fechaFin": "2026-01-26"
+    },
+    {
+      "id": 6,
+      "idDestino": 6,
+      "nombre": "Festival Nacional Subienda y la Pesca - Honda",
+      "tipoEvento": "Gastronómico",
+      "descripcion": "Festividad tradicional a orillas del río Magdalena que celebra la subienda del pez capaz con eventos gastronómicos, culturales y deportivos.",
+      "fechaInicio": "2026-02-12",
+      "fechaFin": "2026-02-15"
+    },
+    {
+      "id": 7,
+      "idDestino": 7,
+      "nombre": "Festival de la Rosa y la Cultura Paisa - Jardín",
+      "tipoEvento": "Cultural",
+      "descripcion": "Celebración llena de color, música y tradiciones de la colonización antioqueña, destacando el paisajismo y los balcones floridos.",
+      "fechaInicio": "2026-01-08",
+      "fechaFin": "2026-01-12"
     },
     {
       "id": 8,
-      "idDestino": 6,
+      "idDestino": 8,
       "nombre": "Hay Festival Jericó",
       "tipoEvento": "Cultural",
-      "descripcion": "Celebración cultural que reúne literatura, música, cine y artes con intelectuales nacionales e internacionales.",
+      "descripcion": "Encuentro internacional de literatura, artes, cine y pensamiento en el marco del patrimonio arquitectónico y religioso de Jericó.",
       "fechaInicio": "2026-01-23",
       "fechaFin": "2026-01-25"
     },
     {
       "id": 9,
+      "idDestino": 9,
+      "nombre": "Feria del Balón y la Artesanía - Monguí",
+      "tipoEvento": "Artesanal",
+      "descripcion": "Evento que resalta el trabajo de los artesanos locales del cuero y la fabricación manual de balones de fútbol de calidad de exportación.",
+      "fechaInicio": "2026-10-10",
+      "fechaFin": "2026-10-12"
+    },
+    {
+      "id": 10,
+      "idDestino": 10,
+      "nombre": "Festival de los Estoraques - Playa de Belén",
+      "tipoEvento": "Ecoturístico",
+      "descripcion": "Encuentro que fomenta el turismo ecológico y senderismo guiado por las imponentes formaciones rocosas del Parque Los Estoraques.",
+      "fechaInicio": "2026-07-03",
+      "fechaFin": "2026-07-05"
+    },
+    {
+      "id": 11,
+      "idDestino": 11,
+      "nombre": "Festival Internacional del Garcero del Llano - Pore",
+      "tipoEvento": "Folclórico",
+      "descripcion": "Fiesta de folclor llanero con joropo, contrapunteo, gastronomía autóctona y muestras de valor histórico libertador.",
+      "fechaInicio": "2026-11-13",
+      "fechaFin": "2026-11-16"
+    },
+    {
+      "id": 12,
+      "idDestino": 12,
+      "nombre": "Noche del Fuego y las Iluminaciones - Salamina",
+      "tipoEvento": "Religioso",
+      "descripcion": "Festividad deslumbrante donde las calles y balcones de madera tallada se iluminan con miles de faroles artesanales y velas.",
+      "fechaInicio": "2026-12-07",
+      "fechaFin": "2026-12-08"
+    },
+    {
+      "id": 13,
+      "idDestino": 13,
+      "nombre": "Fiesta del Señor de los Milagros y Cultura Colonial - Girón",
+      "tipoEvento": "Religioso",
+      "descripcion": "Muestras religiosas, procesiones solemnes y recorridos culturales a través de sus puentes de calicanto y calles empedradas.",
+      "fechaInicio": "2026-09-12",
+      "fechaFin": "2026-09-14"
+    },
+    {
+      "id": 14,
+      "idDestino": 14,
+      "nombre": "Mompox Jazz Festival",
+      "tipoEvento": "Cultural",
+      "descripcion": "Encuentro musical de talla internacional a orillas del río Magdalena, fusionando jazz con ritmos autóctonos caribeños y filigrana.",
+      "fechaInicio": "2026-10-15",
+      "fechaFin": "2026-10-18"
+    },
+    {
+      "id": 15,
+      "idDestino": 15,
+      "nombre": "Festival Gastronómico del Sinú y Fusión Árabe - Lorica",
+      "tipoEvento": "Gastronómico",
+      "descripcion": "Muestra culinaria que resalta la identidad caribeña y la influencia árabe en la gastronomía local a la orilla del río Sinú.",
+      "fechaInicio": "2026-05-22",
+      "fechaFin": "2026-05-25"
+    },
+    {
+      "id": 16,
+      "idDestino": 16,
+      "nombre": "Festival de Cine de Santa Fe de Antioquia",
+      "tipoEvento": "Cultural",
+      "descripcion": "Muestra de cine independiente con proyecciones al aire libre en plazas y parques de arquitectura colonial de la Ciudad Madre.",
+      "fechaInicio": "2026-12-04",
+      "fechaFin": "2026-12-08"
+    },
+    {
+      "id": 17,
+      "idDestino": 17,
+      "nombre": "Fiestas de la Insurrección Comunera - El Socorro",
+      "tipoEvento": "Histórico",
+      "descripcion": "Conmemoración del grito de libertad comunero con desfiles históricos, representaciones teatrales al aire libre y música andina.",
+      "fechaInicio": "2026-03-14",
+      "fechaFin": "2026-03-16"
+    },
+    {
+      "id": 18,
+      "idDestino": 18,
+      "nombre": "Festival Nacional del Viento y las Cometas - Villa de Leyva",
+      "tipoEvento": "Recreativo",
+      "descripcion": "Competencias y exhibiciones de cometas artesanales y gigantes que llenan de color el cielo sobre la inmensa plaza empedrada.",
+      "fechaInicio": "2026-08-15",
+      "fechaFin": "2026-08-17"
+    },
+    {
+      "id": 19,
+      "idDestino": 1,
+      "nombre": "Fiestas de la La Cabuya - Aguadas",
+      "tipoEvento": "Tradicional",
+      "descripcion": "Homenaje al trabajo campesino, al cultivo del fique y a las artesanas que tejen sombreros y artesanías locales.",
+      "fechaInicio": "2026-11-13",
+      "fechaFin": "2026-11-16"
+    },
+    {
+      "id": 20,
+      "idDestino": 2,
+      "nombre": "Semana Santa Patronal y Colonial - Barichara",
+      "tipoEvento": "Religioso",
+      "descripcion": "Conmovedora conmemoración religiosa a través de procesiones nocturnas de silencio sobre calles empedradas e iglesias de piedra.",
+      "fechaInicio": "2026-03-29",
+      "fechaFin": "2026-04-05"
+    },
+    {
+      "id": 21,
+      "idDestino": 3,
+      "nombre": "Festival de la Leyenda y la Danza del Caimán - Ciénaga",
+      "tipoEvento": "Folclórico",
+      "descripcion": "Encuentro de comparsas, disfraces tradicionales y conciertos a orillas del mar Caribe en homenaje al folclor cienaguero.",
+      "fechaInicio": "2026-01-19",
+      "fechaFin": "2026-01-21"
+    },
+    {
+      "id": 22,
       "idDestino": 4,
-      "nombre": "Festiver (Festival de Cine Verde). Barichara, Santander",
-      "tipoEvento": "Ambiental",
-      "descripcion": "Festival dedicado al cine verde y ambiental, buscando concientizar a través de producciones audiovisuales.",
-      "fechaInicio": "2026-09-17",
-      "fechaFin": "2026-09-20"
+      "nombre": "Encuentro Nacional de Contadores de Historias y Leyendas - Buga",
+      "tipoEvento": "Cultural",
+      "descripcion": "Espacio de tradición oral que reúne a narradores de todo el país para rescatar mitos y cuentos tradicionales en haciendas coloniales.",
+      "fechaInicio": "2026-11-06",
+      "fechaFin": "2026-11-08"
+    },
+    {
+      "id": 23,
+      "idDestino": 5,
+      "nombre": "Festival Turístico y Cultural del Camino Real - Guaduas",
+      "tipoEvento": "Historico",
+      "descripcion": "Caminatas históricas por la Ruta Mutis, muestras gastronómicas de la época colonial y ferias de artesanías en teja de barro.",
+      "fechaInicio": "2026-07-18",
+      "fechaFin": "2026-07-20"
+    },
+    {
+      "id": 24,
+      "idDestino": 6,
+      "nombre": "Carnaval del Río Magdalena y los Puentes - Honda",
+      "tipoEvento": "Cultural",
+      "descripcion": "Desfiles náuticos de canoas engalanadas, comparsas en sus puentes coloniales y muestras de cocina tradicional de agua dulce.",
+      "fechaInicio": "2026-06-26",
+      "fechaFin": "2026-06-29"
+    },
+    {
+      "id": 25,
+      "idDestino": 7,
+      "nombre": "Festival de Cine de Jardín",
+      "tipoEvento": "Cultural",
+      "descripcion": "Festival de cine independiente centrado en derechos humanos, naturaleza y patrimonio rural en medio de coloridos balcones.",
+      "fechaInicio": "2026-09-10",
+      "fechaFin": "2026-09-13"
+    },
+    {
+      "id": 26,
+      "idDestino": 8,
+      "nombre": "Fiestas de la Autonomía y el Carriel - Jericó",
+      "tipoEvento": "Artesanal",
+      "descripcion": "Celebración popular centrada en el oficio guarnielero de la marroquinería y la elaboración del tradicional carriel antioqueño.",
+      "fechaInicio": "2026-08-21",
+      "fechaFin": "2026-08-24"
+    },
+    {
+      "id": 27,
+      "idDestino": 9,
+      "nombre": "Fiestas Patronales de Nuestra Señora de Monguí",
+      "tipoEvento": "Religioso",
+      "descripcion": "Celebración tradicional boyacense con romerías, fuegos pirotécnicos, música de carranza y ferias artesanales en la plaza principal.",
+      "fechaInicio": "2026-12-28",
+      "fechaFin": "2026-12-31"
+    },
+    {
+      "id": 28,
+      "idDestino": 10,
+      "nombre": "Aniversario de la Fundación de Playa de Belén",
+      "tipoEvento": "Tradicional",
+      "descripcion": "Fiesta popular con retretas musicales, muestras folclóricas del Norte de Santander y decoración festiva de sus fachadas blancas.",
+      "fechaInicio": "2026-12-04",
+      "fechaFin": "2026-12-06"
+    },
+    {
+      "id": 29,
+      "idDestino": 11,
+      "nombre": "Encuentro de la Canto y la Copla Llanera - Pore",
+      "tipoEvento": "Folclórico",
+      "descripcion": "Jornadas de contrapunteo, arpa y voz recia entre cantautores llaneros para salvaguardar la tradición oral y la historia independentista.",
+      "fechaInicio": "2026-08-06",
+      "fechaFin": "2026-08-09"
+    },
+    {
+      "id": 30,
+      "idDestino": 12,
+      "nombre": "Festival Pedagógico de Arte y la Madera - Salamina",
+      "tipoEvento": "Artesanal",
+      "descripcion": "Exposición de ebanistas y maestros talladores de madera que decoran calados, balcones y puertas coloniales de la Ciudad Luz.",
+      "fechaInicio": "2026-10-16",
+      "fechaFin": "2026-10-18"
+    },
+    {
+      "id": 31,
+      "idDestino": 13,
+      "nombre": "Festival Gastronómico del Lobero y la Cocina Colonial - Girón",
+      "tipoEvento": "Gastronómico",
+      "descripcion": "Muestra de la gastronomía santandereana tradicional con dulcería artesanal, tamales gironeses y comida criolla.",
+      "fechaInicio": "2026-11-01",
+      "fechaFin": "2026-11-03"
+    },
+    {
+      "id": 32,
+      "idDestino": 14,
+      "nombre": "Semana Santa Mayor de Mompox",
+      "tipoEvento": "Religioso",
+      "descripcion": "Una de las celebraciones litúrgicas más antiguas y solemnes del Caribe colombiano, caracterizada por la marcha de 'paso a paso' en las procesiones.",
+      "fechaInicio": "2026-03-29",
+      "fechaFin": "2026-04-05"
+    },
+    {
+      "id": 33,
+      "idDestino": 15,
+      "nombre": "Fiestas del Viejo Bolívar y del Río Sinú - Lorica",
+      "tipoEvento": "Cultural",
+      "descripcion": "Desfiles folclóricos, conciertos de porro sabanero y concursos de comparsas a orillas del majestuoso edificio del Mercado Público.",
+      "fechaInicio": "2026-05-01",
+      "fechaFin": "2026-05-03"
+    },
+    {
+      "id": 34,
+      "idDestino": 16,
+      "nombre": "Fiestas del Tamarindo - Santa Fe de Antioquia",
+      "tipoEvento": "Gastronómico",
+      "descripcion": "Celebración alrededor de los productos derivados del tamarindo, con ferias artesanales, música en vivo y desfiles por el centro histórico.",
+      "fechaInicio": "2026-08-14",
+      "fechaFin": "2026-08-17"
+    },
+    {
+      "id": 35,
+      "idDestino": 17,
+      "nombre": "Festival Nacional de la Guabina y el Tiple - El Socorro",
+      "tipoEvento": "Cultural",
+      "descripcion": "Competencia y homenaje a la música andina colombiana, trajes típicos campesinos, coplas y folclor santandereano.",
+      "fechaInicio": "2026-11-06",
+      "fechaFin": "2026-11-09"
+    },
+    {
+      "id": 36,
+      "idDestino": 18,
+      "nombre": "Festival Internacional de Luces - Villa de Leyva",
+      "tipoEvento": "Recreativo",
+      "descripcion": "Espectáculo pirotécnico y musical de fin de año donde las mejores polvorías del país iluminan el cielo de la gran plaza de piedra.",
+      "fechaInicio": "2026-12-07",
+      "fechaFin": "2026-12-09"
     }
   ],
   "reservas": [

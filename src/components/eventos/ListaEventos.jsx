@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
-import CardEvento from './CardEventos';
+import CalendarioEventos from '../eventos/CalendarioEventos';
+
+
 import { 
   obtenerEventos,
   crearEvento,
@@ -142,33 +144,77 @@ function ListaEventos({ usuario }) {
         </form>
       )}
 
-      <div className="filtros-eventos" style={{ marginBottom: '20px', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
-        <strong>Filtrar por:</strong>
-        <button onClick={() => setFiltroTipo('todos')} style={{ background: filtroTipo === 'todos' ? '#2c5e3b' : '#eee', color: filtroTipo === 'todos' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Todos</button>
-        <button onClick={() => setFiltroTipo('Deportivo')} style={{ background: filtroTipo === 'Deportivo' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Deportivo' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Deportivo</button>
-        <button onClick={() => setFiltroTipo('Recreativo')} style={{ background: filtroTipo === 'Recreativo' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Recreativo' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Recreativo</button>
-        <button onClick={() => setFiltroTipo('Cultural')} style={{ background: filtroTipo === 'Cultural' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Cultural' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Cultural</button>
-        <button onClick={() => setFiltroTipo('Ambiental')} style={{ background: filtroTipo === 'Ambiental' ? '#2c5e3b' : '#eee', color: filtroTipo === 'Ambiental' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Ambiental</button>
-      </div>
+<div className="filtros-eventos" style={{ marginBottom: '20px', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+  <strong>Filtrar por:</strong>
+  
+  <button 
+    onClick={() => setFiltroTipo('todos')} 
+    style={{ background: filtroTipo === 'Todos' ? '#333' : '#eee', color: filtroTipo === 'Todos' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Todos
+  </button>
 
-      <div className="grid-eventos">
-        {/* ---> 2. MAPEAMOS 'eventosFiltrados' EN LUGAR DE 'eventos' <--- */}
-        {eventosFiltrados.length > 0 ? (
-          eventosFiltrados.map((evento) => (
-            <CardEvento
-              key={evento.id}
-              evento={evento}
-              usuario={usuario}
-              alEditar={abrirEditar}
-              alEliminar={manejarEliminar}
-            />
-          ))
-        ) : (
-          <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
-            No hay eventos disponibles para esta categoría.
-          </p>
-        )}
-      </div>
+  <button 
+    onClick={() => setFiltroTipo('Cultural')} 
+    style={{ background: filtroTipo === 'Cultural' ? '#b5651d' : '#eee', color: filtroTipo === 'Cultural' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Cultural
+  </button>
+
+  <button 
+    onClick={() => setFiltroTipo('Histórico')} 
+    style={{ background: filtroTipo === 'Histórico' ? '#7a5c3e' : '#eee', color: filtroTipo === 'Histórico' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Histórico
+  </button>
+
+  <button 
+    onClick={() => setFiltroTipo('Gastronómico')} 
+    style={{ background: filtroTipo === 'Gastronómico' ? '#c0392b' : '#eee', color: filtroTipo === 'Gastronómico' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Gastronómico
+  </button>
+
+  <button 
+    onClick={() => setFiltroTipo('Folclórico')} 
+    style={{ background: filtroTipo === 'Folclórico' ? '#e67e22' : '#eee', color: filtroTipo === 'Folclórico' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Folclórico
+  </button>
+
+  <button 
+    onClick={() => setFiltroTipo('Artesanal')} 
+    style={{ background: filtroTipo === 'Artesanal' ? '#d4a24c' : '#eee', color: filtroTipo === 'Artesanal' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Artesanal
+  </button>
+
+  <button 
+    onClick={() => setFiltroTipo('Religioso')} 
+    style={{ background: filtroTipo === 'Religioso' ? '#6b5b95' : '#eee', color: filtroTipo === 'Religioso' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Religioso
+  </button>
+
+  <button 
+    onClick={() => setFiltroTipo('Ambiental')} 
+    style={{ background: filtroTipo === 'Ambiental' ? '#3f8f5a' : '#eee', color: filtroTipo === 'Ambiental' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Ambiental
+  </button>
+
+  <button 
+    onClick={() => setFiltroTipo('Ecoturístico')} 
+    style={{ background: filtroTipo === 'Ecoturístico' ? '#27ae60' : '#eee', color: filtroTipo === 'Ecoturístico' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Ecoturístico
+  </button>
+
+  <button 
+    onClick={() => setFiltroTipo('Recreativo')} 
+    style={{ background: filtroTipo === 'Recreativo' ? '#c97b43' : '#eee', color: filtroTipo === 'Recreativo' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Recreativo
+</button>
+</div>
+
+      {/* NUEVO: el calendario reemplaza la grilla de tarjetas */}
+      <CalendarioEventos
+        eventos={eventosFiltrados}
+        usuario={usuario}
+        alEditar={abrirEditar}
+        alEliminar={manejarEliminar}
+      />
     </div>
   );
 }

@@ -936,3 +936,53 @@ form button[type='submit'] {
 .card-verde { border-top: 4px solid var(--raices-verde); }
 .card-terracota { border-top: 4px solid var(--raices-terracota); }
 .card-dorado { border-top: 4px solid var(--raices-dorado); }
+
+/* ESTILOS CALENDARIO */
+.calendario { max-width: 1100px; margin: 0 auto; }
+
+.calendario-encabezado {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin-bottom: 12px;
+}
+.calendario-encabezado h3 { min-width: 220px; text-align: center; margin: 0; }
+.calendario-encabezado button {
+  background: #2c5e3b; color: #fff; border: none; border-radius: 6px;
+  padding: 6px 12px; cursor: pointer; font-size: 1rem;
+}
+.calendario-encabezado .btn-hoy { background: #eee; color: #333; }
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+.calendario-dia-semana {
+  text-align: center; font-weight: 700; padding: 8px 0;
+  color: #2c5e3b;
+}
+.calendario-celda {
+  min-height: 110px; background: #fff; border-radius: 8px;
+  padding: 6px; cursor: pointer; overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  transition: box-shadow .15s;
+}
+.calendario-celda:hover { box-shadow: 0 2px 8px rgba(0,0,0,.18); }
+.calendario-celda.vacia { background: transparent; box-shadow: none; cursor: default; }
+.calendario-celda.hoy { outline: 2px solid #c97b43; }
+.calendario-celda.seleccionada { outline: 2px solid #2c5e3b; }
+
+.numero-dia { font-weight: 700; font-size: .85rem; color: #444; }
+
+.chip-evento {
+  margin-top: 4px; padding: 2px 6px; border-radius: 4px;
+  color: #fff; font-size: .72rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.mas-eventos { margin-top: 3px; font-size: .72rem; color: #6c757d; }
+
+.calendario-detalle { margin-top: 24px; }
+
+@media (max-width: 700px) {
+  .calendario-celda { min-height: 70px; }
+  .chip-evento { font-size: .6rem; }
+}

@@ -64,6 +64,7 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
       descripcion: e.target.descripcion.value,
       limitePersonas: Number(e.target.limitePersonas.value || 10),
       duracion: e.target.duracion.value,
+      duracionDias: Number(e.target.duracionDias.value || 1),
       incluye: e.target.incluye.value,
       itinerario: e.target.itinerario.value,
     };
@@ -122,6 +123,11 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
           <div>
             <label>Duración (ej. 3 días y 2 noches): </label>
             <input type="text" name="duracion" defaultValue={paqueteActual?.duracion || ''} required />
+          </div>
+          {/* NUEVO: número de días, se usa para calcular el precio según los días que elija el cliente */}
+          <div>
+            <label>Número de días (para calcular el precio): </label>
+            <input type="number" name="duracionDias" defaultValue={paqueteActual?.duracionDias || 1} min="1" required />
           </div>
 
           <div>

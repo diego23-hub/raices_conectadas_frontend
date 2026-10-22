@@ -1,6 +1,8 @@
 
 import { useState } from 'react';
 import { crearReserva } from '../../services/reservaService';
+import { calcularFechaFinal, calcularDias } from './fecha'; // NUEVO
+
 
 function FormularioReserva({usuario, paquete, alReservar }) {
   const [fechaInicio, setFechaInicio] = useState('');
@@ -15,7 +17,13 @@ function FormularioReserva({usuario, paquete, alReservar }) {
 
   const esNacional = usuario?.tipoDoc === 'CC' || usuario?.tipoDoc === 'TI';
 
-  const precioBase = paquete?.precio || 0;
+  // NUEVO: el precio del paquete es para su duración base; se ajusta según los días elegidos
+  const duracionBase = paquete?.duracionDias || 1;
+  const diasElegidos = calcularDias(fechaInicio, fechaFinal);
+
+  const precioBase = diasElegidos > 0
+    ? Math.round((paquete?.precio || 0) / duracionBase * diasElegidos)
+    : (paquete?.precio || 0);
   
   const subtotalAdultos = Number(adultos) * precioBase;
   const subtotalJovenes = Number(jovenes) * precioBase; 
@@ -42,6 +50,10 @@ function FormularioReserva({usuario, paquete, alReservar }) {
       return;
     }
 
+    if (diasElegidos > 30 ){
+      setMensaje('La reserva no puede superar 30 días')
+      return;
+    }
     if (cantidadTotal < 1) {
       setMensaje('Debe haber al menos 1 persona viajando');
       return;
@@ -90,7 +102,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
     <form onSubmit={guardarReserva} className='formulario-reserva'> 
       <h3>Reservar: {paquete.nombre}</h3>
       <p className='precio-unitario'>
-        precio por persona: ${paquete.precio.toLocaleString('es-CO')}
+        precio por persona: ${paquete.precio.toLocaleString('es-CO')} ({duracionBase} días(s))
       </p>
 
 
@@ -99,7 +111,10 @@ function FormularioReserva({usuario, paquete, alReservar }) {
         <input
           type="date"
           value={fechaInicio}
-          onChange={(e) => setFechaInicio(e.target.value)}
+          min = {new Date(). toISOString().split('T')[0]}
+          onChange={(e) => {setFechaInicio(e.target.value);
+            setFechaFinal(calcularFechaFinal(e.target.value, duracionBase));
+          }}    
         />
       </label>
 
@@ -112,7 +127,14 @@ function FormularioReserva({usuario, paquete, alReservar }) {
           onChange={(e) => setFechaFinal(e.target.value)}
         />
       </label>
-
+      {/* NUEVO: información de días y precio según las fechas elegidas */}
+      {diasElegidos > 0 && (
+        <p>
+          Días elegidos: <strong>{diasElegidos}</strong> (el paquete base es de {duracionBase} día(s))
+          <br />
+          Precio por persona para estas fechas: <strong>${precioBase.toLocaleString('es-CO')}</strong>
+        </p>
+      )}
       <div className='mb-3'>
         <label className='form-label'>Cantidad de personas por edad (Máx. {limiteMaximo})</label>
         

@@ -1,12 +1,47 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { obtenerProveedores } from '../../services/proveedorService';
 
-function MapaDestino({ destino }) {
+function MapaDestino({ destino, proveedoresProps }) {
+  const [proveedoresCercanos, setProveedoresCercanos] = useState([]);
+  const [cargandoProveedores, setCargandoProveedores] = useState(true);
+
+  useEffect(() => {
+    const cargarYFiltrarProveedores = async () => {
+      if (!destino) return;
+
+      try {
+        setCargandoProveedores(true);
+        // Si no te pasan los proveedores por props, los consulta del servicio
+        const listaProveedores = proveedoresProps || (await obtenerProveedores());
+
+        // Función auxiliar para quitar acentos y minúsculas en comparaciones
+        const normalizar = (texto) =>
+          texto?.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() || "";
+
+        const nombreDestinoLimpio = normalizar(destino.nombre);
+
+        // Filtra los proveedores cuya propiedad "lugar" contenga el nombre del municipio
+        const filtrados = listaProveedores.filter((prov) =>
+          normalizar(prov.lugar).includes(nombreDestinoLimpio)
+        );
+
+        setProveedoresCercanos(filtrados);
+      } catch (error) {
+        console.error("Error al cargar proveedores del mapa:", error);
+      } finally {
+        setCargandoProveedores(false);
+      }
+    };
+
+    cargarYFiltrarProveedores();
+  }, [destino, proveedoresProps]);
+
   if (!destino) {
     return <p style={{ textAlign: 'center', padding: '2rem' }}>Cargando información del mapa...</p>;
   }
 
-  // Función para abrir la ruta en el planificador de transporte
-  const abrirMoovit = (nombreLugar, direccion) => {
+  // Función para abrir la ruta en Google Maps / Moovit
+  const abrirRuta = (nombreLugar, direccion) => {
     const destinoCompleto = `${nombreLugar}, ${direccion}`;
     const urlRuta = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destinoCompleto)}&travelmode=transit`;
     window.open(urlRuta, '_blank');
@@ -15,9 +50,9 @@ function MapaDestino({ destino }) {
   return (
     <div className="seccion-mapa-interactivo" style={{ marginTop: '2rem' }}>
       <h3>Mapa interactivo y Movilidad</h3>
-      <p>Explora los sitios de interés, hoteles, restaurantes y rutas de transporte de este pueblo patrimonial.</p>
+      <p>Explora los sitios de interés, hoteles, transporte y guías certificados en <strong>{destino.nombre}</strong>.</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: '20px', alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 340px', gap: '20px', alignItems: 'start' }}>
         
         {/* Contenedor del mapa de Google Maps */}
         <div style={{ width: '100%', height: '450px', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
@@ -31,35 +66,71 @@ function MapaDestino({ destino }) {
           ></iframe>
         </div>
 
-        {/* Panel lateral de servicios ofrecidos por proveedores */}
+        {/* Panel lateral con los Proveedores Reales del Municipio */}
         <div style={{ background: '#fff', padding: '20px', borderRadius: '12px', boxShadow: '0 4px 12px rgba(0,0,0,0.08)', maxHeight: '450px', overflowY: 'auto' }}>
-          <h4 style={{ color: 'var(--raices-verde)', marginBottom: '15px' }}>Servicios Cercanos</h4>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <div style={{ padding: '10px', background: '#faf6f0', borderRadius: '8px', borderLeft: '3px solid #c8793f' }}>
-              <strong>Hotel Colonial Real</strong>
-              <p style={{ fontSize: '0.85rem', color: '#6c757d', margin: '4px 0' }}>Alojamiento asociado</p>
-              <button 
-                onClick={() => abrirMoovit("Hotel Colonial Real", destino.nombre)}
-                style={{ fontSize: '0.75rem', padding: '6px 10px', backgroundColor: '#2f4f3e', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
-              >
-                Ver su mejor ruta según su ubicación inicial y final 🚍
-              </button>
-            </div>
+          <h4 style={{ color: '#2c5e3b', marginBottom: '15px' }}>Servicios y Aliados Cercanos</h4>
 
-            <div style={{ padding: '10px', background: '#faf6f0', borderRadius: '8px', borderLeft: '3px solid #2f4f3e' }}>
-              <strong>Restaurante Sabor Ancestral</strong>
-              <p style={{ fontSize: '0.85rem', color: '#6c757d', margin: '4px 0' }}>Gastronomía típica</p>
-              <button 
-                onClick={() => abrirMoovit("Restaurante Sabor Ancestral", destino.nombre)}
-                style={{ fontSize: '0.75rem', padding: '6px 10px', backgroundColor: '#2f4f3e', color: '#fff', border: 'none', borderRadius: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '5px' }}
-              >
-                Ver su mejor ruta según su ubicación inicial y final 🚍
-              </button>
-            </div>
-          </div>
+          {cargandoProveedores ? (
+            <p style={{ fontSize: '0.9rem', color: '#666' }}>Buscando aliados cerca...</p>
+          ) : proveedoresCercanos.length === 0 ? (
+            <p style={{ fontSize: '0.9rem', color: '#666' }}>
+              No hay proveedores registrados aún para <strong>{destino.nombre}</strong>.
+            </p>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {proveedoresCercanos.map((prov) => (
+                <div
+                  key={prov.id}
+                  style={{
+                    padding: '12px',
+                    background: '#faf6f0',
+                    borderRadius: '8px',
+                    borderLeft: `4px solid ${
+                      prov.tipo === 'Hotel' ? '#c8793f' : prov.tipo === 'Transporte' ? '#2f4f3e' : '#6b5b95'
+                    }`
+                  }}
+                >
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <strong>{prov.nombre}</strong>
+                    <span style={{ fontSize: '11px', background: '#e2f0d9', color: '#385723', padding: '2px 6px', borderRadius: '4px' }}>
+                      {prov.tipo}
+                    </span>
+                  </div>
 
+                  <p style={{ fontSize: '0.8rem', color: '#555', margin: '4px 0 8px 0' }}>
+                    {prov.descripcion}
+                  </p>
+
+                  <p style={{ fontSize: '0.75rem', color: '#777', margin: '2px 0' }}>
+                     {prov.telefono}
+                  </p>
+
+                  <button
+                    onClick={() => abrirRuta(prov.nombre, destino.nombre)}
+                    style={{
+                      marginTop: '8px',
+                      fontSize: '0.75rem',
+                      padding: '6px 10px',
+                      backgroundColor: '#2f4f3e',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '6px',
+                      cursor: 'pointer',
+                      width: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '5px'
+                    }}
+                  >
+                    Ver mejor ruta hasta aquí 🚍
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
+
       </div>
     </div>
   );

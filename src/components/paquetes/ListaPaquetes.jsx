@@ -6,6 +6,8 @@ import {
   actualizarPaquete, 
   eliminarPaquete 
 } from '../../services/paqueteService';
+import { obtenerDestinos } from '../../services/destinoService';
+
 
 function ListaPaquetes({ usuario, alElegirPaquete }) {
   const [paquetes, setPaquetes] = useState([]);
@@ -14,6 +16,8 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
   // Estados para controlar el formulario de administración (Crear / Editar)
   const [modoFormulario, setModoFormulario] = useState(false);
   const [paqueteActual, setPaqueteActual] = useState(null);
+
+  const [destinos, setDestinos] = useState([]);
 
   const consultarPaquetes = async () => {
     try {
@@ -25,8 +29,19 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
     }
   };
 
+  const consultarDestinos = async () => {
+  try {
+    const datos = await obtenerDestinos();
+    setDestinos(datos);
+  } catch (error) {
+    console.error(error);
+    setMensaje('Error consultando los destinos');
+  }
+  };
+
   useEffect(() => {
     consultarPaquetes();
+    consultarDestinos();
   }, []);
 
   // ELIMINAR PAQUETE
@@ -60,6 +75,7 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
 
     const objetoPaquete = {
       nombre: e.target.nombre.value,
+      idDestino: Number(e.target.idDestino.value),
       precio: Number(e.target.precio.value),
       descripcion: e.target.descripcion.value,
       limitePersonas: Number(e.target.limitePersonas.value || 10),
@@ -108,6 +124,16 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
           <div>
             <label>Nombre del paquete: </label>
             <input type="text" name="nombre" defaultValue={paqueteActual?.nombre || ''} required />
+          </div>
+
+          <div>
+            <label>Destino: </label>
+            <select name="idDestino" defaultValue={paqueteActual?.idDestino || ''} required>
+              <option value="" disabled>Selecciona un destino</option>
+              {destinos.map((destino) => (
+                <option key={destino.id} value={destino.id}>{destino.nombre}</option>
+              ))}
+            </select>
           </div>
 
           <div>

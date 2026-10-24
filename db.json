@@ -43,6 +43,17 @@
       "contrasena": "1111",
       "rol": "admin",
       "id": "L8U4oj_"
+    },
+    {
+      "tipoDoc": "CC",
+      "numDoc": "1041234",
+      "nombres": "santiago",
+      "apellidos": "gomez",
+      "telefono": "3000123",
+      "correo": "santi@gmail.com",
+      "contrasena": "1111",
+      "rol": "viajero",
+      "id": "CkZeYhT"
     }
   ],
   "destinos": [
@@ -705,6 +716,190 @@
         "fecha": "2026-10-24T05:17:44.970Z",
         "monto": 950000
       }
+<<<<<<< Updated upstream
+=======
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 2,
+      "fechaInicio": "2026-10-29",
+      "fechaFinal": "2026-10-31",
+      "cantidadPersonas": 1,
+      "subtotal": 1200000,
+      "iva": 0,
+      "total": 1200000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pagada",
+      "id": 13,
+      "pago": {
+        "metodo": "nequi",
+        "referencia": "SIM-1792533827013",
+        "fecha": "2026-10-20T22:03:47.014Z",
+        "monto": 1200000
+      }
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 3,
+      "fechaInicio": "2026-10-21",
+      "fechaFinal": "2026-10-24",
+      "cantidadPersonas": 1,
+      "subtotal": 1100000,
+      "iva": 0,
+      "total": 1100000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pagada",
+      "id": 14,
+      "pago": {
+        "metodo": "nequi",
+        "referencia": "SIM-1792537899512",
+        "fecha": "2026-10-20T23:11:39.512Z",
+        "monto": 1100000
+      }
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 2,
+      "fechaInicio": "2026-10-23",
+      "fechaFinal": "2026-10-24",
+      "cantidadPersonas": 1,
+      "subtotal": 1200000,
+      "iva": 0,
+      "total": 1200000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pagada",
+      "id": 15,
+      "pago": {
+        "metodo": "pse",
+        "referencia": "SIM-1792638337412",
+        "fecha": "2026-10-22T03:05:37.412Z",
+        "monto": 1200000
+      }
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 3,
+      "fechaInicio": "2026-10-24",
+      "fechaFinal": "2026-10-26",
+      "cantidadPersonas": 1,
+      "subtotal": 1100000,
+      "iva": 0,
+      "total": 1100000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pagada",
+      "id": 16,
+      "pago": {
+        "metodo": "tarjeta",
+        "referencia": "SIM-1792639633716",
+        "fecha": "2026-10-22T03:27:13.716Z",
+        "monto": 1100000
+      }
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-21",
+      "fechaFinal": "2026-10-21",
+      "cantidadPersonas": 2,
+      "subtotal": 1900000,
+      "iva": 0,
+      "total": 1900000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pagada",
+      "id": 17,
+      "pago": {
+        "metodo": "tarjeta",
+        "referencia": "SIM-1792640554687",
+        "fecha": "2026-10-22T03:42:34.687Z",
+        "monto": 1900000
+      }
+    },
+    {
+      "idViajero": "VCkpBuE",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-24",
+      "fechaFinal": "2026-10-29",
+      "cantidadPersonas": 2,
+      "subtotal": 2700000,
+      "iva": 0,
+      "total": 2700000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 1
+      },
+      "estado": "pagada",
+      "id": 18,
+      "pago": {
+        "metodo": "nequi",
+        "referencia": "SIM-1792644088109",
+        "fecha": "2026-10-22T04:41:28.109Z",
+        "monto": 2700000
+      }
+    },
+    {
+      "idViajero": "YN3W_1f",
+      "idPaquete": 2,
+      "fechaInicio": "2026-10-24",
+      "fechaFinal": "2026-10-26",
+      "cantidadPersonas": 1,
+      "subtotal": 1200000,
+      "iva": 228000,
+      "total": 1428000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pendiente",
+      "id": 20,
+      "numSeguimiento": 1020
+    },
+    {
+      "idViajero": "CkZeYhT",
+      "idPaquete": 1,
+      "fechaInicio": "2026-10-26",
+      "fechaFinal": "2026-10-26",
+      "cantidadPersonas": 7,
+      "subtotal": 6650000,
+      "iva": 1263500,
+      "total": 7913500,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pendiente",
+      "id": 21
+>>>>>>> Stashed changes
     }
   ],
   "proveedores": [

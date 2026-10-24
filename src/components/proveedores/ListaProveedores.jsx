@@ -8,6 +8,7 @@ import {
   actualizarProveedor, 
   eliminarProveedor 
 } from '../../services/proveedorService';
+import { obtenerDestinos } from '../../services/destinoService';
 
 function ListaProveedores({ usuario }) {
   const [proveedores, setProveedores] = useState([]);
@@ -19,6 +20,8 @@ function ListaProveedores({ usuario }) {
   // Estados para el formulario de administración
   const [modoFormulario, setModoFormulario] = useState(false);
   const [proveedorActual, setProveedorActual] = useState(null);
+  const [destinos, setDestinos] = useState([]);
+
 
   const consultarProveedores = async () => {
     try {
@@ -30,8 +33,19 @@ function ListaProveedores({ usuario }) {
     }
   };
 
+  const consultarDestinos = async () => {
+  try {
+    const datos = await obtenerDestinos();
+    setDestinos(datos);
+  } catch (error) {
+    console.error(error);
+    setMensaje('Error consultando los destinos');
+  }
+  };
+
   useEffect(() => {
     consultarProveedores();
+    consultarDestinos();
   }, []);
 
   const manejarEliminar = async (id) => {
@@ -62,7 +76,8 @@ function ListaProveedores({ usuario }) {
     const objetoProveedor = {
       nombre: e.target.nombre.value,
       tipo: e.target.tipo.value,
-      lugar: e.target.lugar.value,
+      lugar: destinos.find((destino) => destino.id === Number(e.target.idDestino.value))?.nombre || '',      
+      idDestino: Number(e.target.idDestino.value),
       telefono: e.target.telefono.value,
       correo: e.target.correo.value,
       descripcion: e.target.descripcion.value,
@@ -125,9 +140,14 @@ function ListaProveedores({ usuario }) {
             </select>
           </div>
 
-          <div style={{ marginBottom: '10px' }}>
-            <label>Lugar / Municipio (Ej. Santa Fe de Antioquia): </label><br/>
-            <input type="text" name="lugar" defaultValue={proveedorActual?.lugar || ''} required style={{ width: '100%', padding: '6px' }} />
+          <div>
+            <label>Destino: </label>
+            <select name="idDestino" defaultValue={proveedorActual?.idDestino || ''} required>
+              <option value="" disabled>Selecciona un destino</option>
+              {destinos.map((destino) => (
+                <option key={destino.id} value={destino.id}>{destino.nombre}</option>
+              ))}
+            </select>
           </div>
 
           <div style={{ marginBottom: '10px' }}>

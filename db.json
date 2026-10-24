@@ -43,6 +43,17 @@
       "contrasena": "1111",
       "rol": "admin",
       "id": "L8U4oj_"
+    },
+    {
+      "tipoDoc": "CC",
+      "numDoc": "1041234",
+      "nombres": "santiago",
+      "apellidos": "gomez",
+      "telefono": "3000123",
+      "correo": "santi@gmail.com",
+      "contrasena": "1111",
+      "rol": "viajero",
+      "id": "CkZeYhT"
     }
   ],
   "destinos": [
@@ -683,23 +694,28 @@
   ],
   "reservas": [
     {
-      "idViajero": "YN3W_1f",
-      "idPaquete": 2,
+      "idViajero": "VCkpBuE",
+      "idPaquete": 1,
       "fechaInicio": "2026-10-24",
-      "fechaFinal": "2026-10-25",
+      "fechaFinal": "2026-10-24",
       "cantidadPersonas": 1,
-      "subtotal": 2400000,
-      "iva": 456000,
-      "total": 2856000,
+      "subtotal": 950000,
+      "iva": 0,
+      "total": 950000,
       "detalleEdades": {
         "adultos": 1,
         "jovenes": 0,
         "ninos": 0,
         "bebes": 0
       },
-      "estado": "pendiente",
+      "estado": "pagada",
       "id": 1,
-      "numSeguimiento": 1001
+      "pago": {
+        "metodo": "tarjeta",
+        "referencia": "SIM-1792819064970",
+        "fecha": "2026-10-24T05:17:44.970Z",
+        "monto": 950000
+      }
     }
   ],
   "proveedores": [

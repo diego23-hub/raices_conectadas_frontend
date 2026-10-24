@@ -134,6 +134,7 @@ function ListaReservas({ usuario }) {
                                 <span>{reserva.cantidadPersonas} persona(s)</span> — {' '}
                                 <span>Total: ${reserva.total?.toLocaleString('es-CO')}</span> — {' '}
                                 <span>Estado: {reserva.estado}</span>
+                                {reserva.numSeguimiento && <span>N.º de seguimiento: RC-{reserva.numSeguimiento}</span>}
 
                                 {/* NUEVO: más información de la reserva */}
                                 <div>

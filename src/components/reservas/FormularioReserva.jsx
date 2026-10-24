@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { crearReserva } from '../../services/reservaService';
+import { actualizarReserva, crearReserva } from '../../services/reservaService';
 import { calcularFechaFinal, calcularDias } from './fecha'; // NUEVO
 
 
@@ -17,7 +17,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
 
   const esNacional = usuario?.tipoDoc === 'CC' || usuario?.tipoDoc === 'TI';
 
-  // NUEVO: el precio del paquete es para su duración base; se ajusta según los días elegidos
+  // el precio del paquete es para su duración base; se ajusta según los días elegidos
   const duracionBase = paquete?.duracionDias || 1;
   const diasElegidos = calcularDias(fechaInicio, fechaFinal);
 
@@ -91,6 +91,10 @@ function FormularioReserva({usuario, paquete, alReservar }) {
       setBebes(0);
       setJovenes(0);
 
+      const creada = await crearReserva(nuevaReserva);
+      const numSeguimiento = 1000 + creada.id;
+      await actualizarReserva(creada.id,{numSeguimiento});
+      setMensaje(`¡Reserva creada con éxito! N.º de seguimiento: RC-${numSeguimiento}`);
       if (alReservar) alReservar(); 
     } catch (error) {
       console.error(error);

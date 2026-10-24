@@ -918,6 +918,43 @@
         "fecha": "2026-10-22T04:41:28.109Z",
         "monto": 2700000
       }
+    },
+    {
+      "idViajero": "YN3W_1f",
+      "idPaquete": 2,
+      "fechaInicio": "2026-10-24",
+      "fechaFinal": "2026-10-26",
+      "cantidadPersonas": 1,
+      "subtotal": 1200000,
+      "iva": 228000,
+      "total": 1428000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pendiente",
+      "id": 19
+    },
+    {
+      "idViajero": "YN3W_1f",
+      "idPaquete": 2,
+      "fechaInicio": "2026-10-24",
+      "fechaFinal": "2026-10-26",
+      "cantidadPersonas": 1,
+      "subtotal": 1200000,
+      "iva": 228000,
+      "total": 1428000,
+      "detalleEdades": {
+        "adultos": 1,
+        "jovenes": 0,
+        "ninos": 0,
+        "bebes": 0
+      },
+      "estado": "pendiente",
+      "id": 20,
+      "numSeguimiento": 1020
     }
   ],
   "proveedores": [

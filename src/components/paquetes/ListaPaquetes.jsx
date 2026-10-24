@@ -103,6 +103,16 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
 
   const esAdmin = usuario?.rol === 'admin';
 
+  const [filtroPresupuesto, setFiltroprespuesto] = useState('todos');
+
+  const presupuestosFiltrados = paquetes.filter((paquete) => {
+    if (filtroPresupuesto === 'todos') return true;
+    if (filtroPresupuesto === 'bajo') return paquete.precio <= 500000;
+    if (filtroPresupuesto === 'medio') return paquete.precio > 500000 && paquete.precio <=900000;
+    if (filtroPresupuesto === 'alto') return 900000;
+    return true;
+  });
+
   return (
     <div className="lista-paquetes">
       <h2>Paquetes Turísticos</h2>
@@ -178,9 +188,18 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
         </form>
       )}
 
+      <div className='filtro-paquetes' style={{marginBottom: '20px', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
+        <strong>Presupuesto:</strong>
+                <button onClick={() => setFiltroprespuesto('todos')} style={{ background: filtroPresupuesto === 'todos' ? '#2c5e3b' : '#eee', color: filtroPresupuesto === 'todos' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Todos</button>
+                <button onClick={() => setFiltroprespuesto('bajo')} style={{ background: filtroPresupuesto === 'bajo' ? '#2c5e3b' : '#eee', color: filtroPresupuesto === 'bajo' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Hasta $500.000</button>
+                <button onClick={() => setFiltroprespuesto('medio')} style={{ background: filtroPresupuesto === 'medio' ? '#2c5e3b' : '#eee', color: filtroPresupuesto === 'medio' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>$500.000 - $900.000</button>
+                <button onClick={() => setFiltroprespuesto('alto')} style={{ background: filtroPresupuesto === 'alto' ? '#2c5e3b' : '#eee', color: filtroPresupuesto === 'alto' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>Más de $900.000</button>
+      </div>
+
       {/* LISTADO DE TARJETAS */}
       <div className="grid-paquetes">
-        {paquetes.map((paquete) => (
+        {presupuestosFiltrados.length > 0}
+        {presupuestosFiltrados.map((paquete) => (
           <div key={paquete.id} className="card-contenedor" style={{ border: '1px solid #eee', padding: '15px', marginBottom: '15px' }}>
             <CardPaquetes 
               paquete={paquete} 

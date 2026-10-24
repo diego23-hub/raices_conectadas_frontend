@@ -82,20 +82,17 @@ function FormularioReserva({usuario, paquete, alReservar }) {
     };
 
     try {
-      await crearReserva(nuevaReserva);
-      setMensaje('¡Reserva creada con éxito!');
+      const creada = await crearReserva(nuevaReserva);
+      const numSeguimiento = 1000 + creada.id;
+      await actualizarReserva(creada.id, { numSeguimiento });
+      setMensaje(`¡Reserva creada con éxito! N.º de seguimiento: RC-${numSeguimiento}`);
       setFechaInicio('');
       setFechaFinal('');
       setAdultos(1);
       setNinos(0);
       setBebes(0);
       setJovenes(0);
-
-      const creada = await crearReserva(nuevaReserva);
-      const numSeguimiento = 1000 + creada.id;
-      await actualizarReserva(creada.id,{numSeguimiento});
-      setMensaje(`¡Reserva creada con éxito! N.º de seguimiento: RC-${numSeguimiento}`);
-      if (alReservar) alReservar(); 
+      if (alReservar) alReservar();
     } catch (error) {
       console.error(error);
       setMensaje('Error creando la reserva');

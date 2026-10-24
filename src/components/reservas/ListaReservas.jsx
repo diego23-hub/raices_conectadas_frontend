@@ -52,8 +52,21 @@ function ListaReservas({ usuario }) {
     const guardarEdicion = async (e, reserva) => {
         e.preventDefault();
 
-        const personas = Number(e.target.cantidadPersonas.value);
+        const adultos = Number(e.target.adultos.value);
+        const jovenes = Number(e.target.jovenes.value);
+        const ninos = Number(e.target.ninos.value);
+        const bebes = Number(e.target.bebes.value);
+        const personas = adultos + jovenes + ninos + bebes;        
         const paquete = buscarPaquete(reserva.idPaquete);
+        const limiteMaximo = paquete?.limitePersonas || 10;
+        if (personas < 1) {
+            setMensaje('Debe haber al menos 1 persona viajando');
+            return;
+        }
+        if (personas > limiteMaximo) {
+            setMensaje(`La cantidad máxima permitida es de ${limiteMaximo} personas`);
+            return;
+        }
         const fechaInicio = e.target.fechaInicio.value; // NUEVO
         const fechaFinal = e.target.fechaFinal.value;   // NUEVO
 
@@ -70,14 +83,14 @@ function ListaReservas({ usuario }) {
         // CAMBIO: antes era solo el precio del paquete; ahora se ajusta por días
         const precio = Math.round((paquete?.precio || 0) / (paquete?.duracionDias || 1) * dias);
 
-        const subtotal = personas * precio;
+        const subtotal = (adultos + jovenes) * precio + ninos * (precio * 0.8) + bebes * (precio * 0.5);        
         const esNacional = usuario?.tipoDoc === 'CC' || usuario?.tipoDoc === 'TI';
         const iva = subtotal * (esNacional ? 0.19 : 0);
 
         try {
             await actualizarReserva(reserva.id, {
                 ...reserva,
-                cantidadPersonas: personas,
+                detalleEdades: { adultos, jovenes, ninos, bebes },
                 fechaInicio, // CAMBIO: ahora usa la variable de arriba
                 fechaFinal,  // CAMBIO: ahora usa la variable de arriba
                 subtotal,
@@ -108,9 +121,21 @@ function ListaReservas({ usuario }) {
                         {/* NUEVO: si se está editando, muestra el formulario en vez de la info */}
                         {idEditando === reserva.id ? (
                             <form onSubmit={(e) => guardarEdicion(e, reserva)}>
-                                <label>Personas: </label>
-                                <input type="number" name="cantidadPersonas" min="1"
-                                    defaultValue={reserva.cantidadPersonas} required />
+                                <label>Adultos: </label>
+                                <input type="number" name="adultos" min="0"
+                                    defaultValue={reserva.detalleEdades?.adultos ?? reserva.cantidadPersonas} required />
+
+                                <label> Jóvenes: </label>
+                                <input type="number" name="jovenes" min="0"
+                                    defaultValue={reserva.detalleEdades?.jovenes ?? 0} required />
+
+                                <label> Niños: </label>
+                                <input type="number" name="ninos" min="0"
+                                    defaultValue={reserva.detalleEdades?.ninos ?? 0} required />
+
+                                <label> Bebés: </label>
+                                <input type="number" name="bebes" min="0"
+                                    defaultValue={reserva.detalleEdades?.bebes ?? 0} required />
 
                                 <label> Inicio: </label>
                                 <input type="date" name="fechaInicio"

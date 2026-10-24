@@ -133,8 +133,15 @@ function App() {
                 <button className="btn-explorar" onClick={() => setVista('destinos')}>
                   Explorar Destinos
                 </button>
-                <button className="btn-paquetes" onClick={() => setVista('paquetes')}>
-                  Ver Paquetes Turísticos
+                <button className="btn-paquetes" onClick={() => {
+                  if (usuario) {
+                    setVista('paquetes');
+                  } else {
+                    alert('Debes iniciar sesión o registrarte para ver los paquetes turísticos.');
+                    setVista('login'); }
+                  }}
+                  >
+                  Ver Paquetes Turísticos  
                 </button>
               </div>
             </div>

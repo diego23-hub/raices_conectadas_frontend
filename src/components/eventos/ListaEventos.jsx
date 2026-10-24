@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import CalendarioEventos from '../eventos/CalendarioEventos';
 
-
 import { 
   obtenerEventos,
   crearEvento,
   actualizarEvento,
   eliminarEvento
 } from '../../services/eventoService';
+import { obtenerDestinos } from '../../services/destinoService';
 
 function ListaEventos({ usuario }) {
   const [eventos, setEventos] = useState([]);
@@ -16,6 +16,7 @@ function ListaEventos({ usuario }) {
   const [modoFormulario, setModoFormulario] = useState(false);
   const [eventoActual, setEventoActual] = useState(null);
   const [filtroTipo, setFiltroTipo] = useState('todos');
+  const [destinos, setDestinos] = useState([]);
 
   const consultarEventos = async () => {
     try {
@@ -27,8 +28,19 @@ function ListaEventos({ usuario }) {
     }
   };
 
+  const consultarDestinos = async () => {
+    try {
+      const datos = await obtenerDestinos();
+      setDestinos(datos);
+    } catch (error) {
+      console.error(error);
+      setMensaje('Error consultando los destinos');
+    }
+  };
+
   useEffect(() => {
     consultarEventos();
+    consultarDestinos();
   }, []);
 
   // ELIMINAR EVENTO
@@ -62,6 +74,7 @@ function ListaEventos({ usuario }) {
 
     const objetoEvento = {
       nombre: e.target.nombre.value,
+      idDestino: Number(e.target.idDestino.value),
       tipoEvento: e.target.tipoEvento.value,
       descripcion: e.target.descripcion.value,
       fechaInicio: e.target.fechaInicio.value,
@@ -115,6 +128,16 @@ function ListaEventos({ usuario }) {
           <div>
             <label>Nombre del evento: </label>
             <input type="text" name="nombre" defaultValue={eventoActual?.nombre || ''} required />
+          </div>
+
+          <div>
+            <label>Destino: </label>
+            <select name="idDestino" defaultValue={eventoActual?.idDestino || ''} required>
+              <option value="" disabled>Selecciona un destino</option>
+              {destinos.map((destino) => (
+                <option key={destino.id} value={destino.id}>{destino.nombre}</option>
+              ))}
+            </select>
           </div>
 
           <div>

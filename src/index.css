@@ -644,14 +644,24 @@ form button[type='submit'] {
 }
 
 /* Destinos */
-.grid-destinos > :nth-child(1)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/1a/9a/2d/77/the-best-view-in-medellin.jpg"); }
-.grid-destinos > :nth-child(2)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/05/57/7b/5a/santa-fe-de-antioquia.jpg"); }
-.grid-destinos > :nth-child(3)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/01/18/67/84/boyaca.jpg"); }
-.grid-destinos > :nth-child(4)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/c6/18/59/capilla-de-santa-barbara.jpg"); }
-.grid-destinos > :nth-child(5)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/99/1a/28/getlstd-property-photo.jpg"); }
-.grid-destinos > :nth-child(6)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/11/4e/3d/c3/jerico.jpg"); }
-/*.grid-destinos > :nth-child(7)  { --foto: url(/img/destinos/7.jpg); }
-.grid-destinos > :nth-child(8)  { --foto: url(/img/destinos/8.jpg); } */
+.grid-destinos > :nth-child(1)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/05/17/4f/0c/aguadas.jpg"); }
+.grid-destinos > :nth-child(2)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/c6/18/59/capilla-de-santa-barbara.jpg"); }
+.grid-destinos > :nth-child(3)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/1b/7f/55/e1/caption.jpg"); }
+.grid-destinos > :nth-child(4)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/09/1f/73/97/hotel-meson-espana.jpg"); }
+.grid-destinos > :nth-child(5)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/2b/26/7b/96/caption.jpg"); }
+.grid-destinos > :nth-child(6)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/0e/89/84/f7/pueblo-patrimonio.jpg"); }
+.grid-destinos > :nth-child(7)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/67/67/ba/pueblo.jpg"); }
+.grid-destinos > :nth-child(8)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/11/4e/3d/c3/jerico.jpg"); } 
+.grid-destinos > :nth-child(9)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/0e/89/22/9e/pueblo-patrimonio.jpg"); } 
+.grid-destinos > :nth-child(10)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/2b/47/8d/33/caption.jpg"); } 
+.grid-destinos > :nth-child(11)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/2b/68/f4/b9/vive-la-experiencia-en.jpg"); } 
+.grid-destinos > :nth-child(12)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/11/b5/59/28/cafe-entre-bellas-montanas.jpg"); } 
+.grid-destinos > :nth-child(13)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/2b/d3/27/e4/caption.jpg"); } 
+.grid-destinos > :nth-child(14)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/99/1a/28/getlstd-property-photo.jpg"); } 
+.grid-destinos > :nth-child(15)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/c3/a2/24/getlstd-property-photo.jpg"); } 
+.grid-destinos > :nth-child(16)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/05/57/7b/5a/santa-fe-de-antioquia.jpg"); } 
+.grid-destinos > :nth-child(17)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/27/a5/d0/26/caption.jpg"); } 
+.grid-destinos > :nth-child(18)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/01/18/67/84/boyaca.jpg"); } 
 
 .grid-paquetes > :nth-child(1)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/05/17/4f/0c/aguadas.jpg"); }
 .grid-paquetes > :nth-child(2)  { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/c6/18/59/capilla-de-santa-barbara.jpg"); }
@@ -670,9 +680,7 @@ form button[type='submit'] {
 .grid-paquetes > :nth-child(15) { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/2b/26/7b/96/caption.jpg"); }
 .grid-paquetes > :nth-child(16) { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/07/c3/a2/24/getlstd-property-photo.jpg"); }
 .grid-paquetes > :nth-child(17) { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/2b/68/f4/b9/vive-la-experiencia-en.jpg"); }
-/*.grid-paquetes > :nth-child(18) { --foto: url(/img/paquetes/18.jpg); }
-.grid-paquetes > :nth-child(19) { --foto: url(/img/paquetes/19.jpg); }
-.grid-paquetes > :nth-child(20) { --foto: url(/img/paquetes/20.jpg); }*/
+.grid-paquetes > :nth-child(18) { --foto: url("https://media-cdn.tripadvisor.com/media/photo-s/01/18/67/84/boyaca.jpg"); }
 
 /* Contenedor principal de la tarjeta para usar Flexbox y mantener orden */
 .card-paquetes {

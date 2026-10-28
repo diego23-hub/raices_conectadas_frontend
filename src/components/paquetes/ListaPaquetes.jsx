@@ -109,7 +109,7 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
     if (filtroPresupuesto === 'todos') return true;
     if (filtroPresupuesto === 'bajo') return paquete.precio <= 500000;
     if (filtroPresupuesto === 'medio') return paquete.precio > 500000 && paquete.precio <=900000;
-    if (filtroPresupuesto === 'alto') return 900000;
+    if (filtroPresupuesto === 'alto') return paquete.precio > 900000;
     return true;
   });
 

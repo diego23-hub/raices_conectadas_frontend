@@ -14,17 +14,8 @@ function MapaDestino({ destino, proveedoresProps }) {
         // Si no te pasan los proveedores por props, los consulta del servicio
         const listaProveedores = proveedoresProps || (await obtenerProveedores());
 
-        // Función auxiliar para quitar acentos y minúsculas en comparaciones
-        const normalizar = (texto) =>
-          texto?.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() || "";
-
-        const nombreDestinoLimpio = normalizar(destino.nombre);
-
-        // Filtra los proveedores cuya propiedad "lugar" contenga el nombre del municipio
-        const filtrados = listaProveedores.filter((prov) =>
-          normalizar(prov.lugar).includes(nombreDestinoLimpio)
-        );
-
+        const filtrados = listaProveedores.filter((prov) => prov.idDestino === destino.id);
+        
         setProveedoresCercanos(filtrados);
       } catch (error) {
         console.error("Error al cargar proveedores del mapa:", error);

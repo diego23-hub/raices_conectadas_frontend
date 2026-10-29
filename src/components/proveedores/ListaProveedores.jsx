@@ -149,7 +149,7 @@ function ListaProveedores({ usuario }) {
               <option value="Hotel">Hotel / Hospedaje</option>
               <option value="Transporte">Transporte</option>
               <option value="Guía">Guía Turístico</option>
-              <option value="Restaurante">Restaurante</option>
+              {/*<option value="Restaurante">Restaurante</option>*/}
             </select>
           </div>
 

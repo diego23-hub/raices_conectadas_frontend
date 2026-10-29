@@ -90,6 +90,7 @@ function ListaReservas({ usuario }) {
         try {
             await actualizarReserva(reserva.id, {
                 ...reserva,
+                cantidadPersonas: personas,
                 detalleEdades: { adultos, jovenes, ninos, bebes },
                 fechaInicio, // CAMBIO: ahora usa la variable de arriba
                 fechaFinal,  // CAMBIO: ahora usa la variable de arriba

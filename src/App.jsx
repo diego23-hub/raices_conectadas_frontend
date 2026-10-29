@@ -51,6 +51,13 @@ function App() {
   const [usuario, setUsuario] = useState(leerSesion);
   const [paqueteElegido, setPaqueteElegido] = useState(null);
   const [destinoElegido, setDestinoElegido] = useState(null);
+
+  const [menuAbierto,setMenuAbierto] = useState(false);
+
+  const cambiarVista = (nuevaVista) => {
+    setVista(nuevaVista);
+    setMenuAbierto(false); // Cierra el menú al cambiar de vista en móvil
+  };
   
   const elegirDestinoDetalle = (destino) => {
     setDestinoElegido(destino);
@@ -71,6 +78,7 @@ function App() {
     setDestinoElegido(null);
     localStorage.removeItem('usuario');
     setVista('inicio');
+    setMenuAbierto(false);
   };
 
   const elegirPaquete = (paquete) => {
@@ -90,10 +98,15 @@ function App() {
       <section id="center">
         <nav className="navbar">
           <div className="logo">Raíces conectadas</div>
-          <ul className="nav-links">
+        {/* NUEVO: Botón de Hamburguesa para Móviles */}
+          <button className="hamburger" onClick={() => setMenuAbierto(!menuAbierto)} aria-label="Abrir menú">
+            {menuAbierto ? '✕' : '☰'}
+          </button>
+
+          <ul className={`nav-links ${menuAbierto ? 'activo' : ''}`}>
             {opcionesVisibles.map((m) => (
               <li key={m.vista}>
-                <a href={`#${m.vista}`} onClick={() => setVista(m.vista)}>
+                <a href={`#${m.vista}`} onClick={() => cambiarVista(m.vista)}>
                   {m.etiqueta}
                 </a>
               </li>

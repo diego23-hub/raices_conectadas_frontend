@@ -13,6 +13,9 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
   const [paquetes, setPaquetes] = useState([]);
   const [mensaje, setMensaje] = useState('');
 
+  const [busquedaTexto, setBusquedaTexto] = useState('');
+  const [filtroPresupuesto, setFiltroprespuesto] = useState('todos');
+
   // Estados para controlar el formulario de administración (Crear / Editar)
   const [modoFormulario, setModoFormulario] = useState(false);
   const [paqueteActual, setPaqueteActual] = useState(null);
@@ -103,14 +106,21 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
 
   const esAdmin = usuario?.rol === 'admin';
 
-  const [filtroPresupuesto, setFiltroprespuesto] = useState('todos');
 
   const presupuestosFiltrados = paquetes.filter((paquete) => {
-    if (filtroPresupuesto === 'todos') return true;
-    if (filtroPresupuesto === 'bajo') return paquete.precio <= 500000;
-    if (filtroPresupuesto === 'medio') return paquete.precio > 500000 && paquete.precio <=900000;
-    if (filtroPresupuesto === 'alto') return paquete.precio > 900000;
-    return true;
+
+    let coincidePresupuesto = true;
+    if (filtroPresupuesto === 'bajo') {coincidePresupuesto = paquete.precio <= 500000;}
+    else if (filtroPresupuesto === 'medio')  {coincidePresupuesto =paquete.precio > 500000 && paquete.precio <=900000;}
+    else if (filtroPresupuesto === 'alto') {coincidePresupuesto = paquete.precio > 900000;}
+
+
+    const textoLower = busquedaTexto.toLowerCase();
+    const coincideTexto = 
+      paquete.nombre?.toLowerCase().includes(textoLower) ||
+      paquete.descripcion?.toLowerCase().includes(textoLower);
+
+    return coincidePresupuesto && coincideTexto;
   });
 
   return (
@@ -187,6 +197,18 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
           </button>
         </form>
       )}
+
+      <div className="barra-busqueda" style={{ marginBottom: '15px' }}>
+                <input 
+                    type="text" 
+                    placeholder="Buscar paquete por nombre o descripción..." 
+                    value={busquedaTexto}
+                    onChange={(e) => setBusquedaTexto(e.target.value)}
+                    style={{ width: '100%', padding: '10px', fontSize: '15px', borderRadius: '4px', border: '1px solid #ccc', boxSizing: 'border-box' }}
+                />
+      </div>
+
+
 
       <div className='filtro-paquetes' style={{marginBottom: '20px', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
         <strong>Presupuesto:</strong>

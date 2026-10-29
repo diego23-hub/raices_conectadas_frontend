@@ -17,6 +17,8 @@ function ListaProveedores({ usuario }) {
   // Estado para filtrar por tipo (todos, hotel, transporte, guia, restaurante)
   const [filtroTipo, setFiltroTipo] = useState('todos');
 
+  const [busquedaTexto, setBusquedaTexto] = useState('');
+
   // Estados para el formulario de administración
   const [modoFormulario, setModoFormulario] = useState(false);
   const [proveedorActual, setProveedorActual] = useState(null);
@@ -99,13 +101,24 @@ function ListaProveedores({ usuario }) {
     }
   };
 
+
   const esAdmin = usuario?.rol === 'admin';
 
-  // Filtrar proveedores según la categoría seleccionada
-  const proveedoresFiltrados = filtroTipo === 'todos' 
-    ? proveedores 
-    : proveedores.filter(p => p.tipo.toLowerCase() === filtroTipo.toLowerCase());
 
+  const proveedoresFiltrados = proveedores.filter((proveedor) =>{
+    
+  // Filtrar proveedores según la categoría seleccionada
+    const coincideTipo = filtroTipo === 'todos' || proveedor.tipo?.toLowerCase() === filtroTipo.toLowerCase();
+
+    const textoLower = busquedaTexto.toLowerCase();
+    const coincideTexto = 
+      proveedor.nombre?.toLowerCase().includes(textoLower) ||
+      proveedor.lugar?.toLowerCase().includes(textoLower) ||
+      proveedor.descripcion?.toLowerCase().includes(textoLower);
+
+    return coincideTipo && coincideTexto;
+  });
+  
   return (
     <div className="lista-proveedores" style={{ padding: '20px' }}>
       <h2>Aliados y Proveedores Turísticos</h2>
@@ -171,6 +184,16 @@ function ListaProveedores({ usuario }) {
           </button>
         </form>
       )}
+
+      <div className="barra-busqueda" style={{ marginBottom: '15px' }}>
+        <input 
+          type="text" 
+          placeholder=" Buscar proveedor por nombre, lugar o descripción..." 
+          value={busquedaTexto}
+          onChange={(e) => setBusquedaTexto(e.target.value)}
+          style={{ width: '100%', padding: '10px', fontSize: '15px', borderRadius: '4px', border: '1px solid #ccc', boxSizing: 'border-box' }}
+        />
+      </div>
 
     
       <div className="filtros-proveedores" style={{ marginBottom: '20px', display: 'flex', gap: '10px' }}>

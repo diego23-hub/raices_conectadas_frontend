@@ -12,6 +12,8 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
     const [destinoActual, setDestinoActual] = useState(null); 
     const [filtroTipo, setFiltroTipo] = useState('todos');
 
+    const [busquedaTexto, setBusquedaTexto] = useState('');
+
     const consultarDestino = async () => {
         try {
             const datos = await obtenerDestinos();
@@ -76,8 +78,16 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
     // 1. AQUÍ DEBE IR LA LÓGICA DE FILTRADO (Antes del return)
     // =========================================================================
     const destinosFiltrados = destinos.filter((destino) => {
-        if (filtroTipo === 'todos') return true;
-        return destino.tipo?.toLowerCase().includes(filtroTipo.toLowerCase());
+        // Validación del filtro por tipo de botón
+        const coincideTipo = filtroTipo === 'todos' || destino.tipo?.toLowerCase().includes(filtroTipo.toLowerCase());
+        
+        // Validación del buscador de texto (busca coincidencias en nombre o descripción)
+        const textoBusquedaLower = busquedaTexto.toLowerCase();
+        const coincideTexto = 
+            destino.nombre?.toLowerCase().includes(textoBusquedaLower) ||
+            destino.descripcion?.toLowerCase().includes(textoBusquedaLower);
+
+        return coincideTipo && coincideTexto;
     });
 
     return (
@@ -111,6 +121,16 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
                     <button type="button" onClick={() => setModoFormulario(false)} style={{ marginLeft: '10px' }}>Cancelar</button>
                 </form>
             )}
+
+            <div className="barra-busqueda" style={{ marginBottom: '15px' }}>
+                <input 
+                    type="text" 
+                    placeholder=" Buscar destino por nombre o descripción..." 
+                    value={busquedaTexto}
+                    onChange={(e) => setBusquedaTexto(e.target.value)}
+                    style={{ width: '100%', padding: '10px', fontSize: '15px', borderRadius: '4px', border: '1px solid #ccc', boxSizing: 'border-box' }}
+                />
+            </div>
 
             <div className="filtros-destinos" style={{ marginBottom: '20px', display: 'flex', gap: '10px', flexWrap: 'wrap', alignItems: 'center' }}>
                 <strong>Filtrar por:</strong>

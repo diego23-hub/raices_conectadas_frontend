@@ -65,6 +65,28 @@
       "contrasena": "Sti03pul12",
       "rol": "viajero",
       "id": "mVnapSn"
+    },
+    {
+      "tipoDoc": "CC",
+      "numDoc": "1234567890",
+      "nombres": "Sebastian",
+      "apellidos": "Moreno",
+      "telefono": "3214567890",
+      "correo": "sebas@correo.com",
+      "contrasena": "1234",
+      "rol": "admin",
+      "id": "hqh6Vo8"
+    },
+    {
+      "tipoDoc": "CC",
+      "numDoc": "1023456789",
+      "nombres": "Leandro",
+      "apellidos": "Restrepo",
+      "telefono": "3004567890",
+      "correo": "leandro@correo.com",
+      "contrasena": "leandro123",
+      "rol": "viajero",
+      "id": "Lw2odlu"
     }
   ],
   "destinos": [

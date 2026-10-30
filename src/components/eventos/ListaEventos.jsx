@@ -172,7 +172,7 @@ function ListaEventos({ usuario }) {
   
   <button 
     onClick={() => setFiltroTipo('todos')} 
-    style={{ background: filtroTipo === 'Todos' ? '#333' : '#eee', color: filtroTipo === 'Todos' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    style={{ background: filtroTipo === 'todos' ? '#333' : '#eee', color: filtroTipo === 'todos' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
     Todos
   </button>
 
@@ -228,6 +228,12 @@ function ListaEventos({ usuario }) {
     onClick={() => setFiltroTipo('Recreativo')} 
     style={{ background: filtroTipo === 'Recreativo' ? '#c97b43' : '#eee', color: filtroTipo === 'Recreativo' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
     Recreativo
+</button>
+
+  <button 
+    onClick={() => setFiltroTipo('Tradicional')} 
+    style={{ background: filtroTipo === 'Tradicional' ? '#8e5a2b' : '#eee', color: filtroTipo === 'Tradicional' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Tradicional
 </button>
 </div>
 

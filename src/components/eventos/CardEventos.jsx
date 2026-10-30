@@ -1,6 +1,6 @@
-
-function CardEvento({ evento, usuario, alEditar, alEliminar }) {
+function CardEvento({ evento, usuario, alEditar, alEliminar, nombreDestino }) {
   const esAdmin = usuario?.rol === 'admin';
+
   return (
     <div className="card-evento">
       <h3>{evento.nombre}</h3>
@@ -9,6 +9,7 @@ function CardEvento({ evento, usuario, alEditar, alEliminar }) {
       <p className="fechas-evento">
         {evento.fechaInicio} - {evento.fechaFin}
       </p>
+      <p>Destino: {nombreDestino}</p>
 
     {esAdmin && ( 
       <div className="acciones-admin" style={{marginTop: '10px'}}>

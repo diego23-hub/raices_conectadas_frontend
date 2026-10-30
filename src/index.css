@@ -994,3 +994,72 @@ form button[type='submit'] {
   .calendario-celda { min-height: 70px; }
   .chip-evento { font-size: .6rem; }
 }
+/* ---------- Menú hamburguesa (solo móvil) ---------- */
+.hamburger {
+  display: none; /* en PC no se ve */
+}
+
+/* Evita que los filtros ensanchen la página en móvil */
+.filtros-proveedores {
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: row;          /* logo a la izquierda, botón a la derecha */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 0.6rem 1rem;
+  }
+
+  /* logo más pequeño para que quepa junto al botón */
+  .logo { font-size: 1.2rem; }
+  .logo::before { width: 56px; height: 56px; }
+
+  .hamburger {
+    display: block;
+    background: transparent;
+    border: 2px solid var(--raices-dorado);
+    color: var(--raices-dorado);
+    font-size: 1.6rem;
+    line-height: 1;
+    padding: 0.25rem 0.65rem;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  /* menú cerrado: oculto */
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 0.5rem 0 0.25rem;
+  }
+
+  /* menú abierto: columna, con scroll si es muy largo */
+  .nav-links.activo {
+    display: flex;
+    max-height: calc(100vh - 90px);
+    overflow-y: auto;
+  }
+
+  .nav-links li {
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0.75rem 0;
+  }
+
+  .usuario-activo {
+    display: inline-block;
+    margin: 0.6rem 0;
+  }
+}

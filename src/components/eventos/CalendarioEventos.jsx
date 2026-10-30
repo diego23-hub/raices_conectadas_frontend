@@ -13,6 +13,7 @@ const COLORES = {
   religioso: '#6b5b95',
   gastronomico: '#c0392b',
   artesanal: '#d4a24c',
+  tradicional: '#8e5a2b',
 };
 
 const normalizar = (t) =>
@@ -24,7 +25,7 @@ const colorDe = (tipo) => COLORES[normalizar(tipo)] || '#6c757d';
 const aTexto = (anio, mes, dia) =>
   `${anio}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
 
-function CalendarioEventos({ eventos, usuario, alEditar, alEliminar }) {
+function CalendarioEventos({ eventos, destinos = [], usuario, alEditar, alEliminar }) {
   const hoy = new Date();
   const [anio, setAnio] = useState(hoy.getFullYear());
   const [mes, setMes] = useState(hoy.getMonth());
@@ -120,6 +121,7 @@ function CalendarioEventos({ eventos, usuario, alEditar, alEliminar }) {
                   usuario={usuario}
                   alEditar={alEditar}
                   alEliminar={alEliminar}
+                  nombreDestino={destinos.find((d) => d.id === ev.idDestino)?.nombre}
                 />
               ))}
             </div>

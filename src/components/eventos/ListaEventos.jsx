@@ -142,7 +142,19 @@ function ListaEventos({ usuario }) {
 
           <div>
             <label>Tipo de evento: </label>
-            <input type="text" name="tipoEvento" defaultValue={eventoActual?.tipoEvento || 'CULTURAL'} required />
+            <select name="tipoEvento" defaultValue={eventoActual?.tipoEvento || ''} required>
+              <option value="" disabled>Selecciona un tipo</option>
+              <option value="Cultural">Cultural</option>
+              <option value="Histórico">Histórico</option>
+              <option value="Gastronómico">Gastronómico</option>
+              <option value="Folclórico">Folclórico</option>
+              <option value="Artesanal">Artesanal</option>
+              <option value="Religioso">Religioso</option>
+              <option value="Ambiental">Ambiental</option>
+              <option value="Ecoturístico">Ecoturístico</option>
+              <option value="Recreativo">Recreativo</option>
+              <option value="Tradicional">Tradicional</option>
+            </select>          
           </div>
 
           <div>
@@ -240,6 +252,7 @@ function ListaEventos({ usuario }) {
       {/* NUEVO: el calendario reemplaza la grilla de tarjetas */}
       <CalendarioEventos
         eventos={eventosFiltrados}
+        destinos={destinos}
         usuario={usuario}
         alEditar={abrirEditar}
         alEliminar={manejarEliminar}

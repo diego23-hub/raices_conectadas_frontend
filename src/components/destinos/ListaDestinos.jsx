@@ -3,7 +3,6 @@ import CardDestino from './CardDestino';
 import { obtenerDestinos, eliminarDestino, crearDestino, actualizarDestino } from '../../services/destinoService';
 
 function ListaDestino({ usuario, alSeleccionarDestino }) {
-  console.log("Objeto usuario recibido:", usuario); 
     const [destinos, setDestinos] = useState([]);
     const [mensaje, setMensaje] = useState("");
     
@@ -111,7 +110,12 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
                     </div>
                     <div>
                         <label>Tipo: </label>
-                        <input type="text" name="tipo" defaultValue={destinoActual?.tipo || 'PATRIMONIAL'} required />
+                        <select name="tipo" defaultValue={destinoActual?.tipo || ''} required>
+                            <option value="" disabled>Selecciona una clasificación</option>
+                            <option value="Arquitectónico">Arquitectónico</option>
+                            <option value="Inmaterial">Inmaterial</option>
+                            <option value="Gastronómico">Gastronómico</option>
+                        </select>
                     </div>
                     <div>
                         <label>Descripción: </label>

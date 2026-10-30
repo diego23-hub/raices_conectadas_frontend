@@ -154,6 +154,7 @@ function ListaEventos({ usuario }) {
               <option value="Ecoturístico">Ecoturístico</option>
               <option value="Recreativo">Recreativo</option>
               <option value="Tradicional">Tradicional</option>
+              <option value="Deportivo">Deportivo</option>
             </select>          
           </div>
 
@@ -246,6 +247,12 @@ function ListaEventos({ usuario }) {
     onClick={() => setFiltroTipo('Tradicional')} 
     style={{ background: filtroTipo === 'Tradicional' ? '#8e5a2b' : '#eee', color: filtroTipo === 'Tradicional' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
     Tradicional
+</button>
+
+  <button 
+    onClick={() => setFiltroTipo('deportivo')} 
+    style={{ background: filtroTipo === 'deportivo' ? '#2c5e3b' : '#eee', color: filtroTipo === 'deportivo' ? '#fff' : '#333', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
+    Deportivo
 </button>
 </div>
 

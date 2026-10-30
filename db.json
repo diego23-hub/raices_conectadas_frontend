@@ -620,7 +620,7 @@
       "id": 23,
       "idDestino": 5,
       "nombre": "Festival Turístico y Cultural del Camino Real - Guaduas",
-      "tipoEvento": "Historico",
+      "tipoEvento": "Histórico",
       "descripcion": "Caminatas históricas por la Ruta Mutis, muestras gastronómicas de la época colonial y ferias de artesanías en teja de barro.",
       "fechaInicio": "2026-07-18",
       "fechaFin": "2026-07-20"
@@ -741,6 +741,15 @@
       "descripcion": "Espectáculo pirotécnico y musical de fin de año donde las mejores polvorías del país iluminan el cielo de la gran plaza de piedra.",
       "fechaInicio": "2026-12-07",
       "fechaFin": "2026-12-09"
+    },
+    {
+      "id": 37,
+      "idDestino": 7,
+      "nombre": "Cabalgata y Torneo Deportivo - Jardín",
+      "tipoEvento": "Deportivo",
+      "descripcion": "Jornada de cabalgata, ciclismo de montaña y competencias deportivas al aire libre por los caminos del suroeste antioqueño.",
+      "fechaInicio": "2026-11-20",
+      "fechaFin": "2026-11-22"
     }
   ],
   "reservas": [

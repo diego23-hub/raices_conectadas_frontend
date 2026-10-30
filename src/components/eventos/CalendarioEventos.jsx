@@ -14,6 +14,8 @@ const COLORES = {
   gastronomico: '#c0392b',
   artesanal: '#d4a24c',
   tradicional: '#8e5a2b',
+  folclorico: '#e67e22',
+  ecoturistico: '#27ae60',
 };
 
 const normalizar = (t) =>

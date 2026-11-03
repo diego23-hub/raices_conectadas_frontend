@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { buscarViajeroPorCorreo } from '../../services/viajeroService';
+import { iniciarSesion as loginApi } from '../../services/viajeroService';
 
 const credencialesIniciales = {
   correo: '',
@@ -18,32 +18,17 @@ function FormularioLogin({ alIniciarSesion }) {
   };
 
   const iniciarSesion = async (evento) => {
-    evento.preventDefault();
+  evento.preventDefault();
 
-    try {
-      const viajero = await buscarViajeroPorCorreo(credenciales.correo);
-
-      if (!viajero) {
-        setMensaje('El correo no está registrado');
-        return;
-      }
-
-      if (viajero.contrasena !== credenciales.contrasena) {
-        setMensaje('Contraseña incorrecta');
-        return;
-      }
-
-      setMensaje(`Bienvenido, ${viajero.nombres}`);
-
-      const usuario = { ...viajero };
-      delete usuario.contrasena;
-
-      if (alIniciarSesion) alIniciarSesion(viajero);
-    } catch (error) {
-      console.error(error);
-      setMensaje('Error iniciando sesión');
-    }
-  };
+  try {
+    const usuario = await loginApi(credenciales.correo, credenciales.contrasena);
+    setMensaje(`Bienvenido, ${usuario.nombres}`);
+    if (alIniciarSesion) alIniciarSesion(usuario);
+  } catch (error) {
+    console.error(error);
+    setMensaje(error.message);
+  }
+};
 
   return (
     <form onSubmit={iniciarSesion}>

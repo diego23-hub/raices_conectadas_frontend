@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { crearViajero, buscarViajeroPorCorreo } from '../../services/viajeroService';
+import { crearViajero} from '../../services/viajeroService';
 
 const viajeroInicial = {
   tipoDoc:'',

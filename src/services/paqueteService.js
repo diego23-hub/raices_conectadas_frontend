@@ -1,35 +1,21 @@
-const URL_API = 'http://localhost:3001/paquetes';
+import { peticion } from './api';
 
-export const obtenerPaquetes = async () => {
-  const respuesta = await fetch(URL_API);
-  if (!respuesta.ok) throw new Error('Error consultando paquetes');
-  return await respuesta.json();
-};
+export const obtenerPaquetes = () => 
+  peticion('/paquete');
 
-export const crearPaquete = async (paquete) => {
-  const respuesta = await fetch(URL_API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(paquete)
-  });
-  if (!respuesta.ok) throw new Error('Error creando el paquete');
-  return await respuesta.json();
-};
+export const crearPaquete = (paquete) => 
+  peticion('/paquete', 
+    { metodo: 'POST', 
+      cuerpo: paquete 
+    });
 
-export const actualizarPaquete = async (id, paquete) => {
-  const respuesta = await fetch(`${URL_API}/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(paquete)
-  });
-  if (!respuesta.ok) throw new Error('Error actualizando el paquete');
-  return await respuesta.json();
-};
+export const actualizarPaquete = (id, paquete) => 
+  peticion(`/paquete/${id}`, 
+    { metodo: 'PUT', 
+      cuerpo: paquete 
+    });
 
 export const eliminarPaquete = async (id) => {
-  const respuesta = await fetch(`${URL_API}/${id}`, {
-    method: 'DELETE'
-  });
-  if (!respuesta.ok) throw new Error('Error eliminando el paquete');
+  await peticion(`/paquete/${id}`, { metodo: 'DELETE' });
   return true;
 };

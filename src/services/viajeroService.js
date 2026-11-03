@@ -1,5 +1,5 @@
 // esta es la capa que habla directamente con el back
-const URL_API = 'http://localhost:3001/viajeros';
+const URL_API = 'http://localhost:3000';
 // dicha url apunta al json server
 
 // GET, trae a todos los viajeros

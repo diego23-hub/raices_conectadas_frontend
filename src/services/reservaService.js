@@ -1,58 +1,24 @@
-const URL_API = 'http://localhost:3001/reservas';
+import { peticion } from './api';
 
-export const obtenerReserva = async () => {
-    const respuesta = await fetch (URL_API);
+export const obtenerReserva = () => 
+  peticion('/reserva');
 
-    if (!respuesta.ok) {
-        throw new Error ('Error consultando reservas')
-    }
-    return await respuesta.json();
-};
+export const obtenerReservaPorCliente = () => 
+    peticion('/reserva/mis');
 
-export const obtenerReservaPorCliente = async (idViajero) => {
-    const respuesta = await fetch (`${URL_API}?idViajero=${idViajero}`);
-
-    if (!respuesta.ok){
-        throw new Error ('Error consultando las reservas del cliente');
-    }
-
-    return await respuesta.json ();
-};
-
-export const crearReserva = async (reserva) => {
-    const respuesta = await fetch (URL_API, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(reserva)
+export const crearReserva = (reserva) => 
+  peticion('/reserva', 
+    { metodo: 'POST', 
+      cuerpo: reserva 
     });
 
-    if (!respuesta.ok) {
-        throw new Error ('Error creando la reserva');
-    }
-
-    return await respuesta.json();
-};
+export const actualizarReserva = (id, reserva) => 
+  peticion(`/reserva/${id}`, 
+    { metodo: 'PUT', 
+      cuerpo: reserva 
+    });
 
 export const eliminarReserva = async (id) => {
-    const respuesta = await fetch (`${URL_API}/${id}`,{
-        method: 'DELETE'
-    });
-    if (!respuesta.ok){
-        throw new Error ('Error cancelando la reserva')
-    }
-    return true;
+  await peticion(`/reserva/${id}`, { metodo: 'DELETE' });
+  return true;
 };
-export const actualizarReserva = async (id, cambios) => {
-    const respuesta = await fetch(`${URL_API}/${id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(cambios)
-    });
-
-    if (!respuesta.ok) {
-        throw new Error('Error actualizando la reserva');
-    }
-
-    return await respuesta.json();
-}
-

@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { actualizarReserva, crearReserva } from '../../services/reservaService';
+import { crearReserva } from '../../services/reservaService';
 import { calcularFechaFinal, calcularDias } from './fecha'; // NUEVO
 
 
@@ -83,9 +83,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
 
     try {
       const creada = await crearReserva(nuevaReserva);
-      const numSeguimiento = 1000 + creada.id;
-      await actualizarReserva(creada.id, { numSeguimiento });
-      setMensaje(`¡Reserva creada con éxito! N.º de seguimiento: RC-${numSeguimiento}`);
+      setMensaje(`¡Reserva creada con éxito! N.º de seguimiento: RC-${creada.numSeguimiento}`);
       setFechaInicio('');
       setFechaFinal('');
       setAdultos(1);

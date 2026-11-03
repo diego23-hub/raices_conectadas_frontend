@@ -1,35 +1,21 @@
-const URL_API = 'http://localhost:3001/destinos';
+import { peticion } from './api';
 
-export const obtenerDestinos = async () => {
-  const respuesta = await fetch(URL_API);
-  if (!respuesta.ok) throw new Error('Error consultando destinos');
-  return await respuesta.json();
-};
+export const obtenerDestinos = () => 
+  peticion('/destino');
 
-export const crearDestino = async (destino) => {
-  const respuesta = await fetch(URL_API, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(destino)
-  });
-  if (!respuesta.ok) throw new Error('Error creando el destino');
-  return await respuesta.json();
-};
+export const crearDestino = (destino) => 
+  peticion('/destino', 
+    { metodo: 'POST', 
+      cuerpo: destino 
+    });
 
-export const actualizarDestino = async (id, destino) => {
-  const respuesta = await fetch(`${URL_API}/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(destino)
-  });
-  if (!respuesta.ok) throw new Error('Error actualizando el destino');
-  return await respuesta.json();
-};
+export const actualizarDestino = (id, destino) => 
+  peticion(`/destino/${id}`, 
+    { metodo: 'PUT', 
+      cuerpo: destino 
+    });
 
 export const eliminarDestino = async (id) => {
-  const respuesta = await fetch(`${URL_API}/${id}`, {
-    method: 'DELETE'
-  });
-  if (!respuesta.ok) throw new Error('Error eliminando el destino');
+  await peticion(`/destino/${id}`, { metodo: 'DELETE' });
   return true;
 };

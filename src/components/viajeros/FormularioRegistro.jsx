@@ -9,7 +9,6 @@ const viajeroInicial = {
   telefono:'',
   correo: '',
   contrasena: '',
-  rol:'viajero'
 };
 
 function FormularioRegistro({ alRegistrar }) {
@@ -53,25 +52,21 @@ function FormularioRegistro({ alRegistrar }) {
     evento.preventDefault();
 
     try {
-      // 1. Verificamos si el correo ya está registrado
-      const existente = await buscarViajeroPorCorreo(viajero.correo);
 
-      if (existente) {
-        setMensaje('Ese correo ya está registrado');
-        return; // corta la ejecución, no crea el viajero
+        const respuesta = await crearViajero(viajero);
+        setMensaje('¡Registro exitoso!');
+        
+        if (alRegistrar) {
+          alRegistrar(respuesta);
+        }
+        
+        setViajero(viajeroInicial);
+      } catch (error) {
+
+        const errorMsg = error.response?.data?.mensaje || 'Error registrando el viajero';
+        setMensaje(errorMsg);
       }
-
-      // 2. Si no existe, lo creamos
-      await crearViajero(viajero);
-      setMensaje('Viajero registrado correctamente');
-      setViajero(viajeroInicial);
-
-      if (alRegistrar) alRegistrar();
-    } catch (error) {
-      console.error(error);
-      setMensaje('Error registrando el viajero');
-    }
-  };
+    };
 
   return (
     <form onSubmit={guardarViajero}>

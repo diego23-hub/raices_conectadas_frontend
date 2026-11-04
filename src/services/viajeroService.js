@@ -13,3 +13,5 @@ export const cerrarSesionApi = () => borrarToken();
 
 export const crearViajero = (viajero) =>
   peticion('/usuario', { metodo: 'POST', cuerpo: viajero });
+
+export const obtenerPerfil = () => peticion('/auth/me');

@@ -220,7 +220,6 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
 
       {/* LISTADO DE TARJETAS */}
       <div className="grid-paquetes">
-        {presupuestosFiltrados.length > 0}
         {presupuestosFiltrados.map((paquete) => (
           <div key={paquete.id} className="card-contenedor" style={{ border: '1px solid #eee', padding: '15px', marginBottom: '15px' }}>
             <CardPaquetes 

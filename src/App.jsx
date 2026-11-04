@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ListaDestino from './components/destinos/ListaDestinos';
 import ListaPaquetes from './components/paquetes/ListaPaquetes';
 import FormularioLogin from './components/viajeros/FormularioLogin';
@@ -8,6 +8,8 @@ import ListaEventos from './components/eventos/ListaEventos';
 import ListaReservas from './components/reservas/ListaReservas';
 import ListaProveedores from './components/proveedores/ListaProveedores';
 import MapaDestino from './components/destinos/MapaDestino';
+import { cerrarSesionApi, obtenerPerfil } from './services/viajeroService';
+import { obtenerToken } from './services/api';
 import './index.css';
 
 const MENU = [
@@ -38,21 +40,22 @@ const tieneAcceso = (acceso, usuario) => {
   }
 };
 
-const leerSesion = () => {
-  try {
-    return JSON.parse(localStorage.getItem('usuario'));
-  } catch {
-    return null;
-  }
-};
-
 function App() {
   const [vista, setVista] = useState('inicio');
-  const [usuario, setUsuario] = useState(leerSesion);
+  const [usuario, setUsuario] = useState(null);                       
+  const [cargandoSesion, setCargandoSesion] = useState(() => !!obtenerToken());
   const [paqueteElegido, setPaqueteElegido] = useState(null);
   const [destinoElegido, setDestinoElegido] = useState(null);
+  const [menuAbierto, setMenuAbierto] = useState(false);
 
-  const [menuAbierto,setMenuAbierto] = useState(false);
+  // Restaura la sesión al abrir o recargar la página
+  useEffect(() => {
+    if (!obtenerToken()) return;
+    obtenerPerfil()
+      .then(setUsuario)
+      .catch(() => cerrarSesionApi())          // token vencido o inválido
+      .finally(() => setCargandoSesion(false));
+  }, []);
 
   const cambiarVista = (nuevaVista) => {
     setVista(nuevaVista);
@@ -68,7 +71,6 @@ function App() {
 
   const alIniciarSesion = (datosUsuario) => {
     setUsuario(datosUsuario);
-    localStorage.setItem('usuario', JSON.stringify(datosUsuario));
     setVista('inicio');
   };
 
@@ -76,7 +78,7 @@ function App() {
     setUsuario(null);
     setPaqueteElegido(null);
     setDestinoElegido(null);
-    localStorage.removeItem('usuario');
+    cerrarSesionApi();            // borra el token
     setVista('inicio');
     setMenuAbierto(false);
   };
@@ -92,6 +94,8 @@ function App() {
   };
 
   const opcionesVisibles = MENU.filter((m) => tieneAcceso(m.acceso, usuario));
+
+  if (cargandoSesion) return <p>Cargando…</p>;
 
   return (
     <>

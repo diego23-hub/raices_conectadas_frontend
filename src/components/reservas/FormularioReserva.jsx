@@ -21,6 +21,11 @@ function FormularioReserva({usuario, paquete, alReservar }) {
   const duracionBase = paquete?.duracionDias || 1;
   const diasElegidos = calcularDias(fechaInicio, fechaFinal);
 
+  const hoyLocal = () => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  };
+
   const precioBase = diasElegidos > 0
     ? Math.round((paquete?.precio || 0) / duracionBase * diasElegidos)
     : (paquete?.precio || 0);
@@ -40,13 +45,18 @@ function FormularioReserva({usuario, paquete, alReservar }) {
     evento.preventDefault();
     setMensaje('');
 
-    if (!fechaInicio || !fechaFinal || cantidadTotal< 1) {
-      setMensaje ('completa las fechas y la cantidad de personas');
+    if (!fechaInicio || !fechaFinal || cantidadTotal < 1) {
+      setMensaje('Completa las fechas y la cantidad de personas');
       return;
     }
 
-    if (fechaFinal < fechaInicio){
-      setMensaje ('La fecha de fin no puede ser anterior a la de inicio');
+    if (fechaInicio < hoyLocal()) {
+      setMensaje('La fecha de inicio no puede estar en el pasado');
+      return;
+    }
+
+    if (fechaFinal < fechaInicio) {
+      setMensaje('La fecha de fin no puede ser anterior a la de inicio');
       return;
     }
 
@@ -60,25 +70,25 @@ function FormularioReserva({usuario, paquete, alReservar }) {
     }
 
     if (cantidadTotal > limiteMaximo ) {
-      setMensaje(`La cantidad maxíma permitidas es de ${limiteMaximo} personas`)
+      setMensaje(`La cantidad máxima permitida es de ${limiteMaximo} personas`)
+      return;
+    }
+    if (Number(adultos) < 1) {
+      setMensaje('Debe viajar al menos un adulto');
       return;
     }
 
 
-    const nuevaReserva = { 
-      idViajero: usuario.id,
+    const nuevaReserva = {
       idPaquete: paquete.id,
-      fechaInicio, fechaFinal,
-      cantidadPersonas: cantidadTotal,
-      subtotal,
-      iva: valorIva,
-      total: totalEstimado,
+      fechaInicio,
+      fechaFinal,
       detalleEdades: {
-        adultos: Number(adultos), 
+        adultos: Number(adultos),
         jovenes: Number(jovenes),
         ninos: Number(ninos),
-        bebes: Number(bebes)},
-      estado: 'pendiente'
+        bebes: Number(bebes)
+      }
     };
 
     try {
@@ -93,7 +103,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
       if (alReservar) alReservar();
     } catch (error) {
       console.error(error);
-      setMensaje('Error creando la reserva');
+      setMensaje(error.message);
     }
   };
 
@@ -110,7 +120,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
         <input
           type="date"
           value={fechaInicio}
-          min = {new Date(). toISOString().split('T')[0]}
+          min = {hoyLocal()}
           onChange={(e) => {setFechaInicio(e.target.value);
             setFechaFinal(calcularFechaFinal(e.target.value, duracionBase));
           }}    

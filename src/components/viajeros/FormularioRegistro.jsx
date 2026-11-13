@@ -50,23 +50,16 @@ function FormularioRegistro({ alRegistrar }) {
 
   const guardarViajero = async (evento) => {
     evento.preventDefault();
-
     try {
-
-        const respuesta = await crearViajero(viajero);
-        setMensaje('¡Registro exitoso!');
-        
-        if (alRegistrar) {
-          alRegistrar(respuesta);
-        }
-        
-        setViajero(viajeroInicial);
-      } catch (error) {
-
-        const errorMsg = error.response?.data?.mensaje || 'Error registrando el viajero';
-        setMensaje(errorMsg);
-      }
-    };
+      await crearViajero(viajero);
+      setMensaje('Viajero registrado correctamente');
+      setViajero(viajeroInicial);
+      if (alRegistrar) alRegistrar();
+    } catch (error) {
+      console.error(error);
+      setMensaje(error.message);   
+    }
+};
 
   return (
     <form onSubmit={guardarViajero}>

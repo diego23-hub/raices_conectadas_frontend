@@ -14,7 +14,13 @@ function BotonPago({ reserva, alPagar }) {
             setMensaje('¡Pago aprobado!');
             if (alPagar) alPagar();
         } catch (error) {
-            setMensaje('El pago fue rechazado, intenta de nuevo');
+            // Si el error del servidor indica que el pago fue rechazado específicamente
+            if (error.message && error.message.toLowerCase().includes('rechazado')) {
+                setMensaje('El pago fue rechazado, intenta de nuevo');
+            } else {
+                // Para errores de red, token vencido (401), etc., mostramos el mensaje real
+                setMensaje(error.message || 'Ocurrió un error inesperado al procesar el pago');
+            }
         } finally {
             setProcesando(false);
         }

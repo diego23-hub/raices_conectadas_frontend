@@ -1,4 +1,5 @@
 function CardProveedor({ proveedor, usuario, alEditar, alEliminar }) {
+  console.log("Datos del proveedor en tarjeta:", proveedor);
   const esAdmin = usuario?.rol === 'admin';
 
   return (

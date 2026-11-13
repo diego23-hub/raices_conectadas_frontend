@@ -28,6 +28,7 @@ function ListaProveedores({ usuario }) {
   const consultarProveedores = async () => {
     try {
       const datos = await obtenerProveedores();
+      console.log("PROVEEDORES TRAÍDOS DEL BACKEND:", datos);
       setProveedores(datos);
     } catch (error) {
       console.error(error);

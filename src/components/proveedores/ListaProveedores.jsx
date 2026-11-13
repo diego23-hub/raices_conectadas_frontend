@@ -75,11 +75,14 @@ function ListaProveedores({ usuario }) {
   const guardarProveedorSubmit = async (e) => {
     e.preventDefault();
 
+    const selectDestino = e.target.idDestino;
+    const nombreDestinoSeleccionado = selectDestino.options[selectDestino.selectedIndex]?.text || '';
+
     const objetoProveedor = {
       nombre: e.target.nombre.value,
       tipo: e.target.tipo.value,
-      lugar: destinos.find((destino) => destino.id === Number(e.target.idDestino.value))?.nombre || '',      
-      idDestino: Number(e.target.idDestino.value),
+      ubicacion: nombreDestinoSeleccionado, // Mandamos el nombre directo
+      idDestino: Number(selectDestino.value),
       telefono: e.target.telefono.value,
       correo: e.target.correo.value,
       descripcion: e.target.descripcion.value,

@@ -12,7 +12,7 @@ function CardProveedor({ proveedor, usuario, alEditar, alEliminar }) {
       </div>
 
       <p style={{ margin: '8px 0 4px 0', color: '#666' }}>
-        <strong>Ubicación:</strong> {proveedor.ubicacion || 'No especificada' }
+        <strong>Ubicación:</strong> {proveedor.ubicacion || proveedor.lugar || proveedor.direccion || 'No especificada'}
       </p>
       
       <p style={{ margin: '4px 0', fontSize: '14px' }}>

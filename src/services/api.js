@@ -20,7 +20,7 @@ export const peticion = async (ruta, { metodo = 'GET', cuerpo } = {}) => {
     throw new Error('No se pudo conectar con el servidor. Intenta de nuevo en unos minutos.');
   }
 
-  if (respuesta.status === 401) {
+  if (respuesta.status === 401 && ruta !== 'auth/login') {
     borrarToken();
     throw new Error('Tu sesión expiró, inicia sesión de nuevo.');
   }

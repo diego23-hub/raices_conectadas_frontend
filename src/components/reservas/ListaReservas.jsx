@@ -9,7 +9,13 @@ const [reservas, setReservas] = useState([]);
     const [paquetes, setPaquetes] = useState([]);
     const [mensaje, setMensaje] = useState('');
     const [idEditando, setIdEditando] = useState(null);
-    const [cargando, setCargando] = useState(true); 
+    const [cargando, setCargando] = useState(true);
+    const [fechaInicioEdicion, setFechaInicioEdicion] = useState(''); 
+
+    const hoyLocal = () => {
+        const d = new Date();
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    };
 
     const cargaDatos = async () => {
         try {
@@ -66,18 +72,27 @@ const [reservas, setReservas] = useState([]);
             setMensaje('Debe haber al menos 1 persona viajando');
             return;
         }
+        if (adultos < 1) { 
+            setMensaje('Debe viajar al menos un adulto');
+            return;
+        }
         if (personas > limiteMaximo) {
             setMensaje(`La cantidad máxima permitida es de ${limiteMaximo} personas`);
             return;
         }
-        const fechaInicio = e.target.fechaInicio.value; // NUEVO
-        const fechaFinal = e.target.fechaFinal.value;   // NUEVO
+        const fechaInicio = e.target.fechaInicio.value;
+        const fechaFinal = e.target.fechaFinal.value;
 
-        // NUEVO: validar fechas y ajustar el precio según los días elegidos
+        if (fechaInicio < hoyLocal()) {
+            setMensaje('La fecha de inicio no puede estar en el pasado');
+            return;
+        }
+
         if (fechaFinal < fechaInicio) {
             setMensaje('La fecha de fin no puede ser anterior a la de inicio');
             return;
         }
+
         const dias = calcularDias(fechaInicio, fechaFinal);
         if (dias > 30) {
             setMensaje('La reserva no puede superar 30 días');
@@ -146,12 +161,23 @@ const [reservas, setReservas] = useState([]);
                                     defaultValue={reserva.detalleEdades?.bebes ?? 0} required />
 
                                 <label> Inicio: </label>
-                                <input type="date" name="fechaInicio"
-                                    defaultValue={reserva.fechaInicio || ''} required />
+                                <input
+                                    type="date"
+                                    name="fechaInicio"
+                                    min={hoyLocal()}
+                                    defaultValue={reserva.fechaInicio || ''}
+                                    onChange={(e) => setFechaInicioEdicion(e.target.value)}
+                                    required
+                                />
 
                                 <label> Fin: </label>
-                                <input type="date" name="fechaFinal"
-                                    defaultValue={reserva.fechaFinal || ''} required />
+                                <input
+                                    type="date"
+                                    name="fechaFinal"
+                                    min={fechaInicioEdicion || reserva.fechaInicio || hoyLocal()}
+                                    defaultValue={reserva.fechaFinal || ''}
+                                    required
+                                />
 
                                 <button type="submit">Guardar</button>
                                 <button type="button" onClick={() => setIdEditando(null)}>Cancelar</button>
@@ -192,7 +218,10 @@ const [reservas, setReservas] = useState([]);
                                     <>
                                         <BotonPago reserva={reserva} alPagar={cargaDatos} />
                                         {/* NUEVO: botón editar, solo si no ha pagado */}
-                                        <button onClick={() => setIdEditando(reserva.id)}>
+                                        <button onClick={() => {
+                                            setIdEditando(reserva.id);
+                                            setFechaInicioEdicion(reserva.fechaInicio || '');
+                                        }}>
                                             Editar
                                         </button>
                                         <button onClick={() => cancelarReserva(reserva.id)}>

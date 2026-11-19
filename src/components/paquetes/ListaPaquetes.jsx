@@ -23,31 +23,24 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
   const [destinos, setDestinos] = useState([]);
   const [cargando, setCargando] = useState(true);
 
-  const consultarPaquetes = async () => {
+  const cargarDatos = async () => {
     try {
-      const datos = await obtenerPaquetes();
-      setPaquetes(datos);
+      const [datosPaquetes, datosDestinos] = await Promise.all([
+        obtenerPaquetes(),
+        obtenerDestinos()
+      ]);
+      setPaquetes(datosPaquetes);
+      setDestinos(datosDestinos);
     } catch (error) {
       console.error(error);
       setMensaje('Error consultando los paquetes');
     } finally {
-      setCargando(false); 
+      setCargando(false);
     }
   };
 
-  const consultarDestinos = async () => {
-  try {
-    const datos = await obtenerDestinos();
-    setDestinos(datos);
-  } catch (error) {
-    console.error(error);
-    setMensaje('Error consultando los destinos');
-  }
-  };
-
   useEffect(() => {
-    consultarPaquetes();
-    consultarDestinos();
+    cargarDatos();
   }, []);
 
   // ELIMINAR PAQUETE
@@ -56,7 +49,7 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
     try {
       await eliminarPaquete(id);
       setMensaje('Paquete eliminado con éxito');
-      consultarPaquetes();
+      cargarDatos();
     } catch (error) {
       console.error(error);
       setMensaje('Error eliminando el paquete');
@@ -100,7 +93,7 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
         setMensaje('Paquete creado con éxito');
       }
       setModoFormulario(false);
-      consultarPaquetes();
+      cargarDatos();
     } catch (error) {
       console.error(error);
       setMensaje('Error al guardar el paquete');

@@ -19,31 +19,24 @@ function ListaEventos({ usuario }) {
   const [destinos, setDestinos] = useState([]);
   const [cargando, setCargando] = useState(true); 
 
-  const consultarEventos = async () => {
+  const cargarDatos = async () => {
     try {
-      const datos = await obtenerEventos();
-      setEventos(datos);
+      const [datosEventos, datosDestinos] = await Promise.all([
+        obtenerEventos(),
+        obtenerDestinos()
+      ]);
+      setEventos(datosEventos);
+      setDestinos(datosDestinos);
     } catch (error) {
       console.error(error);
       setMensaje('Error consultando los eventos');
     } finally {
-      setCargando(false); 
-    }
-  };
-
-  const consultarDestinos = async () => {
-    try {
-      const datos = await obtenerDestinos();
-      setDestinos(datos);
-    } catch (error) {
-      console.error(error);
-      setMensaje('Error consultando los destinos');
+      setCargando(false);
     }
   };
 
   useEffect(() => {
-    consultarEventos();
-    consultarDestinos();
+    cargarDatos();
   }, []);
 
   // ELIMINAR EVENTO
@@ -52,7 +45,7 @@ function ListaEventos({ usuario }) {
     try {
       await eliminarEvento(id);
       setMensaje('Evento eliminado con éxito');
-      consultarEventos();
+      cargarDatos();
     } catch (error) {
       console.error(error);
       setMensaje('Error eliminando el evento');
@@ -93,7 +86,7 @@ function ListaEventos({ usuario }) {
         setMensaje('Evento creado con éxito');
       }
       setModoFormulario(false);
-      consultarEventos();
+      cargarDatos();
     } catch (error) {
       console.error(error);
       setMensaje('Error al guardar el evento');

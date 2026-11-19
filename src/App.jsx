@@ -95,6 +95,20 @@ function App() {
 
   const opcionesVisibles = MENU.filter((m) => tieneAcceso(m.acceso, usuario));
 
+  const meta =
+  vista === 'detalle-destino' && destinoElegido
+    ? {
+        title: `${destinoElegido.nombre} · Raíces conectadas`,
+        description: destinoElegido.descripcion.slice(0, 160),
+        keywords: `${destinoElegido.nombre}, ${destinoElegido.tipo}, pueblo patrimonial, turismo cultural, Colombia`
+      }
+    : {
+        title: 'Raíces conectadas · Turismo patrimonial en Colombia',
+        description: 'Descubre y reserva paquetes en los pueblos patrimoniales de Colombia.',
+        keywords: 'pueblos patrimoniales, turismo cultural, Colombia, paquetes turísticos'
+      };
+  useMetadatos(meta);
+
   if (cargandoSesion) return <p>Cargando…</p>;
 
   return (

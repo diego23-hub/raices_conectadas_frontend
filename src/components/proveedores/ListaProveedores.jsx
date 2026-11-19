@@ -26,21 +26,24 @@ function ListaProveedores({ usuario }) {
   const [cargando, setCargando] = useState(true); 
 
 
-  const consultarProveedores = async () => {
+  const cargarDatos = async () => {
     try {
-      const datos = await obtenerProveedores();
-      setProveedores(datos);
+      const [datosProveedores, datosDestinos] = await Promise.all([
+        obtenerProveedores(),
+        obtenerDestinos()
+      ]);
+      setProveedores(datosProveedores);
+      setDestinos(datosDestinos);
     } catch (error) {
       console.error(error);
       setMensaje('Error consultando los proveedores');
     } finally {
-      setCargando(false); 
+      setCargando(false);
     }
   };
 
   useEffect(() => {
-    consultarProveedores();
-    consultarDestinos();
+    cargarDatos();
   }, []);
 
   const manejarEliminar = async (id) => {
@@ -48,7 +51,7 @@ function ListaProveedores({ usuario }) {
     try {
       await eliminarProveedor(id);
       setMensaje('Proveedor eliminado con éxito');
-      consultarProveedores();
+      cargarDatos();
     } catch (error) {
       console.error(error);
       setMensaje('Error eliminando el proveedor');
@@ -90,7 +93,7 @@ function ListaProveedores({ usuario }) {
         setMensaje('Proveedor creado con éxito');
       }
       setModoFormulario(false);
-      consultarProveedores();
+      cargarDatos();
     } catch (error) {
       console.error(error);
       setMensaje('Error al guardar el proveedor');

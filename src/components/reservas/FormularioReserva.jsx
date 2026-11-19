@@ -46,7 +46,7 @@ function FormularioReserva({usuario, paquete, alReservar }) {
     setMensaje('');
 
     if (!fechaInicio || !fechaFinal ) {
-      setMensaje('Completa las fechas y la cantidad de personas');
+      setMensaje('Completa las fechas');
       return;
     }
 

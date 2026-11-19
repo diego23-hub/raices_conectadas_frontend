@@ -21,6 +21,7 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
   const [paqueteActual, setPaqueteActual] = useState(null);
 
   const [destinos, setDestinos] = useState([]);
+  const [cargando, setCargando] = useState(true);
 
   const consultarPaquetes = async () => {
     try {
@@ -29,6 +30,8 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
     } catch (error) {
       console.error(error);
       setMensaje('Error consultando los paquetes');
+    } finally {
+      setCargando(false); 
     }
   };
 
@@ -220,17 +223,27 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
 
       {/* LISTADO DE TARJETAS */}
       <div className="grid-paquetes">
-        {presupuestosFiltrados.map((paquete) => (
-          <div key={paquete.id} className="card-contenedor" style={{ border: '1px solid #eee', padding: '15px', marginBottom: '15px' }}>
-            <CardPaquetes 
-              paquete={paquete} 
-              usuario={usuario}
-              alReservar={alElegirPaquete}
-              alEditar={abrirEditar}
-              alEliminar={manejarEliminar}
-            />
-          </div>
-        ))}
+        {cargando ? (
+          <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
+            Cargando paquetes...
+          </p>
+        ) : presupuestosFiltrados.length > 0 ? (
+          presupuestosFiltrados.map((paquete) => (
+            <div key={paquete.id} className="card-contenedor" style={{ border: '1px solid #eee', padding: '15px', marginBottom: '15px' }}>
+              <CardPaquetes 
+                paquete={paquete} 
+                usuario={usuario}
+                alReservar={alElegirPaquete}
+                alEditar={abrirEditar}
+                alEliminar={manejarEliminar}
+              />
+            </div>
+          ))
+        ) : (
+          <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
+            No hay paquetes disponibles en este rango de presupuesto.
+          </p>
+        )}
       </div>
     </div>
   );

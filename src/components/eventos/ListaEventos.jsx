@@ -17,6 +17,7 @@ function ListaEventos({ usuario }) {
   const [eventoActual, setEventoActual] = useState(null);
   const [filtroTipo, setFiltroTipo] = useState('todos');
   const [destinos, setDestinos] = useState([]);
+  const [cargando, setCargando] = useState(true); 
 
   const consultarEventos = async () => {
     try {
@@ -25,6 +26,8 @@ function ListaEventos({ usuario }) {
     } catch (error) {
       console.error(error);
       setMensaje('Error consultando los eventos');
+    } finally {
+      setCargando(false); 
     }
   };
 
@@ -257,13 +260,19 @@ function ListaEventos({ usuario }) {
 </div>
 
       {/* NUEVO: el calendario reemplaza la grilla de tarjetas */}
-      <CalendarioEventos
-        eventos={eventosFiltrados}
-        destinos={destinos}
-        usuario={usuario}
-        alEditar={abrirEditar}
-        alEliminar={manejarEliminar}
-      />
+      {cargando ? (
+        <p style={{ textAlign: 'center', color: '#6c757d', margin: '30px 0' }}>
+          Cargando eventos...
+        </p>
+      ) : (
+        <CalendarioEventos
+          eventos={eventosFiltrados}
+          destinos={destinos}
+          usuario={usuario}
+          alEditar={abrirEditar}
+          alEliminar={manejarEliminar}
+        />
+      )}
     </div>
   );
 }

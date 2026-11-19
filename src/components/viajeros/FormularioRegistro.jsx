@@ -51,16 +51,23 @@ function FormularioRegistro({ alRegistrar }) {
     evento.preventDefault();
     setMensaje('');
 
-    if (
-      !viajero.tipoDoc ||
-      !viajero.numDoc.trim() ||
-      !viajero.nombres.trim() ||
-      !viajero.apellidos.trim() ||
-      !viajero.telefono.trim() ||
-      !viajero.correo.trim() ||
-      !viajero.contrasena.trim()
-    ) {
-      setMensaje('Por favor completa todos los campos obligatorios.');
+    if (!/^\d{5,15}$/.test(viajero.numDoc.trim())) {
+      setMensaje('El número de documento debe contener entre 5 y 15 dígitos numéricos.');
+      return;
+    }
+
+    if (viajero.nombres.trim().length < 2 || viajero.apellidos.trim().length < 2) {
+      setMensaje('Los nombres y apellidos deben tener al menos 2 caracteres.');
+      return;
+    }
+
+    if (!/^\d{7,15}$/.test(viajero.telefono.trim())) {
+      setMensaje('El número de teléfono debe contener entre 7 y 15 dígitos.');
+      return;
+    }
+
+    if (viajero.contrasena.length < 8) {
+      setMensaje('La contraseña debe tener al menos 8 caracteres.');
       return;
     }
 

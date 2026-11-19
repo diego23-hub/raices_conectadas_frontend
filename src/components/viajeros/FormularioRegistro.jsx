@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { crearViajero} from '../../services/viajeroService';
+import { crearViajero } from '../../services/viajeroService';
 
 const viajeroInicial = {
-  tipoDoc:'',
-  numDoc:'',
+  tipoDoc: '',
+  numDoc: '',
   nombres: '',
   apellidos: '',
-  telefono:'',
+  telefono: '',
   correo: '',
   contrasena: '',
 };
@@ -18,19 +18,18 @@ function FormularioRegistro({ alRegistrar }) {
   const manejarCambio = (evento) => {
     const { name, value } = evento.target;
 
-    if (name === 'numDoc'){
+    if (name === 'numDoc') {
       if (viajero.tipoDoc === 'Pasaporte') {
         if (value.length <= 12) {
           setViajero({ ...viajero, [name]: value });
         }
-      } 
-      else {
+      } else {
         if (value.length <= 10) {
           setViajero({ ...viajero, [name]: value });
         }
       }
       return;
-    } 
+    }
 
     if (name === 'telefono') {
       if (value.length <= 10) {
@@ -39,7 +38,7 @@ function FormularioRegistro({ alRegistrar }) {
           [name]: value
         });
       }
-      return; 
+      return;
     }
 
     setViajero({
@@ -50,6 +49,21 @@ function FormularioRegistro({ alRegistrar }) {
 
   const guardarViajero = async (evento) => {
     evento.preventDefault();
+    setMensaje('');
+
+    if (
+      !viajero.tipoDoc ||
+      !viajero.numDoc.trim() ||
+      !viajero.nombres.trim() ||
+      !viajero.apellidos.trim() ||
+      !viajero.telefono.trim() ||
+      !viajero.correo.trim() ||
+      !viajero.contrasena.trim()
+    ) {
+      setMensaje('Por favor completa todos los campos obligatorios.');
+      return;
+    }
+
     try {
       await crearViajero(viajero);
       setMensaje('Viajero registrado correctamente');
@@ -57,9 +71,9 @@ function FormularioRegistro({ alRegistrar }) {
       if (alRegistrar) alRegistrar();
     } catch (error) {
       console.error(error);
-      setMensaje(error.message);   
+      setMensaje(error.message);
     }
-};
+  };
 
   return (
     <form onSubmit={guardarViajero}>
@@ -87,8 +101,9 @@ function FormularioRegistro({ alRegistrar }) {
           placeholder='Número de documento'
           value={viajero.numDoc}
           onChange={manejarCambio}
+          required
         />
-      </div>  
+      </div>
 
       <div className="mb-3">
         <input
@@ -97,6 +112,7 @@ function FormularioRegistro({ alRegistrar }) {
           placeholder="Nombres"
           value={viajero.nombres}
           onChange={manejarCambio}
+          required
         />
       </div>
 
@@ -107,6 +123,7 @@ function FormularioRegistro({ alRegistrar }) {
           placeholder="Apellidos"
           value={viajero.apellidos}
           onChange={manejarCambio}
+          required
         />
       </div>
 
@@ -118,6 +135,7 @@ function FormularioRegistro({ alRegistrar }) {
           placeholder="Número de teléfono"
           value={viajero.telefono}
           onChange={manejarCambio}
+          required
         />
       </div>
 
@@ -128,6 +146,7 @@ function FormularioRegistro({ alRegistrar }) {
           placeholder="Correo"
           value={viajero.correo}
           onChange={manejarCambio}
+          required
         />
       </div>
 
@@ -138,6 +157,7 @@ function FormularioRegistro({ alRegistrar }) {
           placeholder="Contraseña"
           value={viajero.contrasena}
           onChange={manejarCambio}
+          required
         />
       </div>
 

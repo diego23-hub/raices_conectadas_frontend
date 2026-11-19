@@ -38,16 +38,6 @@ function ListaProveedores({ usuario }) {
     }
   };
 
-  const consultarDestinos = async () => {
-  try {
-    const datos = await obtenerDestinos();
-    setDestinos(datos);
-  } catch (error) {
-    console.error(error);
-    setMensaje('Error consultando los destinos');
-  }
-  };
-
   useEffect(() => {
     consultarProveedores();
     consultarDestinos();

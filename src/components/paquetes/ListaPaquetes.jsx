@@ -241,7 +241,9 @@ function ListaPaquetes({ usuario, alElegirPaquete }) {
           ))
         ) : (
           <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
-            No hay paquetes disponibles en este rango de presupuesto.
+            {busquedaTexto.trim() !== '' 
+              ? `No se encontraron paquetes que coincidan con "${busquedaTexto}".`
+              : 'No hay paquetes disponibles en este rango de presupuesto.'}
           </p>
         )}
       </div>

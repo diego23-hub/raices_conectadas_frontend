@@ -218,7 +218,9 @@ function ListaProveedores({ usuario }) {
           </p>
         ) : proveedoresFiltrados.length === 0 ? (
           <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
-            No hay proveedores registrados en esta categoría.
+            {busquedaTexto.trim() !== '' 
+              ? `No se encontraron proveedores que coincidan con "${busquedaTexto}".`
+              : 'No hay proveedores registrados en esta categoría.'}
           </p>
         ) : (
           proveedoresFiltrados.map((proveedor) => (

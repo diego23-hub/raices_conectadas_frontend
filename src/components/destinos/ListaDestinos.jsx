@@ -167,7 +167,9 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
                     ))
                 ) : (
                     <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
-                        No hay destinos disponibles para esta categoría.
+                        {busquedaTexto.trim() !== '' 
+                            ? `No se encontraron destinos que coincidan con "${busquedaTexto}".`
+                            : 'No hay destinos disponibles para esta categoría.'}
                     </p>
                 )}
             </div>

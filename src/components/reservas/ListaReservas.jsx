@@ -5,10 +5,11 @@ import BotonPago from '../reservas/BotonPago';
 import { calcularDias } from '../reservas/fecha'
 
 function ListaReservas({ usuario }) {
-    const [reservas, setReservas] = useState([]);
+const [reservas, setReservas] = useState([]);
     const [paquetes, setPaquetes] = useState([]);
     const [mensaje, setMensaje] = useState('');
-    const [idEditando, setIdEditando] = useState(null); // NUEVO: qué reserva se está editando
+    const [idEditando, setIdEditando] = useState(null);
+    const [cargando, setCargando] = useState(true); 
 
     const cargaDatos = async () => {
         try {
@@ -21,6 +22,8 @@ function ListaReservas({ usuario }) {
         } catch (error) {
             console.error(error);
             setMensaje('Error consultando reserva');
+        } finally {
+            setCargando(false); 
         }
     };
 
@@ -112,7 +115,11 @@ function ListaReservas({ usuario }) {
             <h2>Mis reservas</h2>
             {mensaje && <p className="mensaje">{mensaje}</p>}
 
-            {reservas.length === 0 && <p>Aún no tienes reservas</p>}
+            {cargando ? (
+                <p>Cargando reservas...</p>
+            ) : (
+                reservas.length === 0 && <p>Aún no tienes reservas</p>
+            )}
 
             <ul>
                 {reservas.map((reserva) => (

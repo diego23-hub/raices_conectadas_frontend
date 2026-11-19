@@ -13,6 +13,8 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
 
     const [busquedaTexto, setBusquedaTexto] = useState('');
 
+    const [cargando, setCargando] = useState(true); 
+
     const consultarDestino = async () => {
         try {
             const datos = await obtenerDestinos();
@@ -20,6 +22,8 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
         } catch (error) {
             console.error(error);
             setMensaje('Error consultando los destinos');
+        } finally {
+            setCargando(false); 
         }
     };
 
@@ -146,10 +150,11 @@ function ListaDestino({ usuario, alSeleccionarDestino }) {
 
 
             <div className="grid-destinos">
-                {/* =========================================================================
-                    2. AQUÍ DEBES MAPEAR 'destinosFiltrados' (Ya no 'destinos')
-                   ======================================================================== */}
-                {destinosFiltrados.length > 0 ? (
+                {cargando ? (
+                    <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
+                        Cargando destinos...
+                    </p>
+                ) : destinosFiltrados.length > 0 ? (
                     destinosFiltrados.map((destino) => (
                         <CardDestino
                             key={destino.id}

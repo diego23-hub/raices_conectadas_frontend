@@ -23,6 +23,7 @@ function ListaProveedores({ usuario }) {
   const [modoFormulario, setModoFormulario] = useState(false);
   const [proveedorActual, setProveedorActual] = useState(null);
   const [destinos, setDestinos] = useState([]);
+  const [cargando, setCargando] = useState(true); 
 
 
   const consultarProveedores = async () => {
@@ -32,6 +33,8 @@ function ListaProveedores({ usuario }) {
     } catch (error) {
       console.error(error);
       setMensaje('Error consultando los proveedores');
+    } finally {
+      setCargando(false); 
     }
   };
 
@@ -209,8 +212,14 @@ function ListaProveedores({ usuario }) {
 
     
       <div className="grid-proveedores" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
-        {proveedoresFiltrados.length === 0 ? (
-          <p>No hay proveedores registrados en esta categoría.</p>
+        {cargando ? (
+          <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
+            Cargando proveedores...
+          </p>
+        ) : proveedoresFiltrados.length === 0 ? (
+          <p style={{ gridColumn: '1 / -1', textAlign: 'center', color: '#6c757d' }}>
+            No hay proveedores registrados en esta categoría.
+          </p>
         ) : (
           proveedoresFiltrados.map((proveedor) => (
             <CardProveedor

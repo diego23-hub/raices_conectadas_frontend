@@ -1,3 +1,4 @@
+/*
 import { useEffect } from 'react';
 
 const fijarMeta = (nombre, contenido) => {
@@ -17,3 +18,4 @@ export default function useMetadatos({ title, description, keywords }) {
     fijarMeta('keywords', keywords);
   }, [title, description, keywords]);
 }
+*/
